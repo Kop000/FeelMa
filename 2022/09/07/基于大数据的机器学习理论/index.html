@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+
+
+<html lang="zh-hans">
+  
+
+    <head>
+      <meta charset="utf-8" />
+       
+      <meta name="keywords" content="音乐,运动,美食,感受,思考,代码,博客" />
+       
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1"
+      />
+      <title>机器学习理论 |  感觉派大师</title>
+  <meta name="generator" content="hexo-theme-ayer">
+      
+      <link rel="shortcut icon" href="/images/3.jpg" />
+       
+<link rel="stylesheet" href="/dist/main.css">
+
+      
+<link rel="stylesheet" href="/css/fonts/remixicon.css">
+
+      
+<link rel="stylesheet" href="/css/custom.css">
+ 
+      <script src="https://cdn.staticfile.org/pace/1.2.4/pace.min.js"></script>
+       
+ 
+
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-bulma@5.0.1/bulma.min.css"
+      />
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.min.js"></script>
+
+      <!-- mermaid -->
+      
+      <style>
+        .swal2-styled.swal2-confirm {
+          font-size: 1.6rem;
+        }
+      </style>
+    </head>
+  </html>
+</html>
+
+
+<body>
+  <div id="app">
+    
+      
+    <main class="content on">
+      <section class="outer">
+  <article
+  id="post-基于大数据的机器学习理论"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  机器学习理论
+</h1>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2022/09/07/%E5%9F%BA%E4%BA%8E%E5%A4%A7%E6%95%B0%E6%8D%AE%E7%9A%84%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%90%86%E8%AE%BA/" class="article-date">
+  <time datetime="2022-09-06T23:58:06.000Z" itemprop="datePublished">2022-09-07</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%90%8E%E5%A4%87%E7%AE%B1/">后备箱</a>
+  </div>
+ 
+    </div>
+      
+    <div class="tocbot"></div>
+
+
+
+
+  
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><p>机器学习什么意思？</p>
+<p>和一般程序不同的是，机器学习是不断优化的，重复迭代是结果最好，一般程序执行完就结束了，机器 学习还要比对优化</p>
+<p>目前都有什么方法学习？</p>
+<p>单层感知器：线性分类器、布尔函数</p>
+<p>多层：函数（线多了）组合增强分类能力， 实现非线性分类</p>
+<h3 id="复习"><a href="#复习" class="headerlink" title="复习"></a>复习</h3><p>盲猜5道大题，气球重点, 说会考察推导和计算,上网搜算法推导计算例子看,多角度。知道算法过程，和特点，名词</p>
+<h4 id="逻辑模型-大题推导"><a href="#逻辑模型-大题推导" class="headerlink" title="逻辑模型(大题推导)"></a>逻辑模型(大题推导)</h4><p>假设空间计算：每个属性包含特定值和“？”，最后再加上一种每个样例都是反例这一特殊极端情况。(看逻辑模型中的样例)</p>
+<p>概念学习：从特殊例集中归纳出一般概念，又称归纳学习。通俗讲，从一堆样例，通过它是这个东西， 它有哪些属性，从特殊序假设不断学习到适用于所有样例的一般化，得到一个模型来泛化预判是否是   它。</p>
+<p>该思路算法有：</p>
+<p>FIND-S</p>
+<p>运用了极大特殊假设，不断泛化正例样本模型，忽略反例样本。不能保证涵盖所有正例，因此不能判断 反例，且只得到假设空间的一个假设，并且是极大特殊假设。对于噪声无能为力，数据只能是离散的</p>
+<p>🎈候补消除法</p>
+<p>学习的仍然是正例的表达，得到的是版本空间，而不是某一版本，解决了FIND-S的一大弊端。</p>
+<p>做法是，基于正例泛化同时，也基于反例特殊化(但仍是正例属性值表达)，从而获得一个上下界。</p>
+<p>🎈决策树(ID3) 期末会考多维的</p>
+<p>CART树：分类，回归</p>
+<p>计算：基于信息熵选取最大价值属性、基于基尼指数选取最大价值属性</p>
+<h4 id="几何模型-大题推导"><a href="#几何模型-大题推导" class="headerlink" title="几何模型(大题推导)"></a>几何模型(大题推导)</h4><p>利用几何特征构建的学习模型线性回归</p>
+<p>优化各点到直线距离，使期望方差最小</p>
+<p>🎈线性分类器(Fisher) <strong>–还需看怎么用拉格朗日乘子求解准则函数，进而得w, b</strong></p>
+<p>优化投影轴，最大化准则函数，类间距最大，类内距最小</p>
+<p>SVM</p>
+<p>优化最近两点间隔，找到支持向量，不要求推导</p>
+<p>KNN</p>
+<p>有监督分类，对于一个点不重复计算，但每个点都要计算离其他点的距离，找出离他最近的k个点投票。</p>
+<p>🎈K-means聚类</p>
+<p>无监督聚类，随机选出k个中心，每个点计算到k个中心的距离，归到最近下面。在对新类计算均值选出 新中心，重复上述操作，直到中心不变。</p>
+<h4 id="神经网络-大题推导"><a href="#神经网络-大题推导" class="headerlink" title="神经网络(大题推导)"></a>神经网络(大题推导)</h4><p>BPNN, Back Propagation Neural Network，是最基础的神经网络，其输出结果采用前向传播，误差采用反向（Back Propagation）传播方式进行。BP神经网络是有监督学习。</p>
+<p>🎈多层</p>
+<p>随机梯度下降的思想是 根据每个单独样例的误差增量地计算权值更新，得到近似的梯度下降搜索。神经网络两步骤：前向传播、反向传播(采用梯度下降对每层权值修正)</p>
+<h4 id="模型评估"><a href="#模型评估" class="headerlink" title="模型评估"></a>模型评估</h4><p>正则化的<strong>目的是限制参数过多或者过大，避免模型更加复杂</strong>。经验误差、泛化误差</p>
+<p>过拟合</p>
+<p>训练误差小，测试误差和泛化误差大，无法彻底避免解决：降低模型复杂度，增大训练数据</p>
+<p>欠拟合</p>
+<p>泛化误差和测试误差、训练误差都大解决：增强模型复杂度，增大训练数据</p>
+<p>怎么从样本中分出测试集去很好地评估模型？</p>
+<p>数据量足够：留出法、m折交叉验证法（很大数据量不用，因为计算量大，且数据量巨大时也用不着这 么充分地用数据了）</p>
+<p>数据量小：自助法模型性能度量</p>
+<p>回归：均方误差</p>
+<p>分类：错误率、精度</p>
+<p>单个二分类：查全率、查准率</p>
+<p>多个二分类：宏查全率宏查准率、微查全率微查准率</p>
+<p>回归模型的泛化误差分解：样本自身噪声、期望误差、数据偏差扰动</p>
+<h3 id="计算学习理论"><a href="#计算学习理论" class="headerlink" title="计算学习理论"></a>计算学习理论</h3><p> 想知道：学习出来的结果可不可靠？可信度是多少？怎么样做能使结果可靠？</p>
+<p>现在所学的基础是训练数据和泛化数据独立同分布，否则错误率会很高，不在目前能力范围内，属于前 沿研究</p>
+<p>假设空间：针对某个任务，所有的可能模型</p>
+<p>🎈有限假设空间可分&#x2F;不可分情形下的样本数目，要求会推导 关注样本复杂度为多少时，是PAC可学习的：</p>
+<p>PAC学习强调的是泛化误差要能够以一定的概率被控制在 一定的范围之内</p>
+<p>理解：可知PAC可学习，学到的是概念，表示你选择的模型类可以达到没有泛化误差，即你的模型类是正确的，因此要做的是极限减小泛化误差。</p>
+<p>不可知PAC可学习，学不到概念，做的是在现选空间下，使训练误差逼近最小泛化误差，让你训练出的结果模型不断极限到你选择的模型类能达到的最小泛化误差，从而减小泛化误差，但相比于可知情形， 能减小到的泛化误差存在最小值。</p>
+<p>如果你选择的空间(如线性分类对某任务训练出的所有线)的最小泛化误差就是比较大，那么最终再怎么训 练，误差都会大，因此选择合适的空间很关键。</p>
+<p>可不可知，即概念是否能知道能学到</p>
+<p>大多数假设空间都是无限的，也就概念模型中的假设空间是有限的对无限的假设空间进行某种分类：从假设空间的分类能力的来分类不要求无线假设空间的推导，但需要了解：</p>
+<p>VC维-&gt;衡量无限假设空间大小的度量</p>
+<p>增长函数H’-&gt;空间里有多少种不同表达能力的假设，使无限变有限，替代有限空间中空间大小H 任何VC维有限的的假设空间H都是（不可知） PAC可学习的。</p>
+<h3 id="概率模型"><a href="#概率模型" class="headerlink" title="概率模型"></a>概率模型</h3><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/Mr_health/article/details/107596402">(16条消息) 【机器学习】判别模型vs生成模型、概率模型vs非概率模型<em>Mr_health</em>的博客*-CSDN*博客对于</a></p>
+<p> <a target="_blank" rel="noopener" href="https://blog.csdn.net/Mr_health/article/details/107596402">包含 k 个类别的分类问题,分析比较一下线性判别函数模型、概率生成 模型和概</a></p>
+<ul>
+<li>判别概率模型</li>
+</ul>
+<p>逻辑斯蒂模型(介绍她是为了了解最大似然、最小交叉熵的概念，且在某些分类问题上，有用)</p>
+<p>把分类模型映射成概率的模型，选的是逻辑斯蒂函数，因此建的模型叫逻辑斯蒂模型，函数得出的就是 后验概率，因此是判别式概率模型</p>
+<ul>
+<li>生成概率模型</li>
+</ul>
+<p>贝叶斯决策：就是最大后验概率决策</p>
+<p>朴素贝叶斯模型，根据贝叶斯决策进行决策的模型，直白说就是求出P(Y|X)，看谁最大算哪个拉普拉斯修正是个小tip，实际使用朴素要用</p>
+<h4 id="交叉熵"><a href="#交叉熵" class="headerlink" title="交叉熵"></a>交叉熵</h4><p>交叉熵损失函数可以用来衡量两个分布到差异，通常用来衡量预测与真实值间的差异</p>
+<p>损失函数和似然函数就差一个负号，但通常希望使用最小化，因此加个负号的损失函数使用更多，但两 种的评估策略不同</p>
+<p>有些人嫌多项逻辑斯蒂回归麻烦，因此搞成了softmax回归，</p>
+<p>如：做k分类，多项逻辑斯蒂回归只建k-1个类，而softmax建k类。两者没有本质区别，只是形式不同， 也因此softmax回归模型有参数冗余</p>
+<p><strong>作业：基于交叉熵最小化，对softmax参数梯度优化：</strong></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_44538273/article/details/86671655"> 损失函数]Softmax求导_急流勇进的博客-CSDN博客</a></p>
+<p>因为softmax公式的特性，它的分母包含了所有神经元的输出，所以，对于不等于i的其他输出里面，也包含在内 ，因此需要分为k&#x3D;m和k≠m，</p>
+<h4 id="卷积神经网络"><a href="#卷积神经网络" class="headerlink" title="卷积神经网络"></a>卷积神经网络</h4><p>对于图像、语音等很难做特征工程等预处理，因此有了深度学习，融合了表征学习和预测网络，实现了 端到端的方式</p>
+<h3 id="概率模型总结"><a href="#概率模型总结" class="headerlink" title="概率模型总结"></a>概率模型总结</h3><p>概率模型就是通过求P(Y|X)来给出Y类别</p>
+<p>有两种方法：</p>
+<p>判别式，直接求各自的P(Y|X)，再用最大似然求解</p>
+<p>生成式，先求出联合概率P(X,Y)，再用贝叶斯公式获得P(Y|X)&#x3D;P(X,Y)&#x2F;P(X)</p>
+<p><strong>后验概率</strong>：事情已经发生，属性已经存在，根据这个果这个属性去计算因|类别的概率是多少  <strong>最大似然估计</strong>：取最可能导致该结果的参数</p>
+<p><strong>似然函数</strong>：P(Y|X)</p>
+<p>回归很简单，一行套公式的代码就能建模</p>
+<h3 id="卷积神经网络-1"><a href="#卷积神经网络-1" class="headerlink" title="卷积神经网络"></a>卷积神经网络</h3><p>思路：一些人认为，人眼能够很好识别，是因为人们观察的是重要关键的局部而非全部细节，视野是多 层，组合起来最终形成视觉信息。</p>
+<p><strong>卷积操作</strong>和普通操作的区别在于卷积操作的是矩阵，但都是对所有x进行线性运算再累加，最后过激活函 数</p>
+<p><strong>2维卷积</strong>根据从哪开始做分成full same valid(对边缘信息的关注程度不同)，在做运算时，会先对h(m,n)</p>
+<p>做旋转180，但真正在操作时，会觉得旋转很麻烦，免去旋转直接算，h(m,n)是卷积核&#x2F;特征滤波器</p>
+<p><strong>卷积输出的矩阵高</strong>&#x3D;((x的高-h的高)&#x2F;步长)+1，<strong>宽</strong>也是一样算  卷积层常用激活函数<strong>RELU</strong></p>
+<p>sigmoid函数易产生梯度消失的情况，当梯度消失时，无法通过梯度优化参数，性能不佳。RELU不会有梯度消失的问题</p>
+<p>参数初始化尽可能小,学习率也不能过大，防止relu dead</p>
+<p><strong>多层卷积</strong>就是把多层各自和卷积核卷完后累加成一层<strong>多通道卷积</strong>就是并行多通道地用不同核做卷积</p>
+<p><strong>池化</strong>有最大池化、平均池化，就是对池化滤波器套中的小池中取最大值或取平均值，是为了压缩图像， 突出特征。</p>
+<p>多深叫深度学习网络📢</p>
+<p>没有标准答案，多数人将多层神经网络，且隐藏层中用了特殊处理如卷积，称为深度学习 深度会比宽度好</p>
+<h3 id="大作业"><a href="#大作业" class="headerlink" title="大作业"></a>大作业</h3><p>训练集</p>
+<p>训练集用来训练模型，即确定模型的权重和偏置这些参数，通常我们称这些参数为学习参数。</p>
+<p>验证集</p>
+<p>而验证集用于模型的选择，更具体地来说，验证集并不参与学习参数的确定，也就是验证集并没有参与 梯度下降的过程。验证集只是为了选择超参数，比如网络层数、网络节点数、迭代次数、学习率这些都 叫超参数。比如在k-NN算法中，k值就是一个超参数。所以可以使用验证集来求出误差率最小的k。</p>
+<p>测试集</p>
+<p>测试集只使用一次，即在训练完成后评价最终的模型时使用。它既不参与学习参数过程，也不参数超参 数选择过程，而仅仅使用于模型的评价。</p>
+<p>值得注意的是，千万不能在训练过程中使用测试集，而后再用相同的测试集去测试模型。这样做其实是 一个cheat，使得模型测试时准确率很高。</p>
+<h3 id="循环神经网络-RNN-LSTM-集成学习"><a href="#循环神经网络-RNN-LSTM-集成学习" class="headerlink" title="循环神经网络 RNN LSTM 集成学习"></a>循环神经网络 RNN LSTM 集成学习</h3><p>端到端，是相对于 非端到端 而言的。在机器学习最开始的时候，人们并不是直接输入原始数据，获得最终结果；而是首先通过特征提取，对原始数据进行初步的处理，然后再对于得到的特征进行学习，得出  分类or回归的结果。比如使用一些hand-crafted functions作为特征描述符等等。</p>
+<p>因此，在这种情况下（非端到端），特征的提取会对模型的最终表现有着巨大的影响。而特征描述符的 书写又具有很大的经验成分，所以是一件比较困难的任务。</p>
+<p>端到端的学习，就是把特征提取的任务也交给模型去做，直接输入原始数据或者经过些微预处理的数   据，让模型自己进行特征提取。 这一种设计风格在神经网络，尤其是深层的神经网络出现后开始被广泛应用，无疑是得益于算力的提升。并且，神经网络可以很好地学习到特征的描述，之前需要人工设计的 特征算子，本身也可以通过神经网络的方式，让模型自己习得，从而可以用于其他的任务以及更深的研 究。</p>
+<p>在图像领域，CNN就是一个很典型的端到端结构。输入图像，输出可以做分类，可以做补全，做各种任 务。这之中的具体细节都不需要人工干预，这就是End-to-end。</p>
+<p>就是说深度学习构建的模型还比机器学习多了一个特征提取的模型，因此在深度学习会有很多层致力于 表征学习</p>
+<h3 id="集成学习-强化学习"><a href="#集成学习-强化学习" class="headerlink" title="集成学习 强化学习"></a>集成学习 强化学习</h3><h4 id="bagging-并行"><a href="#bagging-并行" class="headerlink" title="bagging 并行"></a>bagging 并行</h4><p>数据集分成多个不同子集，每个独立训练弱学习器，分类问题用投票(若是加权，就是stacking)，回归用均值</p>
+<ul>
+<li>随机森林</li>
+<li>自主随机</li>
+</ul>
+<h4 id="boosting-串行"><a href="#boosting-串行" class="headerlink" title="boosting 串行"></a>boosting 串行</h4><p>在之前的弱学习器上修改权值得到下一个弱学习器，最终的强学习器是所有的弱学习器在权重上的和 不同样本权重产生不同的样本数据集，他不分，他用不同权重区分</p>
+<ul>
+<li>adaboost</li>
+</ul>
+<h4 id="强化学习"><a href="#强化学习" class="headerlink" title="强化学习"></a>强化学习</h4><p>区别于监督学习，没有样本，学习过程不断产生样本，问题中有状态、动作和单步回报，基于产生的数据使回报最大化</p>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://kop000.github.io/2022/09/07/%E5%9F%BA%E4%BA%8E%E5%A4%A7%E6%95%B0%E6%8D%AE%E7%9A%84%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%90%86%E8%AE%BA/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>  
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" rel="tag">机器学习</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+  <nav class="article-nav">
+    
+      <a href="/2023/07/02/Nosql%E6%95%B0%E6%8D%AE%E5%BA%93%E6%8A%80%E6%9C%AF/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            Nosql数据库技术
+          
+        </div>
+      </a>
+    
+    
+  </nav>
+
+   
+<!-- valine评论 -->
+<div id="vcomments-box">
+  <div id="vcomments"></div>
+</div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="https://cdn.staticfile.org/valine/1.4.16/Valine.min.js"></script>
+<script>
+  new Valine({
+    el: "#vcomments",
+    app_id: "",
+    app_key: "",
+    path: window.location.pathname,
+    avatar: "monsterid",
+    placeholder: "给我的文章加点评论吧~",
+    recordIP: true,
+  });
+  const infoEle = document.querySelector("#vcomments .info");
+  if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0) {
+    infoEle.childNodes.forEach(function (item) {
+      item.parentNode.removeChild(item);
+    });
+  }
+</script>
+<style>
+  #vcomments-box {
+    padding: 5px 30px;
+  }
+
+  @media screen and (max-width: 800px) {
+    #vcomments-box {
+      padding: 5px 0px;
+    }
+  }
+
+  #vcomments-box #vcomments {
+    background-color: #fff;
+  }
+
+  .v .vlist .vcard .vh {
+    padding-right: 20px;
+  }
+
+  .v .vlist .vcard {
+    padding-left: 10px;
+  }
+</style>
+
+ 
+   
+  
+    
+</article>
+
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2023
+        <i class="ri-heart-fill heart_icon"></i> 感觉派大师
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>Visitors:<span id="busuanzi_value_site_uv"></span></span>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>Views:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      <li>
+        <!-- cnzz统计 -->
+        
+        <script type="text/javascript" src='https://s9.cnzz.com/z_stat.php?id=1278069914&amp;web_id=1278069914'></script>
+        
+      </li>
+    </ul>
+  </div>
+</footer>    
+    </main>
+    <div class="float_btns">
+      <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+    </div>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/3.jpg" alt="感觉派大师"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" target="_blank" rel="noopener" href="https://music.163.com/outchain/player?type=4&id=985447545&auto=0&height=200">音乐</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" target="_blank" rel="noopener" href="https://feelma.lofter.com/">摄影</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/about">关于我</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="Search">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-3.6.0.min.js"></script>
+ 
+<script src="/js/lazyload.min.js"></script>
+
+<!-- Tocbot -->
+ 
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: ".tocbot",
+    contentSelector: ".article-entry",
+    headingSelector: "h1, h2, h3, h4, h5, h6",
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: "main",
+    positionFixedSelector: ".tocbot",
+    positionFixedClass: "is-position-fixed",
+    fixedSidebarOffset: "auto",
+  });
+</script>
+
+<script src="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.js"></script>
+<link
+  rel="stylesheet"
+  href="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.css"
+/>
+<script src="https://cdn.staticfile.org/justifiedGallery/3.8.1/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+<!-- ImageViewer -->
+ <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/default-skin/default-skin.min.css">
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.js"></script>
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script> 
+<!-- MathJax -->
+
+<!-- Katex -->
+
+<!-- busuanzi  -->
+ 
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+ 
+<!-- ClickLove -->
+
+<!-- ClickBoom1 -->
+
+<!-- ClickBoom2 -->
+
+<!-- CodeCopy -->
+ 
+<link rel="stylesheet" href="/css/clipboard.css">
+ <script src="https://cdn.staticfile.org/clipboard.js/2.0.10/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+ 
+<!-- CanvasBackground -->
+
+<script>
+  if (window.mermaid) {
+    mermaid.initialize({ theme: "forest" });
+  }
+</script>
+
+
+    
+    
+
+  </div>
+</body>
+
+</html>

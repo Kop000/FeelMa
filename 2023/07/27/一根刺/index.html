@@ -16,7 +16,7 @@
       <title>一根刺 |  感觉派大师</title>
   <meta name="generator" content="hexo-theme-ayer">
       
-      <link rel="shortcut icon" href="https://img-qn.51miz.com/Element/00/92/82/74/7f879d36_E928274_9ba5ab9c.png" />
+      <link rel="shortcut icon" href="/images/3.jpg" />
        
 <link rel="stylesheet" href="/dist/main.css">
 
@@ -80,25 +80,6 @@
   <div class="article-category">
     <a class="article-category-link" href="/categories/%E4%BF%AE%E7%82%BC%E6%97%A5%E5%BF%97/">修炼日志</a>
   </div>
-  
-<div class="word_count">
-    <span class="post-time">
-        <span class="post-meta-item-icon">
-            <i class="ri-quill-pen-line"></i>
-            <span class="post-meta-item-text"> Word count:</span>
-            <span class="post-count">734</span>
-        </span>
-    </span>
-
-    <span class="post-time">
-        &nbsp; | &nbsp;
-        <span class="post-meta-item-icon">
-            <i class="ri-book-open-line"></i>
-            <span class="post-meta-item-text"> Reading time≈</span>
-            <span class="post-count">2 min</span>
-        </span>
-    </span>
-</div>
  
     </div>
       
@@ -198,9 +179,61 @@
       </a>
     
     
+      <a href="/2023/07/02/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98%E4%B8%8E%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">数据挖掘与数据仓库</div>
+      </a>
+    
   </nav>
 
    
+<!-- valine评论 -->
+<div id="vcomments-box">
+  <div id="vcomments"></div>
+</div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="https://cdn.staticfile.org/valine/1.4.16/Valine.min.js"></script>
+<script>
+  new Valine({
+    el: "#vcomments",
+    app_id: "",
+    app_key: "",
+    path: window.location.pathname,
+    avatar: "monsterid",
+    placeholder: "给我的文章加点评论吧~",
+    recordIP: true,
+  });
+  const infoEle = document.querySelector("#vcomments .info");
+  if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0) {
+    infoEle.childNodes.forEach(function (item) {
+      item.parentNode.removeChild(item);
+    });
+  }
+</script>
+<style>
+  #vcomments-box {
+    padding: 5px 30px;
+  }
+
+  @media screen and (max-width: 800px) {
+    #vcomments-box {
+      padding: 5px 0px;
+    }
+  }
+
+  #vcomments-box #vcomments {
+    background-color: #fff;
+  }
+
+  .v .vlist .vcard .vh {
+    padding-right: 20px;
+  }
+
+  .v .vlist .vcard {
+    padding-left: 10px;
+  }
+</style>
+
  
    
   
@@ -266,7 +299,7 @@
 <nav class="navbar">
   
   <div class="logo">
-    <a href="/"><img src="https://img-qn.51miz.com/Element/00/92/82/74/7f879d36_E928274_9ba5ab9c.png" alt="感觉派大师"></a>
+    <a href="/"><img src="/images/3.jpg" alt="感觉派大师"></a>
   </div>
   
   <ul class="nav nav-main">
@@ -281,6 +314,10 @@
     
     <li class="nav-item">
       <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
     </li>
     
     <li class="nav-item">

@@ -1,0 +1,991 @@
+<!DOCTYPE html>
+
+
+<html lang="zh-hans">
+  
+
+    <head>
+      <meta charset="utf-8" />
+       
+      <meta name="keywords" content="音乐,运动,美食,感受,思考,代码,博客" />
+       
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1"
+      />
+      <title>Nosql数据库技术 |  感觉派大师</title>
+  <meta name="generator" content="hexo-theme-ayer">
+      
+      <link rel="shortcut icon" href="/images/3.jpg" />
+       
+<link rel="stylesheet" href="/dist/main.css">
+
+      
+<link rel="stylesheet" href="/css/fonts/remixicon.css">
+
+      
+<link rel="stylesheet" href="/css/custom.css">
+ 
+      <script src="https://cdn.staticfile.org/pace/1.2.4/pace.min.js"></script>
+       
+ 
+
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-bulma@5.0.1/bulma.min.css"
+      />
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.min.js"></script>
+
+      <!-- mermaid -->
+      
+      <style>
+        .swal2-styled.swal2-confirm {
+          font-size: 1.6rem;
+        }
+      </style>
+    </head>
+  </html>
+</html>
+
+
+<body>
+  <div id="app">
+    
+      
+    <main class="content on">
+      <section class="outer">
+  <article
+  id="post-Nosql数据库技术"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  Nosql数据库技术
+</h1>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2023/07/02/Nosql%E6%95%B0%E6%8D%AE%E5%BA%93%E6%8A%80%E6%9C%AF/" class="article-date">
+  <time datetime="2023-07-02T03:01:55.000Z" itemprop="datePublished">2023-07-02</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%90%8E%E5%A4%87%E7%AE%B1/">后备箱</a>
+  </div>
+ 
+    </div>
+      
+    <div class="tocbot"></div>
+
+
+
+
+  
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h3 id="概论"><a href="#概论" class="headerlink" title="概论"></a>概论</h3><img src="/2023/07/02/Nosql%E6%95%B0%E6%8D%AE%E5%BA%93%E6%8A%80%E6%9C%AF/rId20-16988163053031-16988174662001.png" class="">
+
+<p><strong>分布式系统不能同时满足CAP，最多两个，p一般必选</strong></p>
+<p>C-consistency</p>
+<p>A-availability</p>
+<p>P-partition tolerance</p>
+<h3 id="期末复习"><a href="#期末复习" class="headerlink" title="期末复习"></a>期末复习</h3><p>涵盖课程教学12章的内容</p>
+<h4 id="题型"><a href="#题型" class="headerlink" title="题型"></a>题型</h4><ul>
+<li><p>客观选择题（20）</p>
+</li>
+<li><p>6个简答题（30）</p>
+</li>
+<li><p>四类NoSQL数据库分析设计及管理问题（50）</p>
+</li>
+</ul>
+<h4 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h4><ul>
+<li><p><strong>NoSQL基本概念、CAP定理</strong></p>
+<ul>
+<li><p>C:Consistency（强一致性）<br>A:Availability（可用性）<br>P:Partition tolerance（分区容错性）</p>
+</li>
+<li><p>P指在出现网络分区（比如断网）的情况下，分离的系统也能正常运行</p>
+</li>
+<li><p>CAP理论的核心是：一个分布式系统不可能同时很好的满足这三个需求，</p>
+</li>
+</ul>
+</li>
+<li><p>NoSQL种类与特点</p>
+</li>
+<li><p>1）不需要预定义模式<br>2）无共享架构：因为从本地磁盘读取数据的性能往往好于通过网络传输读取数据的性能，从而提高系统的性能。</p>
+<p>3）弹性可扩展：可以在系统运行的时候，动态增加或者删除结点。不需要停机维护，数据可以自动迁移。<br>4）分区：相对于将数据存放于同一个节点，NoSQL数据库需要将数据进行分区，将记录分散在多个节点上面。</p>
+<p>5)分发查询到数据，而非数据到查询；</p>
+<p>6）异步复制：NoSQL中的复制，往往是基于日志的异步复制。<br>7）BASE：相对于事务严格的ACID特性，NoSQL数据库更注重保障的是BASE特性。</p>
+</li>
+<li><p>四类：图、文档、键值、列族</p>
+</li>
+<li><p>ACID与BASE的区别</p>
+<ul>
+<li><p>关系型数据库中强调ACID分别是：原子性、一致性、隔离性、持久性</p>
+</li>
+<li><p>BASE分别是： 基本可用性、软状态、最终一致性</p>
+</li>
+<li><p>BASE就是为了解决关系数据库强一致性引起的问题而引起的可用性降低而提出的解决方案，它的思想是通过让系统放松对某一时刻数据一致性的要求来换取系统整体伸缩性和性能上改观。</p>
+</li>
+<li><p>但是并不是说NOSQL数据库就不支持ACID了</p>
+</li>
+</ul>
+</li>
+<li><p>最终一致性经典算法</p>
+<ul>
+<li><p>Raft算法</p>
+<ul>
+<li>Leader、Follower、Candidate</li>
+</ul>
+</li>
+<li><p>Quorum的NWR策略</p>
+<ul>
+<li><p>Vr + Vw &gt; V：保证一定能读到最新的数据</p>
+</li>
+<li><p>Vw &gt; V&#x2F;2：只需要写一半的节点就能向用户报告完成写入操作</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>数据复制与分片机制的作用</p>
+</li>
+</ul>
+<h4 id="图数据库"><a href="#图数据库" class="headerlink" title="图数据库"></a>图数据库</h4><h5 id="概述-1"><a href="#概述-1" class="headerlink" title="概述"></a>概述</h5><ul>
+<li><p>图数据库的特点</p>
+<ul>
+<li><p>图数据库是以实体及其关系为主要存储对象的数据<br>库系统，存储图结构的数据具有突出优势。</p>
+</li>
+<li><p>非原生图存储类：指底层采用键值数据库、文档数据库、列族数据库或者其他类型通<br>用数据库存储图数据。通常需要建立全局索引来提高图数据的访问性能</p>
+</li>
+<li><p>原生图存储类：一般采用免索引邻接的方式进行图数据存储，数据存储机制可快速<br>寻址定位到相关连的节点、关系，此种存储方式性能大大提高，可<br>以很好地支持原生图处理引擎进行图数据计算</p>
+</li>
+</ul>
+</li>
+<li><p>关键数据要素</p>
+<ul>
+<li><p>标签：指节点、关系的类别</p>
+</li>
+<li><p>一个节点可以具有<strong>零个</strong>或多个类别标签；而一个关系<strong>必须有且只有一个</strong>关系类型。</p>
+</li>
+<li><p>RDB一行数据对应GDB中的一个节点，表名称对应节点的一个标签名称，即代表节点的一种类别。</p>
+</li>
+<li><p>也就是说GDB相当于把多个RDB合在一块</p>
+</li>
+</ul>
+</li>
+<li><p>属性图</p>
+</li>
+<li><p>属性图是图数据库建模常用的方法，也就是让画的那个作业</p>
+<p>节点和关系都有标签、属性组成，属性由k-v表示</p>
+<img src="/2023/07/02/Nosql%E6%95%B0%E6%8D%AE%E5%BA%93%E6%8A%80%E6%9C%AF/rId33.png" class="">
+</li>
+<li><p>图查询语言</p>
+<ul>
+<li><p>Neo4j-&gt;Cypher语言</p>
+</li>
+<li><p>Cypher是一个声明式模式匹配语言，语法在于定义要从图中查询什么目标数据，从查询条件、返回结果两方面定义节点、关系及其属性，而不是怎么去查</p>
+</li>
+<li><p>属性名称、标签与关系类型名称区分大小写</p>
+</li>
+<li><p>开始节点、关系、结束节点的详细内容限定组合在一起称<br>为一个匹配模式，匹配模式也可以定义为一个变量，便于<br>查询匹配模式重用</p>
+</li>
+<li><p>Cypher语法</p>
+<ul>
+<li><p>节点：(a:person{name:”王五” ，age:26})</p>
+</li>
+<li><p>关系：(a)-[r:friend_of{year:2019,type: &quot;football&quot;}]-&gt;(<br>b )</p>
+</li>
+<li><p>（a）--&gt;（）--&gt;（b）</p>
+</li>
+<li><p>（a）-[*3]-&gt;（b）</p>
+</li>
+<li><p>（a）-[*3..5]-&gt;（b）</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h5 id="Neo4j"><a href="#Neo4j" class="headerlink" title="Neo4j"></a>Neo4j</h5><ul>
+<li><p>基于JAVA的<strong>原生图</strong>数据库</p>
+</li>
+<li><p>Cypher语法</p>
+<ul>
+<li><p>DELETE-删除节点、关系</p>
+</li>
+<li><p>REMOVE删除属性、标签</p>
+</li>
+</ul>
+</li>
+<li><p>因果集群架构</p>
+</li>
+<li><p>因果集群按节点在集群中的操作任务分工，主要分为两类</p>
+<ul>
+<li><p>核心服务器：处理读写的操作，大多数的核心服务器主要处理写操作。</p>
+</li>
+<li><p>读复制服务器：集群中可以包含一个或多个只负责分担读数据任务的服务器，数据从核心服务器异步更新，保持一致。</p>
+</li>
+<li><p>架构中核心服务器基于<strong>Raft</strong>协议维护和管理</p>
+</li>
+<li><p>M&#x3D;2F+1来计算集群中核心服务器的数量规模</p>
+<ul>
+<li><p>F ：为容错服务器数量</p>
+</li>
+<li><p>M ：为核心服务器总数量</p>
+</li>
+</ul>
+</li>
+<li><p><strong>如果可容忍1台故障服务器，则需要配置3台服务器。</strong></p>
+</li>
+<li><p>Neo4j高可用性（HA）集群采用主从式架构，可以1主多从。主服务器完成写入之后，同步数据到从服务器，<strong>主服务器既可以写也能读</strong>。Neo4j从节点可以处理写入，<strong>不需要都从主节点直接写入</strong>。但为保持数据一致性，从节点将写请求发给主节点同步处理写入<br>。然而更新操作最终从主节点传播到从节点，所以一个从节点的写入在其他所有从节点上<strong>不是立即可见</strong>的。</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="文档数据库"><a href="#文档数据库" class="headerlink" title="文档数据库"></a>文档数据库</h4><h5 id="概述-2"><a href="#概述-2" class="headerlink" title="概述"></a>概述</h5><ul>
+<li><p>文档数据库是最像RDB的NOSQL数据库</p>
+</li>
+<li><p>MongoDB中的数据存储用的是BSON，就是二进制JSON，相比于JSON，在数据访问性能上有很大的提升，且数据类型更丰富</p>
+</li>
+<li><p>文档、集合、数据库--&gt;行、表、数据库</p>
+</li>
+<li><p>MongoDB有以下4个保留的默认创建的数据库</p>
+<ul>
+<li><p>admin：这个是根级数据库，从权限的角度来看，是系统管理员级操作的数据库。</p>
+</li>
+<li><p>local：这个数据库不会被复制，它所存储的任何collections只能在各自的服务器实例上，可以用来存储限于本地单台服务器访问的任意集合。</p>
+</li>
+<li><p>config：在分布式分片设置时，将用于存储配置相关的信息。</p>
+</li>
+<li><p>test：<strong>默认连接的数据库</strong></p>
+</li>
+</ul>
+</li>
+<li><p>ObjectId包含标识<strong>产生时间</strong>、机器标识、<strong>进程</strong>和<strong>自增序列</strong>四方面内容</p>
+</li>
+<li><p>文档模型设计基本原则：相关字段，经常一起访问的字段设 计在一个文档中</p>
+</li>
+<li><p>文档关联有三种方法：嵌套文档、_id引用、DBRef引用(可跨数据库)</p>
+</li>
+<li><p>时序文档数据 模型设计：分桶优化模式</p>
+</li>
+<li><p>应用</p>
+<ul>
+<li><p>内容管理系统及博客平台：用来管理用户评论、用户注册、用户配置和面向Web文档。</p>
+</li>
+<li><p>视频直播场景：可以使用文档数据库存储用户信息、礼物信息以及视频数据元信息等。</p>
+</li>
+<li><p>日志数据存储与分析，用来存储”页面浏览量”（pageview）或”独立访客数”（uniquevisitor）等，可以无需改变模式即可新增度量标准。</p>
+</li>
+<li><p>电子商务应用场景：以存储产品目录、订单信息等</p>
+</li>
+</ul>
+</li>
+</ul>
+<h5 id="MongoDB"><a href="#MongoDB" class="headerlink" title="MongoDB"></a>MongoDB</h5><ul>
+<li><p>MongoDB<strong>没有创建数据库的命令</strong>，但可以先<code>use mytest</code><br>再添加一个集合<code>db.createCollection(&#39;user&#39;)</code>，这样可以建立。</p>
+</li>
+<li><p>MongoDB集合创建时<strong>不一定</strong>必须先创建集合再插入数据，若用创建语句，支持集合的文档限定总数设置：<code>db.createCollection(&quot;iLog&quot;,&#123; capped : true, size : 6142800, max :  10000 &#125;)</code></p>
+</li>
+<li><p>命名规范：</p>
+<p>区分大小写</p>
+<p>UTF-8 字符，不能包含 &#39;\0&#39; 字符(空字符)</p>
+<p>&#39;.&#39; 和&#39;$&#39; 有特殊含义，需要避免使用</p>
+</li>
+<li><p>操作</p>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">增：db.ct.insert([&#123;aaa&#125;,&#123;sss&#125;])</span><br><span class="line">查</span><br><span class="line">  db.ct.find() 、db.getCollection(&#x27;ct&#x27;).find(&#123;&#125;)</span><br><span class="line">  查询满足条件的首个文档：db.ct.findOne()</span><br><span class="line">  1表示升序，-1表示降序：db.ct.find().sort(&#123;age:1&#125;)</span><br><span class="line">  函数使用语法大致是：$xx:，如：</span><br><span class="line">  -db.ct.find(&#123;age:&#123;$in:[23,26,32]&#125;&#125;)</span><br><span class="line"></span><br><span class="line">  -db.ct.find(&#123;$or:[&#123;age:&#123;$lte:23&#125;&#125;,</span><br><span class="line">      &#123;age:&#123;$gte:33&#125;&#125;]&#125;)</span><br><span class="line">删</span><br><span class="line">  db.ct.deleteOne(&#123;&quot;age&quot;:&#123;$gt:25&#125;&#125;) 、db.ct.deleteMany(&#123;&quot;age&quot;:&#123;$gt:25&#125;&#125;)</span><br><span class="line">  删除所有：db.ct.drop()、db.ct.remove(&#123;&#125;)</span><br><span class="line">更</span><br><span class="line">  没有匹配文档时，执行插入操作：db.ct.updateMany(&#123;&quot;Name&quot; :&quot;Chen&quot;&#125;,&#123;$set &#123;&quot;custLvl&quot;:2,&quot;score&quot; :90&#125;&#125;,&#123;upsert:true&#125;)</span><br><span class="line"></span><br><span class="line">聚合、管道</span><br><span class="line">  unwind：将文档中的某一个数组类型字段拆分成多条，每条包含数组中的一个值；</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>索引机制</p>
+<p>MongoDB会为每个集合的_id字段默认创建索引，MongoDB支持全文索引、地理位置索引</p>
+<p>一个集合最多只能创建一个文本索引</p>
+<pre><code>有时在不确定哪些字段是文本类型时，也可以使用&quot; $**&quot;通配说明符对 所有文本类型字段创建全文索引，如下示例
+db.collection.createIndex( &#123; &quot;$**&quot;: &quot;text&quot; &#125; )
+创建
+1、-1升/降序：db.ct.createIndex(&#123;&quot;Name&quot;:1,&quot;gender&quot;:-1&#125;)
+查询
+db.ct.getIndexes()
+① 查询包含&quot;bad&quot;的文档。
+db.collection.find( &#123;$text :&#123;$search: &quot;bad&quot;&#125; &#125;)
+② 查询包含&quot;bad&quot; 或者 &quot;spoiled&quot;的文档，查询参数中用空格间隔开多
+个关键词即可。
+db.collection.find( &#123; $text :&#123;$search: &quot;bad spoiled &quot;&#125; &#125;)
+③ 查询包含&quot;bad&quot; 不包含 &quot;ok&quot;的文档，在不需要包含的关键词前加符号&quot;-&quot;。
+db.collection.find( &#123;$text:&#123;$search: &quot;bad -ok &quot;&#125; &#125;)
+④ 查询包含&quot;not ok&quot;完整词组的文档，在完整词组前后用引号括起来。
+db.collection.find( &#123; $text :&#123;$search: &quot;&quot;not ok&quot;&quot;&#125; &#125;
+删除
+db.ct.dropIndexes()
+db.ct.dropIndex(&quot;Name_1&quot;)
+</code></pre>
+<p>地理位置索引支持是MongoDB的一大亮点</p>
+<p>地理位置索引一般分为以下两种</p>
+<p>2d索引：用于存储和查找平面上的点，称为平面地理位置索引；</p>
+<p>2dsphere索引：用于存储和查找球面上的点，称为球面地理位置索引。</p>
+<p>2dsphere索引<strong>只支持</strong>球面几何地理位置查询，而2d索引同时支持平面和球面几何地理位置查询。</p>
+</li>
+<li><p>集群架构</p>
+<p>分片集组成：shard(存储实际数据块)、router mongos(前端路由)、configserver</p>
+<p>分片集和复制集还是不一样的，一个是解决数据太多的存储问题，一个是解决节点瘫痪的备份问题</p>
+<p>分片是以集合为基本单位的。集合中的数据通 过片键（ShardKey）被分成多个部分，选择的片键要求每个文档都必须包含。相同片键值的文档一定会处于同一个块（Chunk）中</p>
+<p>片键的选择主要有两个原则：片键基数大、片键分布均匀</p>
+<p>复制集集群(主从)是一组在不同服务器节点<strong>存储相同分片</strong>数据的mongodb进程</p>
+<p>写入操作都在<strong>主节点</strong>上，主节点记录在其上的所有操作，存储为<strong>opLog</strong>日志文件</p>
+<p>复制集集群中可以有一个<strong>Arbiter</strong>类型节点：<strong>只参与投票</strong>，不能被选为<br>Primary，也不与Primary同步数据</p>
+<p>Arbiter本身<strong>不存储数据</strong>，是非常轻量级的服务。</p>
+<p>GridFS 用于存储和恢复超过16MB的文件，如 图片、音频、视频</p>
+<p>将大文件对象分割成多个小的数据块（chunks），一般每个数据块默认为255KB，作为MongoDB的一个文档存储在Chunks集合中</p>
+<p><strong>Journaling</strong></p>
+<p>日志功能使数据库在意外故障后快速恢复<strong>最近checkpoint</strong>后的数据更新操作，本质上是一种变更操作持久化预写（Write ahead）机制，WiredTiger存储引擎会先将 Journal日志写入<strong>内存缓冲区</strong>，满足一定条件时再写入磁盘Journal <strong>日志文件</strong></p>
+</li>
+</ul>
+<h4 id="键值数据库"><a href="#键值数据库" class="headerlink" title="键值数据库"></a>键值数据库</h4><h5 id="概述-3"><a href="#概述-3" class="headerlink" title="概述"></a>概述</h5><p>一般这种数据库是放在内存的，高速访问</p>
+<h6 id="存储逻辑架构"><a href="#存储逻辑架构" class="headerlink" title="存储逻辑架构"></a>存储逻辑架构</h6><img src="/2023/07/02/Nosql%E6%95%B0%E6%8D%AE%E5%BA%93%E6%8A%80%E6%9C%AF/rId42.png" class="">
+
+<ul>
+<li>String</li>
+</ul>
+<p>String 类型不是用&#x2F;0来判断字符串结束，是二进制安全的，即 String可以是任何数据，如JPG格式图片、音频、视频等其他类型序列化的对象，并不局限于通常意义上的字符序列数据</p>
+<p>Redis使用sdshdr结构来表示字符串对象</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">struct sdshdrX &#123;</span><br><span class="line">T len; //存储实际字符串长度</span><br><span class="line">T alloc; //预分配存储数据总长度</span><br><span class="line">unsigned char flags; //具体类型</span><br><span class="line">char buf[]; //数据存储区</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>Redis也是采用<strong>String来存储数值</strong>类型值的，前提是字符串是能够转换成合法的数值数据</p>
+<ul>
+<li>List</li>
+</ul>
+<p>双向字符串列表，按照插入顺序排序，是有序的，且成员允许重复，列表最多可存储 2^32 - 1 个元素</p>
+<p>lpush(从左插入值) lrange(获取列表值)</p>
+<ul>
+<li>Set</li>
+</ul>
+<p>String类型的无序集合</p>
+<p>集合是通过哈希表实现的，所以添加、删除、查找的复杂度，都是O(1)<br>集合最多可存储 2^32 – 1个元素<br>集合内元素具有唯一性，第二次插入的内容被忽略</p>
+<p>sadd(返回1: 成功；0：已存在) smembers(查看元素)</p>
+<ul>
+<li>Hash</li>
+</ul>
+<p>hmset hget hvals</p>
+<ul>
+<li>Zset</li>
+</ul>
+<p>要求member不能重复</p>
+<img src="/2023/07/02/Nosql%E6%95%B0%E6%8D%AE%E5%BA%93%E6%8A%80%E6%9C%AF/rId45.png" class="">
+
+<p>与set不同在于，这个是有序集合，每个元素比set多一个score，用来成员排序</p>
+<p>zadd(zadd tzset 0 red) 0是score，red是value</p>
+<ul>
+<li>Stream</li>
+</ul>
+<p>消息队列是持久化的， Redis重启后内容还在</p>
+<p>是一个消息链表，将所 有加入的消息都串起来 ，每个消息都有一个唯一的ID和对应的内容</p>
+<img src="/2023/07/02/Nosql%E6%95%B0%E6%8D%AE%E5%BA%93%E6%8A%80%E6%9C%AF/rId48.png" class="">
+
+<p>一个元素只能被组中一个消费者进行消费</p>
+<p>每个消费组都含有一个Last_delivered_id，指向消费组当前已消费的最后一个消息。</p>
+<h6 id="管理"><a href="#管理" class="headerlink" title="管理"></a>管理</h6><ul>
+<li>持久化管理</li>
+</ul>
+<p>RDB持久化：内存快照，写入磁盘，只有<strong>一份</strong>RDB文件，可随时备份，比AOF文件<strong>小</strong>，加载效率高，提供FORK子进程，<strong>不阻塞主进程</strong>，IO操作比较少</p>
+<p>AOF持久化：日志记录每个写操作，APPEND方式追加日志，不会对旧日志文件产生影响</p>
+<ul>
+<li>分区</li>
+</ul>
+<p>范围分区、哈希分区</p>
+<ul>
+<li>集群监控：哨兵</li>
+</ul>
+<p>哨兵任务：问候主从节点、其他哨兵</p>
+<p>主观下线：有节点在心跳检测时超时没回，就认为sdown</p>
+<p>客观下线：<strong>主节点</strong>超时没回，且问了其他哨兵节点，一定数量认为下线，就认为odown</p>
+<p>当主节点被判断<strong>客观下线以后</strong>，各个哨兵节点会进行协商，选举出一个领导者哨兵节点，并由该<strong>哨兵领导者节点</strong>对其进行<strong>故障迁移</strong>操作(选举使用Raft，先到先得，即在一轮选举中哨兵A向B发送成为领导者的申请，如果B没有同意过其他哨兵，则会同意A成为领导者&#x2F;quorums机制：哨兵数&#x2F;2+1)</p>
+<p>哨兵至少需要3个实例，来保证自己的健壮性</p>
+<h5 id="Redis"><a href="#Redis" class="headerlink" title="Redis"></a>Redis</h5><p>Redis：REmote DIctionary Server 远程字典服务</p>
+<ul>
+<li>语法</li>
+</ul>
+<p>发布订阅：订阅者收到的每条消息是个<strong>三元组</strong>，&quot;message&quot;&quot;发布者&quot;&quot;具体内容&quot;</p>
+<p>事务管理：所有单个操作都是<strong>原子</strong>性的，多个原子操作可通过MULTI和EXEC指令包起来作为一个整体执行，但Redis 没有在事务上增加任何维持原子性的机制，所以Redis事务可以理解为一个打包的批量执行脚本。中间某条指令的失败<strong>不会</strong>导致前面已成功执行指令的<strong>回滚</strong>，后续的指令<strong>继续</strong>执行。</p>
+<p>有效期：设置有效期-&gt;expire key 600(单位s)，查看剩余时间-&gt;ttl key</p>
+<p>List操作中，lindex是从0开始的</p>
+<p>LREM key count element：LREM mylist -2<br>&quot;hello&quot;表示从右往左删除2个hello，count&gt;0从左往右，&lt;0右到左，&#x3D;0删除所有</p>
+<p>LRANGE mylist 0 -1：表示左到右查看所有元素</p>
+<ul>
+<li>集群架构</li>
+</ul>
+<p>主节点分片集群时<strong>无中心架构</strong>的，每个主节点保存部分键值对数据和整个集群状态,每个节点都和其他<br>所有节点连接。</p>
+<p>集群采用哨兵机制保障 HA，节点的失效是在集群中<br><strong>超过半数</strong>的节点检测失效时 才生效。</p>
+<p>客户端写入操作与Redis节点直接链接，无需代理，连接集群<br>中<strong>任何一个可用节点</strong>即可</p>
+<p><strong>键的自动分片机制</strong>：键-&gt;slot-&gt;节点</p>
+<p>Redis支持将不同的键映射到相同的槽（slot）</p>
+<p><strong>副本漂移机制</strong>：有主节点没有从节点，并且其他主节点有&gt;&#x3D;2的从节点给他，那就有最多的主节点分一个给他</p>
+<h4 id="列族数据库"><a href="#列族数据库" class="headerlink" title="列族数据库"></a>列族数据库</h4><h5 id="概述-4"><a href="#概述-4" class="headerlink" title="概述"></a>概述</h5><h6 id="集群架构"><a href="#集群架构" class="headerlink" title="集群架构"></a>集群架构</h6><p>主从式(HBase)：会出现单点故障问题</p>
+<p>对等式(Cassandra)：不会出现单点故障问题，彼此问候</p>
+<p>提交日志（CommitLog）：是Cassandra中的崩溃恢复 机制</p>
+<p>一个列族CF对应一个memtable，memtable满足一定条件后批量刷新到磁盘，同时在memtable里会按key排下序</p>
+<p>SStable一旦完成写入，就不可变更，只能读取。memtable写入时不会进行排序插入，而是SStable定期自己合并排序</p>
+<img src="/2023/07/02/Nosql%E6%95%B0%E6%8D%AE%E5%BA%93%E6%8A%80%E6%9C%AF/rId56.png" class="">
+
+<h6 id="存储逻辑架构-1"><a href="#存储逻辑架构-1" class="headerlink" title="存储逻辑架构"></a>存储逻辑架构</h6><p>列、行、列族、键空间-&gt;列、行、表、数据库</p>
+<p>一个集群可以包含多个键空间</p>
+<p>可以大致看出列族数据库展示上和RDB相似，但实际在磁盘上存储是按照一列一列存储的</p>
+<img src="/2023/07/02/Nosql%E6%95%B0%E6%8D%AE%E5%BA%93%E6%8A%80%E6%9C%AF/rId60.jpg" class="">
+
+<p>数据存储是按行键排序的</p>
+<p>主键(分区键、聚类键)：分区、聚类键都可以有多列，聚类键决定在分区内的排序，默认升序</p>
+<p>静态列：Cassandra 中是<strong>不支持 join</strong>的，静态列用于存储需要同一分区中共享的数据列，所有<br>值均为最后一次更改后的值。静态列不能是主键的组成部分</p>
+<pre><code>#表中定义列为 STATIC ，只需在列最后面加上 STATIC ：
+CREATE TABLE &quot;iteblog_users_with_status_updates&quot; (
+&quot;username&quot; text,
+&quot;id&quot; timeuuid,
+&quot;email&quot; text STATIC,
+&quot;encrypted_password&quot; blob STATIC,
+&quot;body&quot; text,
+PRIMARY KEY (&quot;username&quot;, &quot;id&quot;));
+</code></pre>
+<p>如果没有定义 clustering column，意味着相同 PRIMARY KEY的数据在同一个分区里面只存在一行数据，本质上就是静态的，所以也没必要支持静态列，如同上面的例子。</p>
+<h6 id="对等式架构"><a href="#对等式架构" class="headerlink" title="对等式架构"></a>对等式架构</h6><p>写流程：收到操作请求的节点作为代理节点，向n个副本节点发送请求，追加CommitLog更新MemTable的节点返回成功，满足一致性级别要求返回成功</p>
+<p>读流程：同样做代理，返回k个节点返回数据中最新的数据</p>
+<p>一致性要求高时，推荐R+W&gt;N；<br>实时性要求高时，推荐R+W&lt;N；<br>在实际应用中，经常设置为2、2、3；</p>
+<p>分区策略🫡</p>
+<h5 id="cassandra"><a href="#cassandra" class="headerlink" title="cassandra"></a>cassandra</h5><p>是对等式的</p>
+<p>自定义元组不需要再定义元素名称</p>
+<p>CQL标识符和关键字是大小写不敏感</p>
+<p>要插入数据，必须存在相应表。表可用的列也是预先定义的。</p>
+<p>要删除表，也必须确保表存在</p>
+<p>UPDATE一般不会检查行是否存在，若不存在则创建，否则更新</p>
+<p>更新列时，需要列是已定义存在的列，否则将报错</p>
+<p>删除并非立即删除，它执行的是插入操作，插入的数据叫作tombstone（墓碑)，记录了被删除记录的信息和删除时间，在TTL到期和进行SStable压紧操作时，丢弃墓碑，创建新索引</p>
+<p>一级索引：通过主键快速访问数据</p>
+<p>二级索引：通过其他列快速访问数据</p>
+<p>创建二级索引的名称可省略</p>
+<h4 id="其他类型NOSQL"><a href="#其他类型NOSQL" class="headerlink" title="其他类型NOSQL"></a>其他类型NOSQL</h4><h4 id="区块链存储技术"><a href="#区块链存储技术" class="headerlink" title="区块链存储技术"></a>区块链存储技术</h4><p>区块链数据存储技术是一种分布式、去中心化的数据存储方式，它基于区块链技术的原理和特性。在传统的中心化数据存储系统中，数据通常由中央机构或第三方管理，而区块链数据存储技术则将数据存储和管理权力分散到网络中的多个节点。</p>
+<p>区块链数据存储技术的主要特点包括：</p>
+<ol>
+<li><p>分布式存储：数据在区块链网络中的多个节点上进行存储，而不是集中存储在单个服务器或数据中心中。这种分布式的特性增加了系统的可靠性和抗攻击性。</p>
+</li>
+<li><p>去中心化：区块链数据存储技术没有中心化的管理机构，数据由网络中的多个节点协作维护和验证。这意味着没有单个点的故障会导致数据的丢失或不可用。</p>
+</li>
+<li><p>不可篡改性：区块链中的每个数据块都包含了前一个数据块的哈希值，形成了一个不可篡改的链式结构。一旦数据被添加到区块链中，很难修改或删除，确保数据的完整性和可信性。</p>
+</li>
+<li><p>高透明度：区块链网络中的每个节点都可以查看和验证存储在区块链上的数据，使得数据的透明度非常高。这对于需要公开和可追溯的数据存储场景非常有用。</p>
+</li>
+<li><p>加密安全：区块链数据存储技术通常使用密码学算法对数据进行加密，确保数据的安全性和隐私性。只有授权的用户才能访问和修改数据。</p>
+</li>
+</ol>
+<ul>
+<li><p>作为一个分布式存储系统来说，同样需要在CAP三方面进行抉择由于当前的网络硬件肯定会出现延迟丢包等问题，所以分区容忍性（P）是必须要实现的。大数据是以牺牲一致性（C）来换取可用性（A）。区块链则允许数据存储有一定延迟，牺牲一定的可用性（A），优先保证一致性（C）</p>
+</li>
+<li><p>区块是一种记录交易的数据结构。每个区块由区块头和区块主体组成，区块主体只负责记录前一段时间内的所有交易信息，区块链的大部分功能都由区块头实现。</p>
+</li>
+</ul>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://kop000.github.io/2023/07/02/Nosql%E6%95%B0%E6%8D%AE%E5%BA%93%E6%8A%80%E6%9C%AF/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>  
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Nosql/" rel="tag">Nosql</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+  <nav class="article-nav">
+    
+      <a href="/2023/07/02/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            编译原理
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2022/09/07/%E5%9F%BA%E4%BA%8E%E5%A4%A7%E6%95%B0%E6%8D%AE%E7%9A%84%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%90%86%E8%AE%BA/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">机器学习理论</div>
+      </a>
+    
+  </nav>
+
+   
+<!-- valine评论 -->
+<div id="vcomments-box">
+  <div id="vcomments"></div>
+</div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="https://cdn.staticfile.org/valine/1.4.16/Valine.min.js"></script>
+<script>
+  new Valine({
+    el: "#vcomments",
+    app_id: "",
+    app_key: "",
+    path: window.location.pathname,
+    avatar: "monsterid",
+    placeholder: "给我的文章加点评论吧~",
+    recordIP: true,
+  });
+  const infoEle = document.querySelector("#vcomments .info");
+  if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0) {
+    infoEle.childNodes.forEach(function (item) {
+      item.parentNode.removeChild(item);
+    });
+  }
+</script>
+<style>
+  #vcomments-box {
+    padding: 5px 30px;
+  }
+
+  @media screen and (max-width: 800px) {
+    #vcomments-box {
+      padding: 5px 0px;
+    }
+  }
+
+  #vcomments-box #vcomments {
+    background-color: #fff;
+  }
+
+  .v .vlist .vcard .vh {
+    padding-right: 20px;
+  }
+
+  .v .vlist .vcard {
+    padding-left: 10px;
+  }
+</style>
+
+ 
+   
+  
+    
+</article>
+
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2023
+        <i class="ri-heart-fill heart_icon"></i> 感觉派大师
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>Visitors:<span id="busuanzi_value_site_uv"></span></span>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>Views:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      <li>
+        <!-- cnzz统计 -->
+        
+        <script type="text/javascript" src='https://s9.cnzz.com/z_stat.php?id=1278069914&amp;web_id=1278069914'></script>
+        
+      </li>
+    </ul>
+  </div>
+</footer>    
+    </main>
+    <div class="float_btns">
+      <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+    </div>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/3.jpg" alt="感觉派大师"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" target="_blank" rel="noopener" href="https://music.163.com/outchain/player?type=4&id=985447545&auto=0&height=200">音乐</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" target="_blank" rel="noopener" href="https://feelma.lofter.com/">摄影</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/about">关于我</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="Search">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-3.6.0.min.js"></script>
+ 
+<script src="/js/lazyload.min.js"></script>
+
+<!-- Tocbot -->
+ 
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: ".tocbot",
+    contentSelector: ".article-entry",
+    headingSelector: "h1, h2, h3, h4, h5, h6",
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: "main",
+    positionFixedSelector: ".tocbot",
+    positionFixedClass: "is-position-fixed",
+    fixedSidebarOffset: "auto",
+  });
+</script>
+
+<script src="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.js"></script>
+<link
+  rel="stylesheet"
+  href="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.css"
+/>
+<script src="https://cdn.staticfile.org/justifiedGallery/3.8.1/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+<!-- ImageViewer -->
+ <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/default-skin/default-skin.min.css">
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.js"></script>
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script> 
+<!-- MathJax -->
+
+<!-- Katex -->
+
+<!-- busuanzi  -->
+ 
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+ 
+<!-- ClickLove -->
+
+<!-- ClickBoom1 -->
+
+<!-- ClickBoom2 -->
+
+<!-- CodeCopy -->
+ 
+<link rel="stylesheet" href="/css/clipboard.css">
+ <script src="https://cdn.staticfile.org/clipboard.js/2.0.10/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+ 
+<!-- CanvasBackground -->
+
+<script>
+  if (window.mermaid) {
+    mermaid.initialize({ theme: "forest" });
+  }
+</script>
+
+
+    
+    
+
+  </div>
+</body>
+
+</html>

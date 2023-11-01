@@ -16,7 +16,7 @@
       <title>我炼黄金丹之JAVA诞生 |  感觉派大师</title>
   <meta name="generator" content="hexo-theme-ayer">
       
-      <link rel="shortcut icon" href="https://img-qn.51miz.com/Element/00/92/82/74/7f879d36_E928274_9ba5ab9c.png" />
+      <link rel="shortcut icon" href="/images/3.jpg" />
        
 <link rel="stylesheet" href="/dist/main.css">
 
@@ -80,25 +80,6 @@
   <div class="article-category">
     <a class="article-category-link" href="/categories/%E5%90%8E%E5%A4%87%E7%AE%B1/">后备箱</a>
   </div>
-  
-<div class="word_count">
-    <span class="post-time">
-        <span class="post-meta-item-icon">
-            <i class="ri-quill-pen-line"></i>
-            <span class="post-meta-item-text"> Word count:</span>
-            <span class="post-count">26.8k</span>
-        </span>
-    </span>
-
-    <span class="post-time">
-        &nbsp; | &nbsp;
-        <span class="post-meta-item-icon">
-            <i class="ri-book-open-line"></i>
-            <span class="post-meta-item-text"> Reading time≈</span>
-            <span class="post-count">98 min</span>
-        </span>
-    </span>
-</div>
  
     </div>
       
@@ -110,8 +91,7 @@
   
     <div class="article-entry" itemprop="articleBody">
        
-  <h2 id="JAVA基础"><a href="#JAVA基础" class="headerlink" title="JAVA基础"></a>JAVA基础</h2><p>开始：2023-5-10</p>
-<p>结束：2023-7-23</p>
+  <h2 id="JAVA基础"><a href="#JAVA基础" class="headerlink" title="JAVA基础"></a>JAVA基础</h2><p>起始：2023-5-10，2023-7-23</p>
 <p>书籍： <a href="Java%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF%E5%8D%B71(%E7%AC%AC10%E7%89%88).pdf">Java核心技术卷1(第10版).pdf</a> </p>
 <h3 id="面向对象"><a href="#面向对象" class="headerlink" title="面向对象"></a>面向对象</h3><ul>
 <li>什么是多态？<ul>
@@ -949,7 +929,7 @@
 </li>
 </ol>
 <h2 id="JavaWeb后端"><a href="#JavaWeb后端" class="headerlink" title="JavaWeb后端"></a>JavaWeb后端</h2><blockquote>
-<p>🔎[Tomcat 中的 Session 和 Cookie - 小创 - 博客园 (cnblogs.com)](<a target="_blank" rel="noopener" href="https://www.cnblogs.com/chuonye/p/10846998.html#:~:text=Tomcat">https://www.cnblogs.com/chuonye/p/10846998.html#:~:text=Tomcat</a> 中的 Session 和 Cookie 1 浏览器发出第一个请求时，服务器为用户分配一个 唯一标识符,2 服务器内部维护一个全局的 请求状态库 ，并使用生成的唯一标识符关联每个请求的状态信息 3 浏览器后续发出的请求，都将唯一标识符提交给服务器，以便获取 之前 请求的状态信息)</p>
+<p>🔎<a target="_blank" rel="noopener" href="https://www.cnblogs.com/chuonye/p/10846998.html">Tomcat 中的 Session 和 Cookie</a></p>
 </blockquote>
 <h3 id="Tomcat"><a href="#Tomcat" class="headerlink" title="Tomcat"></a>Tomcat</h3><p>其实就是个软件服务器，你的java项目部署到这上面，他帮你处理和外界的连接</p>
 <p>但好像现在有了SSM框架，很少有人直接使用tomcat，因为springboost里有内置，人家已经包装好了。</p>
@@ -957,18 +937,15 @@
 <img src="/2023/10/06/%E6%88%91%E7%82%BC%E9%BB%84%E9%87%91%E4%B8%B9%E4%B9%8BJAVA%E8%AF%9E%E7%94%9F/image-20230717132610123.png" class="" title="image-20230717132610123">
 
 <blockquote>
-<ol>
-<li>cookies和session的关系</li>
-</ol>
 <ul>
-<li>Cookie通常用于在客户端存储一些用户相关的标识或信息，而Session则用于在服务器端存储用户的状态信息和会话数据。</li>
-<li>通常，会话ID会存储在Cookie中，以便在用户的连续请求中标识和检索与其相关的会话数据。</li>
-<li>当用户首次访问一个网站时，服务器会创建一个新的会话，并将会话ID存储在Cookie中，然后在以后的请求中使用该ID来检索或更新会话数据。</li>
-<li>通过Cookie中的会话ID，服务器可以将用户与其相关的会话数据连接起来，实现用户状态的跟踪和管理。</li>
+<li>cookies和session的关系</li>
 </ul>
-<ol start="2">
-<li><p>tomcat用什么记录用户信息，识别会话</p>
-<p>看源码应该是cookie和session</p>
+<p>Cookie通常用于在客户端存储一些用户相关的标识或信息，而Session则用于在服务器端存储用户的状态信息和会话数据。</p>
+<p>通常，会话ID会存储在Cookie中，以便在用户的连续请求中标识和检索与其相关的会话数据。</p>
+<p>当用户首次访问一个网站时，服务器会创建一个新的会话，并将会话ID存储在Cookie中，然后在以后的请求中使用该ID来检索或更新会话数据。</p>
+<p>通过Cookie中的会话ID，服务器可以将用户与其相关的会话数据连接起来，实现用户状态的跟踪和管理。</p>
+<ul>
+<li><p>tomcat用什么记录用户信息，识别会话,看源码应该是cookie和session</p>
 </li>
 <li><p>用cookies的话怎么保证是安全的</p>
 </li>
@@ -976,7 +953,7 @@
 </li>
 <li><p>springboot中controller接收的参数是什么？返回的又是什么？</p>
 </li>
-</ol>
+</ul>
 </blockquote>
 <h3 id="Servlet-Jsp"><a href="#Servlet-Jsp" class="headerlink" title="Servlet &amp; Jsp"></a>Servlet &amp; Jsp</h3><p>JSP的引入在一定程度上解决了Servlet存在的缺点。它的实现理念是让每个Servlet只负责其对应的业务逻辑处理，让JSP负责用户的HTML显示，因此实现了业务逻辑与视图实现的分离，从而极大的提高了系统的可扩展性。</p>
 <p>通过Servlet进行整个网站的开发是可以的。 不过在Servlet中输出html代码，特别是稍微复杂一点的html代码，就会给人一种很<strong>酸爽</strong>的感觉。</p>
@@ -985,17 +962,217 @@
 <p><strong>Servlet</strong></p>
 <p>servlet是Java中一种特殊的类， 主要负责接收用户请求HttpServletRequest，doGet()\doPost()方法中处理，HttpResponse响应。</p>
 <ul>
-<li><p>继承关系</p>
+<li>继承关系</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">javax.servlet.Servlet接口</span><br><span class="line">    javax.servlet.GenericServlet抽象类</span><br><span class="line">        javax.servlet.http.HttpServlet抽象子类</span><br></pre></td></tr></table></figure>
+
 <ul>
-<li><pre><code>javax.servlet.Servlet接口
-    javax.servlet.GenericServlet抽象类
-        javax.servlet.http.HttpServlet抽象子类
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- 生命周期</span><br><span class="line"></span><br><span class="line">  | 方法                      | 返回值 | 作用         | 时间                                                         |</span><br><span class="line">  | ------------------------- | ------ | ------------ | ------------------------------------------------------------ |</span><br><span class="line">  | init(config)              | void   | 初始化       | 默认servlet第一次收到请求时启动，也可调整到tomcat初始化时就启动 |</span><br><span class="line">  | service(request,response) | void   | 服务（重点） | 之后的每一次服务都是调用service()，且一个servlet只有一个实例 |</span><br><span class="line">  | destory()                 | void   | 销毁         | 容器关闭时所有servlet实例销毁                                |</span><br><span class="line"></span><br><span class="line">- 你写的servlet主要就是负责实现**service**，如果你的servlet中没有实现覆盖方法，编译器就会</span><br><span class="line"></span><br><span class="line">  动态获取最合适的方法，即父类httpservlet中的对应方法，但它没有实现，因此会有405错误</span><br><span class="line"></span><br><span class="line">- servlet是**线程不安全**的，servlet的生命周期交给web容器管理，容器在加载servlet时实例化，</span><br><span class="line"></span><br><span class="line">  每当有请求时调用service方法，service方法会根据需求调用doGet或者doPost，所以一个</span><br><span class="line"></span><br><span class="line">  servlet对应一个实例，但是一个请求对应一个线程，就会出现多个线程操作同一个实例的情</span><br><span class="line"></span><br><span class="line">  况，导致servlet线程不安全的问题</span><br><span class="line"></span><br><span class="line">- 没有一个方法能够彻底处理线程安全问题，最好减少使用全局变量，或者对变量做只读的修饰</span><br><span class="line">- **HTTP**就是用来确定请求和响应格式的。常用HTTP1.1(长连接)，HTTP1.0(短连接)</span><br><span class="line">- HTTP是无状态的，即不记录会话状态，需要有会话跟踪技术来识别用户，有客户端会话技术cookie，和服务器端会话技术session</span><br><span class="line">- **视图模板技术**，为了让数据库里的数据在网页上渲染展示，需要有thymeleaf把写好的页面和查询到的数据融合渲染。类似于elementui中的表格咯</span><br><span class="line"></span><br><span class="line">框架：半成品软件。可以在框架的基础上进行软件开发，简化代码。</span><br><span class="line"></span><br><span class="line">**SSM与三层BS架构对应关系**</span><br><span class="line"></span><br><span class="line">表现层————SpringMVC(view+controller)</span><br><span class="line">业务层————手写需求</span><br><span class="line">持久层————MyBatis</span><br><span class="line">Spring则控制整个项目中对象的创建与管理。</span><br><span class="line"></span><br><span class="line">### Spring</span><br><span class="line"></span><br><span class="line">&gt; 🔎recommend：廖雪峰的spring开发</span><br><span class="line">&gt;</span><br><span class="line">&gt; [http请求从tomcat到springmvc的完整流程 - 掘金 (juejin.cn)](https://juejin.cn/post/7110415265271119880#heading-1)</span><br><span class="line"></span><br><span class="line">**IOC**</span><br><span class="line"></span><br><span class="line">- 控制反转</span><br><span class="line">  - 控制：对象创建</span><br><span class="line">  - 反转：由手动创建--&gt;直接向IOC容器获取对象，其中复杂的依赖关系交给IOC容器做</span><br><span class="line">- 自动装配</span><br><span class="line">  - IOC是一种设计思想，具体实现是DI依赖注入，在spring中使用autowire自动装配实现依赖注入😅</span><br><span class="line">  - 装配什么呢？你要求IOC容器创建的对象A的成员变量值</span><br><span class="line">  - 使用autowire属性配置，有3种方法，byname，bytype，constructor</span><br><span class="line">- IOC &amp; 工厂模式</span><br><span class="line">  - 工厂模式是一种创建型模式，有工厂类一人负责创建产品(对象），其他类只需要提供产品订单(配置参数)直接向工厂获取即可</span><br><span class="line">  - 但IOC和工厂模式并非一致，工厂模式使用new创建对象，IOC使用反射机制创建</span><br><span class="line"></span><br><span class="line">  - bean放在IOC容器中，是IOC容器(beanfactory)管理的组件，测试类通过IOC容器获取和操作bean</span><br><span class="line">  - IOC有两种方式识别和管理bean：XML文件和annotation注解</span><br><span class="line">  - 常用注解：**@Component：将类标识为普通组件** @Controller：将类标识为控制层组件 @Service：将类标 识为业务层组件 @Repository：将类标识为持久层组件</span><br><span class="line">  - @Component注解相当于定义了一个Bean</span><br><span class="line">  - @Autowired就相当于把指定类型的Bean注入到指定的字段中</span><br><span class="line"></span><br><span class="line">**AOP**</span><br><span class="line"></span><br><span class="line">- 本质就是动态代理，让spring自动为对象加个代理类进行统一业务管理</span><br><span class="line">- 动态代理就是运行时动态生成代理类</span><br><span class="line">- 在Java平台上对于AOP织入有3种方式，编译时、类加载时、运行时</span><br><span class="line">- spring中的aop是运行时织入，对接口类型使用JDK动态代理，对普通类使用CGLIB创建子类。如果一个Bean的class是final，Spring将无法为其创建子类。</span><br><span class="line">- AOP使用场景，如日志、安全检查、事务</span><br><span class="line">- Spring通过CGLIB创建的代理类，**不会初始化**代理类自身**继承的任何成员变量**，包括final类型的成员变量</span><br><span class="line">- 总之还是OOP的思想：proxy类只承诺了要代理目标类的public方法，所以理论上一切的交互都应该被限制在被代理的方法集合里，不应该越过proxy的接口而直接交互。如果有新增的交互需求，都应该被统一到这个“被代理的方法集合”里去。</span><br><span class="line"></span><br><span class="line">**数据库**</span><br><span class="line"></span><br><span class="line">- 在Spring使用JDBC，首先我们通过IoC容器创建并管理一个`DataSource`(数据库连接池)实例，然后，Spring提供了一个`JdbcTemplate`，可以方便地让我们操作JDBC，因此，通常情况下，我们会实例化一个`JdbcTemplate`。顾名思义，这个类主要使用了Template模式</span><br><span class="line"></span><br><span class="line">- 声明式事务</span><br><span class="line"></span><br><span class="line">  - 实现事务的方式有编程式和声明式，编程式就是由程序员手动、反复写事务开启、运行、提交，而声明式是由框架的事务管理器进行管理，本质就是AOP场景的应用</span><br><span class="line"></span><br><span class="line">  - 声明式事务\_属性1_传播等级：会遇到事务传播的问题，即一个事务调用另一个事务，这时是认为一个事务还是两个事务，这里可通过propagation参数设置，常为默认的REQUIRED，它的意思是，如果当前没有事务，就创建一个新事务，如果当前有事务，就加入到当前事务中执行。</span><br><span class="line"></span><br><span class="line">  - 除此还有属性，隔离等级、只读、超时、回滚</span><br><span class="line"></span><br><span class="line">- DAO 数据访问层</span><br><span class="line">  - 其实就是一个用于处理数据库字段、调用JdbcTemplate执行CRUD的类</span><br><span class="line"></span><br><span class="line">- ORM-集成Mybatis</span><br><span class="line">  - Object-Relational Mapping：把关系数据库的表记录映射为Java对象</span><br><span class="line">  - ORM框架有Hibernate、JAP...用他们可以替代JdbcTemplate</span><br><span class="line">  - MyBatis是一个半自动化的ORM框架，需要手写SQL语句，没有自动加载一对多或多对一关系的功能。</span><br><span class="line">  - 使用Mybatis，业务逻辑主要就是通过`XxxMapper`定义的数据库方法来访问数据库</span><br><span class="line"></span><br><span class="line">### SpringMVC</span><br><span class="line"></span><br><span class="line">Spring MVC是**Spring框架的一个模块**，用于构建基于Java的Web应用程序。</span><br><span class="line"></span><br><span class="line">本质是一个servlet：</span><br><span class="line"></span><br><span class="line">&gt; - 读取客户端（浏览器）发送的显式的数据。这包括网页上的 HTML 表单，或者也可以是来自 applet 或自定义的 HTTP 客户端程序的表单。</span><br><span class="line">&gt; - 读取客户端（浏览器）发送的隐式的 HTTP 请求数据。这包括 cookies、媒体类型和浏览器能理解的压缩格式等等。</span><br><span class="line">&gt; - 处理数据并生成结果。这个过程可能需要访问数据库，执行 RMI 或 CORBA 调用，调用 Web 服务，或者直接计算得出对应的响应。</span><br><span class="line">&gt; - 发送显式的数据（即文档）到客户端（浏览器）。该文档的格式可以是多种多样的，包括文本文件（HTML 或 XML）、二进制文件（GIF 图像）、Excel 等。</span><br><span class="line">&gt; - 发送隐式的 HTTP 响应到客户端（浏览器）。这包括告诉浏览器或其他客户端被返回的文档类型（例如 HTML），设置 cookies 和缓存参数，以及其他类似的任务。</span><br><span class="line"></span><br><span class="line">总的来说，servlet就是运行在服务端上的程序，处理用户请求。</span><br><span class="line"></span><br><span class="line">Spring Web 模型-视图-控制器 (MVC) 框架是围绕处理所有 HTTP 请求和响应的 DispatcherServlet 设计的，也就是说一个SpringMVC就是一个servlet，至于controller、view、service这些只是程序里的小组件</span><br><span class="line"></span><br><span class="line">![spring_dispatcherservlet](我炼黄金丹之JAVA诞生/spring_dispatcherservlet.png)</span><br><span class="line"></span><br><span class="line">具体工作内容：</span><br><span class="line"></span><br><span class="line">- 收到 HTTP 请求后，DispatcherServlet 会咨询 **HandlerMapping** 以调用适当的 Controller。</span><br><span class="line">- 控制器接受请求并根据使用的 **GET** 或 **POST 方法** 调用适当的服务方法。服务方法将根据定义的业务逻辑设置模型数据，并将视图名称返回给 DispatcherServlet。</span><br><span class="line">- DispatcherServlet 将获得 **ViewResolver** 的帮助来获取请求的定义视图。(如果前后端分离，就不需要这步，直接返回json格式的数据即可)</span><br><span class="line">- 一旦视图完成，DispatcherServlet 将模型数据传递给视图，最终在浏览器上呈现。</span><br><span class="line"></span><br><span class="line">### SpringBoot</span><br><span class="line"></span><br><span class="line">- 基于Spring提供的一组开箱即用的套件，助力少量配置+快速开发</span><br><span class="line">- 相对于spring，做了更多封装，增加强大的AutoConfiguration功能，这是通过自动扫描+条件装配实现</span><br><span class="line"></span><br><span class="line">- REST请求接口</span><br><span class="line">  - form-data: //localhost:8080/users/?id=5&amp;userName=xx 后台接收参数时使用注解@RequestParam</span><br><span class="line">  - content-type: 参数以json形式传递，后台获取参数时使用注解@RequestBody</span><br><span class="line"></span><br><span class="line">### MyBatis</span><br><span class="line"></span><br><span class="line">核心 4 parts：</span><br><span class="line"></span><br><span class="line">- SqlSessionFactoryBuilder：一旦创建了SqlSessionFactory，就不需要它了。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">所以比较适合在局部变量中创建。</span><br><span class="line"></span><br><span class="line">- SqlSessionFactory：</span><br><span class="line"></span><br><span class="line">- SqlSessionFactory：相当于数据库的连接池。一旦被创建就应该在应用的运行期间一直存在，没有任何理由丢弃它或重新创建另一个实例。所以SqlSessionFactory比较适合应用作用域，也就是全局。最简单的就是使用单例模式或者静态单例模式。</span><br><span class="line">- SqlSession：连接到连接池的一个请求。因为它不是线程安全的，不能共享。用完之后必须要关闭，否则资源被占用。因此它的作用域是请求或者方法作用域。</span><br><span class="line">- mapper：会话调用的方法</span><br><span class="line"></span><br><span class="line">![watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0RvcmFlbW9uX05vYml0YQ==,size_16,color_FFFFFF,t_70#pic_center](我炼黄金丹之JAVA诞生/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0RvcmFlbW9uX05vYml0YQ==,size_16,color_FFFFFF,t_70#pic_center.png)</span><br><span class="line"></span><br><span class="line">在spring中使用mybatis，可以简化好多代码，比如SqlSessionFactory、SqlSession、mapper的对象创建可以直接扔给IOC容器做，你只需要直接使用mapper就行，而不需要反复创建和手动管理之间的依赖关系，赞😘</span><br><span class="line"></span><br><span class="line">## JAVA高级</span><br><span class="line"></span><br><span class="line">### 数据结构</span><br><span class="line"></span><br><span class="line">**二叉搜索树**</span><br><span class="line"></span><br><span class="line">左孩子比父节点小，右孩子比父节点大。中序遍历可以让结点有序。</span><br><span class="line"></span><br><span class="line">**完全二叉树**</span><br><span class="line"></span><br><span class="line">只有最下面两层结点的度可以小于2，并且最下一层的叶结点集中在靠左的若干位置上</span><br><span class="line"></span><br><span class="line">**平衡二叉树**</span><br><span class="line"></span><br><span class="line">左右子树的高度差最多为1</span><br><span class="line"></span><br><span class="line">### 算法</span><br><span class="line"></span><br><span class="line">动态规划</span><br><span class="line"></span><br><span class="line">- 适合解决 在约束条件下 存在重叠子问题 的最优解 问题</span><br><span class="line">- dp数组：当前结果只看之前的积累和当前新加入的比对最优解</span><br><span class="line">- 空间换时间，减少重复计算，每一步都进行某项重复步骤，自底向上</span><br><span class="line">- 经典题</span><br><span class="line">  - 斐波那契数列</span><br><span class="line">  - 爬楼梯</span><br><span class="line">  - 01背包</span><br><span class="line">    - 倒序：因为每个物品只能装1个，当前容量可装物品是基于之前物品和这次物品，但都只有一个</span><br><span class="line">    - 求当前容量下最大价值：dp[j] = Math.max(dp[j], dp[j-weight[i]]+value[i])</span><br><span class="line">    - 求当前容量下最多组合数：dp[j] += dp[j-weight[i]]</span><br><span class="line">  - 完全背包</span><br><span class="line">    - 顺序：每个物品可以重复装，在更大的容量里可以再装一个当前物品，当前容量可装物品是基于之前物品总数量和这次物品数量</span><br><span class="line"></span><br><span class="line">回溯</span><br><span class="line"></span><br><span class="line">- 暴力穷举</span><br><span class="line">- 分岔路试探，当探索到某一步停止，原路返回继续走另一条路</span><br><span class="line">- 经典题</span><br><span class="line">  - 全排列</span><br><span class="line">  - N皇后：这种多维问题总是会混乱，学会一维作为已知从而降为一维的思考方式</span><br><span class="line"></span><br><span class="line">### ✨Java常用语法汇总</span><br><span class="line"></span><br><span class="line">```java</span><br><span class="line">//compareTo</span><br><span class="line">对于string类中的compareTo方法，比较两字符串的逻辑是，比较第一个不同unicode码的那位，返回差值</span><br><span class="line">    </span><br><span class="line">//String.valueOf</span><br><span class="line">转换成string</span><br><span class="line">    </span><br><span class="line">//自定义多维数组排序</span><br><span class="line">Arrays.sort(list, (x,y)-&gt;&#123;</span><br><span class="line">    x[0]!=y[0]?y[0]-x[0]:x[1]-y[1]</span><br><span class="line">&#125;)</span><br><span class="line">分析源码，发现时当y[0]&gt;x[0]时交换，也就是说这里的处理逻辑时当x[0] ==y[0]时，按1的升序排序</span><br><span class="line">    </span><br><span class="line">&quot;&gt;&gt;&gt;&quot;无符号右移</span><br><span class="line">操作规则：无论正负数，前面补零。</span><br><span class="line"></span><br><span class="line">&quot;&gt;&gt;&quot;右移</span><br><span class="line">操作规则：正数前面补零，负数前面补1</span><br><span class="line"></span><br><span class="line">&quot;&lt;&lt;&quot;左移</span><br><span class="line">操作规则：无论正负数，后面补零。</span><br><span class="line">   </span><br><span class="line">boolean 是 Java 的基本数据类型，在“赋零值”阶段给属性赋 false</span><br><span class="line">Boolean 是包装类，在“赋零值”阶段给对象赋 null，同时提供其他的方法</span><br><span class="line"></span><br><span class="line">HashMap: get put remove size containsKey containsValue </span><br><span class="line">collection(list, set, queue): add contains isEmpty remove size toArray</span><br><span class="line">Queue: element offer poll peek</span><br><span class="line">StringBuffer|StringBuilder(not safe) : append insert length delete getChars toString</span><br><span class="line"></span><br><span class="line">位运算常用: x&amp;(x-1) --&gt; 每做一次该运算，x最末尾的1消去</span><br></pre></td></tr></table></figure>
-</code></pre>
+<li><p>生命周期</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>返回值</th>
+<th>作用</th>
+<th>时间</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>init(config)</td>
+<td>void</td>
+<td>初始化</td>
+<td>默认servlet第一次收到请求时启动，也可调整到tomcat初始化时就启动</td>
+</tr>
+<tr>
+<td>service(request,response)</td>
+<td>void</td>
+<td>服务（重点）</td>
+<td>之后的每一次服务都是调用service()，且一个servlet只有一个实例</td>
+</tr>
+<tr>
+<td>destory()</td>
+<td>void</td>
+<td>销毁</td>
+<td>容器关闭时所有servlet实例销毁</td>
+</tr>
+</tbody></table>
+</li>
+<li><p>你写的servlet主要就是负责实现<strong>service</strong>，如果你的servlet中没有实现覆盖方法，编译器就会动态获取最合适的方法，即父类httpservlet中的对应方法，但它没有实现，因此会有405错误</p>
+</li>
+<li><p>servlet是<strong>线程不安全</strong>的，servlet的生命周期交给web容器管理，容器在加载servlet时实例化，每当有请求时调用service方法，service方法会根据需求调用doGet或者doPost，所以一个servlet对应一个实例，但是一个请求对应一个线程，就会出现多个线程操作同一个实例的情况，导致servlet线程不安全的问题</p>
+</li>
+<li><p>没有一个方法能够彻底处理线程安全问题，最好减少使用全局变量，或者对变量做只读的修饰</p>
+</li>
+<li><p><strong>HTTP</strong>就是用来确定请求和响应格式的。常用HTTP1.1(长连接)，HTTP1.0(短连接)</p>
+</li>
+<li><p>HTTP是无状态的，即不记录会话状态，需要有会话跟踪技术来识别用户，有客户端会话技术cookie，和服务器端会话技术session</p>
+</li>
+<li><p><strong>视图模板技术</strong>，为了让数据库里的数据在网页上渲染展示，需要有thymeleaf把写好的页面和查询到的数据融合渲染。类似于elementui中的表格咯</p>
+</li>
+</ul>
+<p>框架：半成品软件。可以在框架的基础上进行软件开发，简化代码。</p>
+<p><strong>SSM与三层BS架构对应关系</strong></p>
+<p>表现层————SpringMVC(view+controller)<br>业务层————手写需求<br>持久层————MyBatis<br>Spring则控制整个项目中对象的创建与管理。</p>
+<h3 id="Spring"><a href="#Spring" class="headerlink" title="Spring"></a>Spring</h3><blockquote>
+<p>🔎recommend：廖雪峰的spring开发</p>
+<p><a target="_blank" rel="noopener" href="https://juejin.cn/post/7110415265271119880#heading-1">http请求从tomcat到springmvc的完整流程 - 掘金 (juejin.cn)</a></p>
+</blockquote>
+<p><strong>IOC</strong></p>
+<ul>
+<li>控制反转<ul>
+<li>控制：对象创建</li>
+<li>反转：由手动创建–&gt;直接向IOC容器获取对象，其中复杂的依赖关系交给IOC容器做</li>
+</ul>
+</li>
+<li>自动装配<ul>
+<li>IOC是一种设计思想，具体实现是DI依赖注入，在spring中使用autowire自动装配实现依赖注入😅</li>
+<li>装配什么呢？你要求IOC容器创建的对象A的成员变量值</li>
+<li>使用autowire属性配置，有3种方法，byname，bytype，constructor</li>
+</ul>
+</li>
+<li>IOC &amp; 工厂模式<ul>
+<li><p>工厂模式是一种创建型模式，有工厂类一人负责创建产品(对象），其他类只需要提供产品订单(配置参数)直接向工厂获取即可</p>
+</li>
+<li><p>但IOC和工厂模式并非一致，工厂模式使用new创建对象，IOC使用反射机制创建</p>
+</li>
+<li><p>bean放在IOC容器中，是IOC容器(beanfactory)管理的组件，测试类通过IOC容器获取和操作bean</p>
+</li>
+<li><p>IOC有两种方式识别和管理bean：XML文件和annotation注解</p>
+</li>
+<li><p>常用注解：**@Component：将类标识为普通组件** @Controller：将类标识为控制层组件 @Service：将类标 识为业务层组件 @Repository：将类标识为持久层组件</p>
+</li>
+<li><p>@Component注解相当于定义了一个Bean</p>
+</li>
+<li><p>@Autowired就相当于把指定类型的Bean注入到指定的字段中</p>
 </li>
 </ul>
 </li>
 </ul>
+<p><strong>AOP</strong></p>
+<ul>
+<li>本质就是动态代理，让spring自动为对象加个代理类进行统一业务管理</li>
+<li>动态代理就是运行时动态生成代理类</li>
+<li>在Java平台上对于AOP织入有3种方式，编译时、类加载时、运行时</li>
+<li>spring中的aop是运行时织入，对接口类型使用JDK动态代理，对普通类使用CGLIB创建子类。如果一个Bean的class是final，Spring将无法为其创建子类。</li>
+<li>AOP使用场景，如日志、安全检查、事务</li>
+<li>Spring通过CGLIB创建的代理类，<strong>不会初始化</strong>代理类自身<strong>继承的任何成员变量</strong>，包括final类型的成员变量</li>
+<li>总之还是OOP的思想：proxy类只承诺了要代理目标类的public方法，所以理论上一切的交互都应该被限制在被代理的方法集合里，不应该越过proxy的接口而直接交互。如果有新增的交互需求，都应该被统一到这个“被代理的方法集合”里去。</li>
+</ul>
+<p><strong>数据库</strong></p>
+<ul>
+<li><p>在Spring使用JDBC，首先我们通过IoC容器创建并管理一个<code>DataSource</code>(数据库连接池)实例，然后，Spring提供了一个<code>JdbcTemplate</code>，可以方便地让我们操作JDBC，因此，通常情况下，我们会实例化一个<code>JdbcTemplate</code>。顾名思义，这个类主要使用了Template模式</p>
+</li>
+<li><p>声明式事务</p>
+<ul>
+<li><p>实现事务的方式有编程式和声明式，编程式就是由程序员手动、反复写事务开启、运行、提交，而声明式是由框架的事务管理器进行管理，本质就是AOP场景的应用</p>
+</li>
+<li><p>声明式事务_属性1_传播等级：会遇到事务传播的问题，即一个事务调用另一个事务，这时是认为一个事务还是两个事务，这里可通过propagation参数设置，常为默认的REQUIRED，它的意思是，如果当前没有事务，就创建一个新事务，如果当前有事务，就加入到当前事务中执行。</p>
+</li>
+<li><p>除此还有属性，隔离等级、只读、超时、回滚</p>
+</li>
+</ul>
+</li>
+<li><p>DAO 数据访问层</p>
+<ul>
+<li>其实就是一个用于处理数据库字段、调用JdbcTemplate执行CRUD的类</li>
+</ul>
+</li>
+<li><p>ORM-集成Mybatis</p>
+<ul>
+<li>Object-Relational Mapping：把关系数据库的表记录映射为Java对象</li>
+<li>ORM框架有Hibernate、JAP…用他们可以替代JdbcTemplate</li>
+<li>MyBatis是一个半自动化的ORM框架，需要手写SQL语句，没有自动加载一对多或多对一关系的功能。</li>
+<li>使用Mybatis，业务逻辑主要就是通过<code>XxxMapper</code>定义的数据库方法来访问数据库</li>
+</ul>
+</li>
+</ul>
+<h3 id="SpringMVC"><a href="#SpringMVC" class="headerlink" title="SpringMVC"></a>SpringMVC</h3><p>Spring MVC是<strong>Spring框架的一个模块</strong>，用于构建基于Java的Web应用程序。</p>
+<p>本质是一个servlet：</p>
+<blockquote>
+<ul>
+<li>读取客户端（浏览器）发送的显式的数据。这包括网页上的 HTML 表单，或者也可以是来自 applet 或自定义的 HTTP 客户端程序的表单。</li>
+<li>读取客户端（浏览器）发送的隐式的 HTTP 请求数据。这包括 cookies、媒体类型和浏览器能理解的压缩格式等等。</li>
+<li>处理数据并生成结果。这个过程可能需要访问数据库，执行 RMI 或 CORBA 调用，调用 Web 服务，或者直接计算得出对应的响应。</li>
+<li>发送显式的数据（即文档）到客户端（浏览器）。该文档的格式可以是多种多样的，包括文本文件（HTML 或 XML）、二进制文件（GIF 图像）、Excel 等。</li>
+<li>发送隐式的 HTTP 响应到客户端（浏览器）。这包括告诉浏览器或其他客户端被返回的文档类型（例如 HTML），设置 cookies 和缓存参数，以及其他类似的任务。</li>
+</ul>
+</blockquote>
+<p>总的来说，servlet就是运行在服务端上的程序，处理用户请求。</p>
+<p>Spring Web 模型-视图-控制器 (MVC) 框架是围绕处理所有 HTTP 请求和响应的 DispatcherServlet 设计的，也就是说一个SpringMVC就是一个servlet，至于controller、view、service这些只是程序里的小组件</p>
+<img src="/2023/10/06/%E6%88%91%E7%82%BC%E9%BB%84%E9%87%91%E4%B8%B9%E4%B9%8BJAVA%E8%AF%9E%E7%94%9F/spring_dispatcherservlet.png" class="" title="spring_dispatcherservlet">
+
+<p>具体工作内容：</p>
+<ul>
+<li>收到 HTTP 请求后，DispatcherServlet 会咨询 <strong>HandlerMapping</strong> 以调用适当的 Controller。</li>
+<li>控制器接受请求并根据使用的 <strong>GET</strong> 或 <strong>POST 方法</strong> 调用适当的服务方法。服务方法将根据定义的业务逻辑设置模型数据，并将视图名称返回给 DispatcherServlet。</li>
+<li>DispatcherServlet 将获得 <strong>ViewResolver</strong> 的帮助来获取请求的定义视图。(如果前后端分离，就不需要这步，直接返回json格式的数据即可)</li>
+<li>一旦视图完成，DispatcherServlet 将模型数据传递给视图，最终在浏览器上呈现。</li>
+</ul>
+<h3 id="SpringBoot"><a href="#SpringBoot" class="headerlink" title="SpringBoot"></a>SpringBoot</h3><ul>
+<li><p>基于Spring提供的一组开箱即用的套件，助力少量配置+快速开发</p>
+</li>
+<li><p>相对于spring，做了更多封装，增加强大的AutoConfiguration功能，这是通过自动扫描+条件装配实现</p>
+</li>
+<li><p>REST请求接口</p>
+<ul>
+<li>form-data: &#x2F;&#x2F;localhost:8080&#x2F;users&#x2F;?id&#x3D;5&amp;userName&#x3D;xx 后台接收参数时使用注解@RequestParam</li>
+<li>content-type: 参数以json形式传递，后台获取参数时使用注解@RequestBody</li>
+</ul>
+</li>
+</ul>
+<h3 id="MyBatis"><a href="#MyBatis" class="headerlink" title="MyBatis"></a>MyBatis</h3><p>核心 4 parts：</p>
+<ul>
+<li>SqlSessionFactoryBuilder：一旦创建了SqlSessionFactory，就不需要它了。</li>
+</ul>
+<p>所以比较适合在局部变量中创建。</p>
+<ul>
+<li>SqlSessionFactory：</li>
+<li>SqlSessionFactory：相当于数据库的连接池。一旦被创建就应该在应用的运行期间一直存在，没有任何理由丢弃它或重新创建另一个实例。所以SqlSessionFactory比较适合应用作用域，也就是全局。最简单的就是使用单例模式或者静态单例模式。</li>
+<li>SqlSession：连接到连接池的一个请求。因为它不是线程安全的，不能共享。用完之后必须要关闭，否则资源被占用。因此它的作用域是请求或者方法作用域。</li>
+<li>mapper：会话调用的方法</li>
+</ul>
+<img src="/2023/10/06/%E6%88%91%E7%82%BC%E9%BB%84%E9%87%91%E4%B8%B9%E4%B9%8BJAVA%E8%AF%9E%E7%94%9F/1111.png" class="">
+
+<p>在spring中使用mybatis，可以简化好多代码，比如SqlSessionFactory、SqlSession、mapper的对象创建可以直接扔给IOC容器做，你只需要直接使用mapper就行，而不需要反复创建和手动管理之间的依赖关系，赞😘</p>
+<h2 id="JAVA高级"><a href="#JAVA高级" class="headerlink" title="JAVA高级"></a>JAVA高级</h2><h3 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h3><p><strong>二叉搜索树</strong></p>
+<p>左孩子比父节点小，右孩子比父节点大。中序遍历可以让结点有序。</p>
+<p><strong>完全二叉树</strong></p>
+<p>只有最下面两层结点的度可以小于2，并且最下一层的叶结点集中在靠左的若干位置上</p>
+<p><strong>平衡二叉树</strong></p>
+<p>左右子树的高度差最多为1</p>
+<h3 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h3><p>动态规划</p>
+<ul>
+<li>适合解决 在约束条件下 存在重叠子问题 的最优解 问题</li>
+<li>dp数组：当前结果只看之前的积累和当前新加入的比对最优解</li>
+<li>空间换时间，减少重复计算，每一步都进行某项重复步骤，自底向上</li>
+<li>经典题<ul>
+<li>斐波那契数列</li>
+<li>爬楼梯</li>
+<li>01背包<ul>
+<li>倒序：因为每个物品只能装1个，当前容量可装物品是基于之前物品和这次物品，但都只有一个</li>
+<li>求当前容量下最大价值：dp[j] &#x3D; Math.max(dp[j], dp[j-weight[i]]+value[i])</li>
+<li>求当前容量下最多组合数：dp[j] +&#x3D; dp[j-weight[i]]</li>
+</ul>
+</li>
+<li>完全背包<ul>
+<li>顺序：每个物品可以重复装，在更大的容量里可以再装一个当前物品，当前容量可装物品是基于之前物品总数量和这次物品数量</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>回溯</p>
+<ul>
+<li>暴力穷举</li>
+<li>分岔路试探，当探索到某一步停止，原路返回继续走另一条路</li>
+<li>经典题<ul>
+<li>全排列</li>
+<li>N皇后：这种多维问题总是会混乱，学会一维作为已知从而降为一维的思考方式</li>
+</ul>
+</li>
+</ul>
+<h3 id="✨Java常用语法汇总"><a href="#✨Java常用语法汇总" class="headerlink" title="✨Java常用语法汇总"></a>✨Java常用语法汇总</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//compareTo</span></span><br><span class="line">对于string类中的compareTo方法，比较两字符串的逻辑是，比较第一个不同unicode码的那位，返回差值</span><br><span class="line">    </span><br><span class="line"><span class="comment">//String.valueOf</span></span><br><span class="line">转换成string</span><br><span class="line">    </span><br><span class="line"><span class="comment">//自定义多维数组排序</span></span><br><span class="line">Arrays.sort(list, (x,y)-&gt;&#123;</span><br><span class="line">    x[<span class="number">0</span>]!=y[<span class="number">0</span>]?y[<span class="number">0</span>]-x[<span class="number">0</span>]:x[<span class="number">1</span>]-y[<span class="number">1</span>]</span><br><span class="line">&#125;)</span><br><span class="line">分析源码，发现时当y[<span class="number">0</span>]&gt;x[<span class="number">0</span>]时交换，也就是说这里的处理逻辑时当x[<span class="number">0</span>] ==y[<span class="number">0</span>]时，按<span class="number">1</span>的升序排序</span><br><span class="line">    </span><br><span class="line"><span class="string">&quot;&gt;&gt;&gt;&quot;</span>无符号右移</span><br><span class="line">操作规则：无论正负数，前面补零。</span><br><span class="line"></span><br><span class="line"><span class="string">&quot;&gt;&gt;&quot;</span>右移</span><br><span class="line">操作规则：正数前面补零，负数前面补<span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="string">&quot;&lt;&lt;&quot;</span>左移</span><br><span class="line">操作规则：无论正负数，后面补零。</span><br><span class="line">   </span><br><span class="line"><span class="type">boolean</span> 是 Java 的基本数据类型，在“赋零值”阶段给属性赋 <span class="literal">false</span></span><br><span class="line">Boolean 是包装类，在“赋零值”阶段给对象赋 <span class="literal">null</span>，同时提供其他的方法</span><br><span class="line"></span><br><span class="line">HashMap: get put remove size containsKey containsValue </span><br><span class="line"><span class="title function_">collection</span><span class="params">(list, set, queue)</span>: add contains isEmpty remove size toArray</span><br><span class="line">Queue: element offer poll peek</span><br><span class="line">StringBuffer|StringBuilder(not safe) : append insert length delete getChars toString</span><br><span class="line"></span><br><span class="line">位运算常用: x&amp;(x-<span class="number">1</span>) --&gt; 每做一次该运算，x最末尾的<span class="number">1</span>消去</span><br></pre></td></tr></table></figure>
+
 <h3 id="设计模式"><a href="#设计模式" class="headerlink" title="设计模式"></a>设计模式</h3><ul>
 <li><p>单例模式</p>
 <ul>
@@ -1005,7 +1182,7 @@
 </li>
 <li><p>实现单例模式：除了最简单最开始new一个外，使用双重检查double-check，我们进行了两次if (singleton &#x3D;&#x3D; null)检查，这样就可以保证线程安全了。这样，实例化代码只用执行一次，后面再次访问时，判断if (singleton &#x3D;&#x3D; null)，直接return实例化对象。</p>
 <p>使用volatile关键字是为了放止指令重排序，<a target="_blank" rel="noopener" href="https://blog.csdn.net/java_1996/article/details/87472644">volatile关键字在单例模式(双重校验锁)中的作用_volitile 单例_指月小筑的博客-CSDN博客</a></p>
-<img src="/2023/10/06/%E6%88%91%E7%82%BC%E9%BB%84%E9%87%91%E4%B8%B9%E4%B9%8BJAVA%E8%AF%9E%E7%94%9F/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNDU4NTUw,size_16,color_FFFFFF,t_70#pic_center.png" class="" title="watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNDU4NTUw,size_16,color_FFFFFF,t_70#pic_center"></li>
+<img src="/2023/10/06/%E6%88%91%E7%82%BC%E9%BB%84%E9%87%91%E4%B8%B9%E4%B9%8BJAVA%E8%AF%9E%E7%94%9F/222.png" class=""></li>
 </ul>
 </li>
 <li><p>工厂模式</p>
@@ -1537,6 +1714,53 @@
   </nav>
 
    
+<!-- valine评论 -->
+<div id="vcomments-box">
+  <div id="vcomments"></div>
+</div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="https://cdn.staticfile.org/valine/1.4.16/Valine.min.js"></script>
+<script>
+  new Valine({
+    el: "#vcomments",
+    app_id: "",
+    app_key: "",
+    path: window.location.pathname,
+    avatar: "monsterid",
+    placeholder: "给我的文章加点评论吧~",
+    recordIP: true,
+  });
+  const infoEle = document.querySelector("#vcomments .info");
+  if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0) {
+    infoEle.childNodes.forEach(function (item) {
+      item.parentNode.removeChild(item);
+    });
+  }
+</script>
+<style>
+  #vcomments-box {
+    padding: 5px 30px;
+  }
+
+  @media screen and (max-width: 800px) {
+    #vcomments-box {
+      padding: 5px 0px;
+    }
+  }
+
+  #vcomments-box #vcomments {
+    background-color: #fff;
+  }
+
+  .v .vlist .vcard .vh {
+    padding-right: 20px;
+  }
+
+  .v .vlist .vcard {
+    padding-left: 10px;
+  }
+</style>
+
  
    
   
@@ -1602,7 +1826,7 @@
 <nav class="navbar">
   
   <div class="logo">
-    <a href="/"><img src="https://img-qn.51miz.com/Element/00/92/82/74/7f879d36_E928274_9ba5ab9c.png" alt="感觉派大师"></a>
+    <a href="/"><img src="/images/3.jpg" alt="感觉派大师"></a>
   </div>
   
   <ul class="nav nav-main">
@@ -1617,6 +1841,10 @@
     
     <li class="nav-item">
       <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
     </li>
     
     <li class="nav-item">
