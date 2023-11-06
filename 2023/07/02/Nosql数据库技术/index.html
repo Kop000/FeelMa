@@ -91,22 +91,7 @@
   
     <div class="article-entry" itemprop="articleBody">
        
-  <h3 id="概论"><a href="#概论" class="headerlink" title="概论"></a>概论</h3><img src="/2023/07/02/Nosql%E6%95%B0%E6%8D%AE%E5%BA%93%E6%8A%80%E6%9C%AF/rId20-16988163053031-16988174662001.png" class="">
-
-<p><strong>分布式系统不能同时满足CAP，最多两个，p一般必选</strong></p>
-<p>C-consistency</p>
-<p>A-availability</p>
-<p>P-partition tolerance</p>
-<h3 id="期末复习"><a href="#期末复习" class="headerlink" title="期末复习"></a>期末复习</h3><p>涵盖课程教学12章的内容</p>
-<h4 id="题型"><a href="#题型" class="headerlink" title="题型"></a>题型</h4><ul>
-<li><p>客观选择题（20）</p>
-</li>
-<li><p>6个简答题（30）</p>
-</li>
-<li><p>四类NoSQL数据库分析设计及管理问题（50）</p>
-</li>
-</ul>
-<h4 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h4><ul>
+  <h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><ul>
 <li><p><strong>NoSQL基本概念、CAP定理</strong></p>
 <ul>
 <li><p>C:Consistency（强一致性）<br>A:Availability（可用性）<br>P:Partition tolerance（分区容错性）</p>
@@ -158,7 +143,7 @@
 <li><p>数据复制与分片机制的作用</p>
 </li>
 </ul>
-<h4 id="图数据库"><a href="#图数据库" class="headerlink" title="图数据库"></a>图数据库</h4><h5 id="概述-1"><a href="#概述-1" class="headerlink" title="概述"></a>概述</h5><ul>
+<h3 id="图数据库"><a href="#图数据库" class="headerlink" title="图数据库"></a>图数据库</h3><h4 id="概述-1"><a href="#概述-1" class="headerlink" title="概述"></a>概述</h4><ul>
 <li><p>图数据库的特点</p>
 <ul>
 <li><p>图数据库是以实体及其关系为主要存储对象的数据<br>库系统，存储图结构的数据具有突出优势。</p>
@@ -214,7 +199,7 @@
 </ul>
 </li>
 </ul>
-<h5 id="Neo4j"><a href="#Neo4j" class="headerlink" title="Neo4j"></a>Neo4j</h5><ul>
+<h4 id="Neo4j"><a href="#Neo4j" class="headerlink" title="Neo4j"></a>Neo4j</h4><ul>
 <li><p>基于JAVA的<strong>原生图</strong>数据库</p>
 </li>
 <li><p>Cypher语法</p>
@@ -250,7 +235,7 @@
 </ul>
 </li>
 </ul>
-<h4 id="文档数据库"><a href="#文档数据库" class="headerlink" title="文档数据库"></a>文档数据库</h4><h5 id="概述-2"><a href="#概述-2" class="headerlink" title="概述"></a>概述</h5><ul>
+<h3 id="文档数据库"><a href="#文档数据库" class="headerlink" title="文档数据库"></a>文档数据库</h3><h4 id="概述-2"><a href="#概述-2" class="headerlink" title="概述"></a>概述</h4><ul>
 <li><p>文档数据库是最像RDB的NOSQL数据库</p>
 </li>
 <li><p>MongoDB中的数据存储用的是BSON，就是二进制JSON，相比于JSON，在数据访问性能上有很大的提升，且数据类型更丰富</p>
@@ -290,7 +275,7 @@
 </ul>
 </li>
 </ul>
-<h5 id="MongoDB"><a href="#MongoDB" class="headerlink" title="MongoDB"></a>MongoDB</h5><ul>
+<h4 id="MongoDB"><a href="#MongoDB" class="headerlink" title="MongoDB"></a>MongoDB</h4><ul>
 <li><p>MongoDB<strong>没有创建数据库的命令</strong>，但可以先<code>use mytest</code><br>再添加一个集合<code>db.createCollection(&#39;user&#39;)</code>，这样可以建立。</p>
 </li>
 <li><p>MongoDB集合创建时<strong>不一定</strong>必须先创建集合再插入数据，若用创建语句，支持集合的文档限定总数设置：<code>db.createCollection(&quot;iLog&quot;,&#123; capped : true, size : 6142800, max :  10000 &#125;)</code></p>
@@ -349,8 +334,8 @@ db.ct.dropIndex(&quot;Name_1&quot;)
 <p>日志功能使数据库在意外故障后快速恢复<strong>最近checkpoint</strong>后的数据更新操作，本质上是一种变更操作持久化预写（Write ahead）机制，WiredTiger存储引擎会先将 Journal日志写入<strong>内存缓冲区</strong>，满足一定条件时再写入磁盘Journal <strong>日志文件</strong></p>
 </li>
 </ul>
-<h4 id="键值数据库"><a href="#键值数据库" class="headerlink" title="键值数据库"></a>键值数据库</h4><h5 id="概述-3"><a href="#概述-3" class="headerlink" title="概述"></a>概述</h5><p>一般这种数据库是放在内存的，高速访问</p>
-<h6 id="存储逻辑架构"><a href="#存储逻辑架构" class="headerlink" title="存储逻辑架构"></a>存储逻辑架构</h6><img src="/2023/07/02/Nosql%E6%95%B0%E6%8D%AE%E5%BA%93%E6%8A%80%E6%9C%AF/rId42.png" class="">
+<h3 id="键值数据库"><a href="#键值数据库" class="headerlink" title="键值数据库"></a>键值数据库</h3><h4 id="概述-3"><a href="#概述-3" class="headerlink" title="概述"></a>概述</h4><p>一般这种数据库是放在内存的，高速访问</p>
+<h5 id="存储逻辑架构"><a href="#存储逻辑架构" class="headerlink" title="存储逻辑架构"></a>存储逻辑架构</h5><img src="/2023/07/02/Nosql%E6%95%B0%E6%8D%AE%E5%BA%93%E6%8A%80%E6%9C%AF/rId42.png" class="">
 
 <ul>
 <li>String</li>
@@ -409,7 +394,7 @@ db.ct.dropIndex(&quot;Name_1&quot;)
 <p>客观下线：<strong>主节点</strong>超时没回，且问了其他哨兵节点，一定数量认为下线，就认为odown</p>
 <p>当主节点被判断<strong>客观下线以后</strong>，各个哨兵节点会进行协商，选举出一个领导者哨兵节点，并由该<strong>哨兵领导者节点</strong>对其进行<strong>故障迁移</strong>操作(选举使用Raft，先到先得，即在一轮选举中哨兵A向B发送成为领导者的申请，如果B没有同意过其他哨兵，则会同意A成为领导者&#x2F;quorums机制：哨兵数&#x2F;2+1)</p>
 <p>哨兵至少需要3个实例，来保证自己的健壮性</p>
-<h5 id="Redis"><a href="#Redis" class="headerlink" title="Redis"></a>Redis</h5><p>Redis：REmote DIctionary Server 远程字典服务</p>
+<h4 id="Redis"><a href="#Redis" class="headerlink" title="Redis"></a>Redis</h4><p>Redis：REmote DIctionary Server 远程字典服务</p>
 <ul>
 <li>语法</li>
 </ul>
@@ -428,14 +413,14 @@ db.ct.dropIndex(&quot;Name_1&quot;)
 <p><strong>键的自动分片机制</strong>：键-&gt;slot-&gt;节点</p>
 <p>Redis支持将不同的键映射到相同的槽（slot）</p>
 <p><strong>副本漂移机制</strong>：有主节点没有从节点，并且其他主节点有&gt;&#x3D;2的从节点给他，那就有最多的主节点分一个给他</p>
-<h4 id="列族数据库"><a href="#列族数据库" class="headerlink" title="列族数据库"></a>列族数据库</h4><h5 id="概述-4"><a href="#概述-4" class="headerlink" title="概述"></a>概述</h5><h6 id="集群架构"><a href="#集群架构" class="headerlink" title="集群架构"></a>集群架构</h6><p>主从式(HBase)：会出现单点故障问题</p>
+<h3 id="列族数据库"><a href="#列族数据库" class="headerlink" title="列族数据库"></a>列族数据库</h3><h4 id="概述-4"><a href="#概述-4" class="headerlink" title="概述"></a>概述</h4><h5 id="集群架构"><a href="#集群架构" class="headerlink" title="集群架构"></a>集群架构</h5><p>主从式(HBase)：会出现单点故障问题</p>
 <p>对等式(Cassandra)：不会出现单点故障问题，彼此问候</p>
 <p>提交日志（CommitLog）：是Cassandra中的崩溃恢复 机制</p>
 <p>一个列族CF对应一个memtable，memtable满足一定条件后批量刷新到磁盘，同时在memtable里会按key排下序</p>
 <p>SStable一旦完成写入，就不可变更，只能读取。memtable写入时不会进行排序插入，而是SStable定期自己合并排序</p>
 <img src="/2023/07/02/Nosql%E6%95%B0%E6%8D%AE%E5%BA%93%E6%8A%80%E6%9C%AF/rId56.png" class="">
 
-<h6 id="存储逻辑架构-1"><a href="#存储逻辑架构-1" class="headerlink" title="存储逻辑架构"></a>存储逻辑架构</h6><p>列、行、列族、键空间-&gt;列、行、表、数据库</p>
+<h5 id="存储逻辑架构-1"><a href="#存储逻辑架构-1" class="headerlink" title="存储逻辑架构"></a>存储逻辑架构</h5><p>列、行、列族、键空间-&gt;列、行、表、数据库</p>
 <p>一个集群可以包含多个键空间</p>
 <p>可以大致看出列族数据库展示上和RDB相似，但实际在磁盘上存储是按照一列一列存储的</p>
 <img src="/2023/07/02/Nosql%E6%95%B0%E6%8D%AE%E5%BA%93%E6%8A%80%E6%9C%AF/rId60.jpg" class="">
@@ -453,11 +438,11 @@ CREATE TABLE &quot;iteblog_users_with_status_updates&quot; (
 PRIMARY KEY (&quot;username&quot;, &quot;id&quot;));
 </code></pre>
 <p>如果没有定义 clustering column，意味着相同 PRIMARY KEY的数据在同一个分区里面只存在一行数据，本质上就是静态的，所以也没必要支持静态列，如同上面的例子。</p>
-<h6 id="对等式架构"><a href="#对等式架构" class="headerlink" title="对等式架构"></a>对等式架构</h6><p>写流程：收到操作请求的节点作为代理节点，向n个副本节点发送请求，追加CommitLog更新MemTable的节点返回成功，满足一致性级别要求返回成功</p>
+<h5 id="对等式架构"><a href="#对等式架构" class="headerlink" title="对等式架构"></a>对等式架构</h5><p>写流程：收到操作请求的节点作为代理节点，向n个副本节点发送请求，追加CommitLog更新MemTable的节点返回成功，满足一致性级别要求返回成功</p>
 <p>读流程：同样做代理，返回k个节点返回数据中最新的数据</p>
 <p>一致性要求高时，推荐R+W&gt;N；<br>实时性要求高时，推荐R+W&lt;N；<br>在实际应用中，经常设置为2、2、3；</p>
 <p>分区策略🫡</p>
-<h5 id="cassandra"><a href="#cassandra" class="headerlink" title="cassandra"></a>cassandra</h5><p>是对等式的</p>
+<h4 id="cassandra"><a href="#cassandra" class="headerlink" title="cassandra"></a>cassandra</h4><p>是对等式的</p>
 <p>自定义元组不需要再定义元素名称</p>
 <p>CQL标识符和关键字是大小写不敏感</p>
 <p>要插入数据，必须存在相应表。表可用的列也是预先定义的。</p>
@@ -468,7 +453,7 @@ PRIMARY KEY (&quot;username&quot;, &quot;id&quot;));
 <p>一级索引：通过主键快速访问数据</p>
 <p>二级索引：通过其他列快速访问数据</p>
 <p>创建二级索引的名称可省略</p>
-<h4 id="其他类型NOSQL"><a href="#其他类型NOSQL" class="headerlink" title="其他类型NOSQL"></a>其他类型NOSQL</h4><h4 id="区块链存储技术"><a href="#区块链存储技术" class="headerlink" title="区块链存储技术"></a>区块链存储技术</h4><p>区块链数据存储技术是一种分布式、去中心化的数据存储方式，它基于区块链技术的原理和特性。在传统的中心化数据存储系统中，数据通常由中央机构或第三方管理，而区块链数据存储技术则将数据存储和管理权力分散到网络中的多个节点。</p>
+<h3 id="区块链存储技术"><a href="#区块链存储技术" class="headerlink" title="区块链存储技术"></a>区块链存储技术</h3><p>区块链数据存储技术是一种分布式、去中心化的数据存储方式，它基于区块链技术的原理和特性。在传统的中心化数据存储系统中，数据通常由中央机构或第三方管理，而区块链数据存储技术则将数据存储和管理权力分散到网络中的多个节点。</p>
 <p>区块链数据存储技术的主要特点包括：</p>
 <ol>
 <li><p>分布式存储：数据在区块链网络中的多个节点上进行存储，而不是集中存储在单个服务器或数据中心中。这种分布式的特性增加了系统的可靠性和抗攻击性。</p>
@@ -553,11 +538,11 @@ PRIMARY KEY (&quot;username&quot;, &quot;id&quot;));
    
   <nav class="article-nav">
     
-      <a href="/2023/07/02/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/" class="article-nav-link">
+      <a href="/2023/07/02/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98%E4%B8%8E%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93/" class="article-nav-link">
         <strong class="article-nav-caption">上一篇</strong>
         <div class="article-nav-title">
           
-            编译原理
+            数据挖掘与数据仓库
           
         </div>
       </a>
