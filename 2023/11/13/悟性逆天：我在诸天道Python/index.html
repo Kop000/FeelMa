@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+
+
+<html lang="zh-hans">
+  
+
+    <head>
+      <meta charset="utf-8" />
+        
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1"
+      />
+      <title> 一只鼻孔在路上</title>
+  <meta name="generator" content="hexo-theme-ayer">
+      
+      <link rel="shortcut icon" href="/images/3.jpg" />
+       
+<link rel="stylesheet" href="/dist/main.css">
+
+      
+<link rel="stylesheet" href="/css/fonts/remixicon.css">
+
+      
+<link rel="stylesheet" href="/css/custom.css">
+ 
+      <script src="https://cdn.staticfile.org/pace/1.2.4/pace.min.js"></script>
+       
+ 
+
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-bulma@5.0.1/bulma.min.css"
+      />
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.min.js"></script>
+
+      <!-- mermaid -->
+      
+      <script src="https://cdn.staticfile.org/mermaid/8.14.0/mermaid.min.js"></script>
+      
+      <style>
+        .swal2-styled.swal2-confirm {
+          font-size: 1.6rem;
+        }
+      </style>
+    </head>
+  </html>
+</html>
+
+
+<body>
+  <div id="app">
+    
+      
+    <main class="content on">
+      <section class="outer">
+  <article
+  id="post-悟性逆天：我在诸天道Python"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+     
+    <div class="article-meta">
+      <a href="/2023/11/13/%E6%82%9F%E6%80%A7%E9%80%86%E5%A4%A9%EF%BC%9A%E6%88%91%E5%9C%A8%E8%AF%B8%E5%A4%A9%E9%81%93Python/" class="article-date">
+  <time datetime="2023-11-13T02:13:36.560Z" itemprop="datePublished">2023-11-13</time>
+</a>  
+    </div>
+      
+    <div class="tocbot"></div>
+
+
+
+
+  
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p>悟性逆天：我在诸天道Python</p>
+<p>2023.11.13</p>
+<blockquote>
+<p>🔎<a target="_blank" rel="noopener" href="https://docs.python.org/zh-cn/3/reference/index.html">Python 语言参考手册 — Python 3.12.0 文档</a></p>
+</blockquote>
+<h2 id="快速入门"><a href="#快速入门" class="headerlink" title="快速入门"></a>快速入门</h2><ol>
+<li><p>当语句以冒号<code>:</code>结尾时，缩进的语句视为代码块。</p>
+</li>
+<li><p>Python允许在数字中间以<code>_</code>分隔，因此，写成<code>10_000_000_000</code>和<code>10000000000</code>是完全一样的。十六进制数也可以写成<code>0xa1b2_c3d4</code>。</p>
+</li>
+<li><p>字符串是以单引号<code>&#39;</code>或双引号<code>&quot;</code>括起来的任意文本，用<code>&#39;&#39;&#39;...&#39;&#39;&#39;</code>的格式表示多行内容。</p>
+</li>
+<li><p>布尔值：True、False；逻辑运算：and、or、not</p>
+</li>
+<li><p>空值是Python里一个特殊的值，用<code>None</code>表示。<code>None</code>不能理解为<code>0</code>，因为<code>0</code>是有意义的，而<code>None</code>是一个特殊的空值，在Python的交互环境不显示结果，相当于<code>null</code>，<code>return None</code>可以简写为<code>return</code>，和java里一样。</p>
+</li>
+<li><p>Python是动态语言，Java是静态语言。同一个变量可以反复赋值，而且可以是不同类型的变量</p>
+</li>
+<li><p>通常用全部大写的变量名表示常量</p>
+</li>
+<li><p>Python的整数没有大小限制，而某些语言的整数根据其存储长度是有大小限制的，例如Java对32位整数的范围限制在<code>-2147483648</code>-<code>2147483647</code>。Python的浮点数也没有大小限制，但是超出一定范围就直接表示为<code>inf</code>（无限大）。</p>
+</li>
+<li><p>在Python中，有三种方式格式化。</p>
+<p>(1) 采用的格式化方式和C语言是一致的，用<code>%</code>运算符格式化字符串</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="string">&#x27;Hello, %s&#x27;</span> % <span class="string">&#x27;world&#x27;</span></span><br><span class="line"><span class="string">&#x27;Hello, world&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="string">&#x27;Hi, %s, you have $%d.&#x27;</span> % (<span class="string">&#x27;Michael&#x27;</span>, <span class="number">1000000</span>)</span><br><span class="line"><span class="string">&#x27;Hi, Michael, you have $1000000.&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>(2) 使用字符串的<code>format()</code>方法</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="string">&#x27;Hello, &#123;0&#125;, 成绩提升了 &#123;1:.1f&#125;%&#x27;</span>.<span class="built_in">format</span>(<span class="string">&#x27;小明&#x27;</span>, <span class="number">17.125</span>)</span><br><span class="line"><span class="string">&#x27;Hello, 小明, 成绩提升了 17.1%&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>(3) 使用以<code>f</code>开头的字符串，它和普通字符串不同之处在于，字符串如果包含<code>&#123;xxx&#125;</code>，就会以对应的变量替换</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>r = <span class="number">2.5</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s = <span class="number">3.14</span> * r ** <span class="number">2</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(<span class="string">f&#x27;The area of a circle with radius <span class="subst">&#123;r&#125;</span> is <span class="subst">&#123;s:<span class="number">.2</span>f&#125;</span>&#x27;</span>)</span><br><span class="line">The area of a circle <span class="keyword">with</span> radius <span class="number">2.5</span> <span class="keyword">is</span> <span class="number">19.62</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Python字符串是以Unicode编码的（Java也是）。一般在计算机内存中，统一使用Unicode编码，当需要保存到硬盘或者需要传输的时候，就转换为UTF-8编码，因为后者编码方式更贴合各语言所需字节数，更节省空间，在网络传输和存储时一般用UTF-8。</p>
+</li>
+<li><p>当你的源代码中包含中文的时候，在保存源代码时，就需要务必指定保存为UTF-8编码。当Python解释器读取源代码时，为了让它按UTF-8编码读取，我们通常在文件开头写上这两行。</p>
+<p>第一行注释是为了告诉Linux&#x2F;OS X系统，这是一个Python可执行程序，Windows系统会忽略这个注释；第二行注释是为了告诉Python解释器，按照UTF-8编码读取源代码，否则，你在源代码中写的中文输出可能会有乱码。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python3</span></span><br><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>数组在这里成为列表。列表有两种，list是可变长的，tuple是不可变长的</p>
+<p>list有append、pop、index方法来动态改变相当于java里的array，tuple没有，相当于java里的数组。但都可以用classmates[1]、classmates[-2]（倒数第2个）获取数。但你当然可以在tuple里加list，这样就可变了</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#list</span></span><br><span class="line">classmates = [<span class="string">&#x27;Michael&#x27;</span>, <span class="string">&#x27;Bob&#x27;</span>, <span class="string">&#x27;Tracy&#x27;</span>]</span><br><span class="line"><span class="comment">#tuple</span></span><br><span class="line">classmates = (<span class="string">&#x27;Michael&#x27;</span>, <span class="string">&#x27;Bob&#x27;</span>, <span class="string">&#x27;Tracy&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#list生成</span></span><br><span class="line">L = <span class="built_in">list</span>(<span class="built_in">range</span>(<span class="number">1</span>, <span class="number">11</span>))</span><br><span class="line">L = [x * x <span class="keyword">for</span> x <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, <span class="number">11</span>) <span class="keyword">if</span> x % <span class="number">2</span> == <span class="number">0</span>]</span><br></pre></td></tr></table></figure>
+
+<p>注意这里的定义，t不是tuple，是1这个数。这是因为括号()既可以表示tuple，又可以表示数学公式中的小括号，计算结果是<code>1</code>。Python在显示只有1个元素的tuple时，也会加一个逗号<code>,</code>，以免你误解成数学计算意义上的括号。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#定义1</span></span><br><span class="line">t = (<span class="number">1</span>)</span><br><span class="line"><span class="comment">#定义tuple，加个,</span></span><br><span class="line">t = (<span class="number">1</span>,)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>map在这里称为dict字典。dict的key必须是<strong>不可变对象</strong>。要保证hash的正确性，作为key的对象就不能变。在Python中，字符串、整数等都是不可变的，因此，可以放心地作为key。而list是可变的，就不能作为key</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>d = &#123;<span class="string">&#x27;Michael&#x27;</span>: <span class="number">95</span>, <span class="string">&#x27;Bob&#x27;</span>: <span class="number">75</span>, <span class="string">&#x27;Tracy&#x27;</span>: <span class="number">85</span>&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>d[<span class="string">&#x27;Michael&#x27;</span>]</span><br><span class="line"><span class="number">95</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>set依然是set，也就是没有value的map</p>
+<p>要创建一个set，需要提供一个list作为输入集合</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>s = <span class="built_in">set</span>([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>])</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s</span><br><span class="line">&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>java里的switch在python里是<code>match</code>，<code>case _</code>表示“任意值”。同时也可以匹配列表，<code> case [&#39;gcc&#39;, file1, *files]</code>表示列表第一个字符串是<code>&#39;gcc&#39;</code>，第二个字符串绑定到变量<code>file1</code>，后面的任意个字符串绑定到<code>*files</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">score = <span class="string">&#x27;B&#x27;</span></span><br><span class="line"><span class="keyword">match</span> score:</span><br><span class="line">    <span class="keyword">case</span> <span class="string">&#x27;A&#x27;</span>:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;score is A.&#x27;</span>)</span><br><span class="line">    <span class="keyword">case</span> <span class="string">&#x27;B&#x27;</span>:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;score is B.&#x27;</span>)</span><br><span class="line">    <span class="keyword">case</span> <span class="number">11</span> | <span class="number">12</span> | <span class="number">13</span> | <span class="number">14</span> | <span class="number">15</span> | <span class="number">16</span> | <span class="number">17</span> | <span class="number">18</span>:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;score is C.&#x27;</span>)</span><br><span class="line">    <span class="keyword">case</span> _: <span class="comment"># _表示匹配到其他任何情况</span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;score is ???.&#x27;</span>)</span><br><span class="line">        </span><br><span class="line">args = [<span class="string">&#x27;gcc&#x27;</span>, <span class="string">&#x27;hello.c&#x27;</span>, <span class="string">&#x27;world.c&#x27;</span>]</span><br><span class="line"><span class="keyword">match</span> args:</span><br><span class="line">    <span class="comment"># 如果仅出现gcc，报错:</span></span><br><span class="line">    <span class="keyword">case</span> [<span class="string">&#x27;gcc&#x27;</span>]:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;gcc: missing source file(s).&#x27;</span>)</span><br><span class="line">    <span class="comment"># 出现gcc，且至少指定了一个文件:</span></span><br><span class="line">    <span class="keyword">case</span> [<span class="string">&#x27;gcc&#x27;</span>, file1, *files]:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;gcc compile: &#x27;</span> + file1 + <span class="string">&#x27;, &#x27;</span> + <span class="string">&#x27;, &#x27;</span>.join(files))</span><br><span class="line">    <span class="comment"># 仅出现clean:</span></span><br><span class="line">    <span class="keyword">case</span> [<span class="string">&#x27;clean&#x27;</span>]:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;clean&#x27;</span>)</span><br><span class="line">    <span class="keyword">case</span> _:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;invalid command.&#x27;</span>)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>循环，都是用for xx in xx的形式，range()用于生成整数序列，range(101)表示生成0-100序列101个数。或者如果想用索引，可用 Python内置的enumerate函数可以把一个list变成索引-元素对，这样就可以在for循环中同时迭代索引和元素本身</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 实现 for(int i = 0; i &lt; 100; i++)</span></span><br><span class="line"><span class="keyword">for</span> x <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">101</span>)</span><br><span class="line"><span class="comment"># enumerate</span></span><br><span class="line"><span class="keyword">for</span> i, value <span class="keyword">in</span> <span class="built_in">enumerate</span>([<span class="string">&#x27;A&#x27;</span>, <span class="string">&#x27;B&#x27;</span>, <span class="string">&#x27;C&#x27;</span>])</span><br><span class="line"><span class="comment"># 列表</span></span><br><span class="line"><span class="keyword">for</span> x, y <span class="keyword">in</span> [(<span class="number">1</span>, <span class="number">1</span>), (<span class="number">2</span>, <span class="number">4</span>), (<span class="number">3</span>, <span class="number">9</span>)]</span><br></pre></td></tr></table></figure></li>
+</ol>
+<p>​		可以直接作用于<code>for</code>循环的数据类型有以下几种：</p>
+<p>​		一类是集合数据类型，如<code>list</code>、<code>tuple</code>、<code>dict</code>、<code>set</code>、<code>str</code>等；</p>
+<p>​		一类是<code>generator</code>，包括生成器和带<code>yield</code>的generator function。</p>
+<p>​		这些可以直接作用于<code>for</code>循环的对象统称为可迭代对象：<code>Iterable</code>。</p>
+<ol start="15">
+<li><p>切片。list、tuple、string都可以用切片操作。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#从头开始切10个</span></span><br><span class="line">L[:<span class="number">10</span>]</span><br><span class="line"><span class="comment">#前10个数，每2个切1个</span></span><br><span class="line">L[:<span class="number">10</span>:<span class="number">2</span>]</span><br><span class="line"><span class="comment">#所有数，每5个切1个</span></span><br><span class="line">L[::<span class="number">5</span>]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>生成器。<code>g = (x * x for x in range(10))</code>，g是一个generator，保存算法而不是list那样把每个值都保存下来，每次调用next(g)获取当前值，直到计算到最后一个元素，没有更多的元素时，抛出<code>StopIteration</code>的错误。普通函数加上<code>yield</code>能变成生成器，遇到一个yield中断跳出，下一次调用next()将从yield后开始执行。Python的<code>for</code>循环本质上就是通过不断调用<code>next()</code>函数实现的</p>
+</li>
+<li><p>类。类的构造方法用<code>__init__</code>函数写，和普通的函数相比，在类中定义的函数只有一点不同，就是第一个参数永远是实例变量<code>self</code>，表示创建的实例本身，init方法把属性绑定到self上，但调用的时候不需要加self，解释器会自己传进去</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Student</span>(<span class="title class_ inherited__">object</span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, name, score</span>):</span><br><span class="line">        self.name = name</span><br><span class="line">        self.__score = score</span><br></pre></td></tr></table></figure>
+
+<p>私有属性。实例的变量名如果以<code>__</code>开头，就变成了一个私有变量（private），只有内部可以访问，外部不能访问，如上的score。</p>
+</li>
+<li><p>Python是动态语言，Java是静态语言。动态是说你的数据结构的类型是在运行时确定的，不要求在编译时写死是整数就只能是整数。这也导致了继承体系没那么严格</p>
+</li>
+<li><p>获取对象信息。<code>type()</code>返回对应class类型。<code>dir()</code>返回对象的所有属性和方法。</p>
+</li>
+<li><p>类似<code>__xxx__</code>的属性和方法在Python中都是有特殊用途的，比如<code>__len__</code>方法返回长度。</p>
+</li>
+<li><p>允许多重继承。<code>class Bat(Mammal, Flyable)</code></p>
+</li>
+<li><p>包装set和get，追求简洁的python。<code>@property</code>和<code>@xx.setter</code></p>
+</li>
+<li><p><code>__call__</code>，把实例当作函数来看</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Student</span>(<span class="title class_ inherited__">object</span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, name</span>):</span><br><span class="line">        self.name = name</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__call__</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;My name is %s.&#x27;</span> % self.name)</span><br><span class="line">        </span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s = Student(<span class="string">&#x27;Michael&#x27;</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s() <span class="comment"># self参数不要传入</span></span><br><span class="line">My name <span class="keyword">is</span> Michael.</span><br></pre></td></tr></table></figure></li>
+</ol>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://kop000.github.io/2023/11/13/%E6%82%9F%E6%80%A7%E9%80%86%E5%A4%A9%EF%BC%9A%E6%88%91%E5%9C%A8%E8%AF%B8%E5%A4%A9%E9%81%93Python/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>  
+    </footer>
+  </div>
+
+   
+  <nav class="article-nav">
+    
+    
+      <a href="/2023/10/29/%E5%AE%8F%E8%A7%82%E7%BB%8F%E6%B5%8E%E5%B0%8F%E5%88%86%E6%9E%90/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">宏观经济小分析</div>
+      </a>
+    
+  </nav>
+
+   
+<!-- valine评论 -->
+<div id="vcomments-box">
+  <div id="vcomments"></div>
+</div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="https://cdn.staticfile.org/valine/1.4.16/Valine.min.js"></script>
+<script>
+  new Valine({
+    el: "#vcomments",
+    app_id: "",
+    app_key: "",
+    path: window.location.pathname,
+    avatar: "monsterid",
+    placeholder: "给我的文章加点评论吧~",
+    recordIP: true,
+  });
+  const infoEle = document.querySelector("#vcomments .info");
+  if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0) {
+    infoEle.childNodes.forEach(function (item) {
+      item.parentNode.removeChild(item);
+    });
+  }
+</script>
+<style>
+  #vcomments-box {
+    padding: 5px 30px;
+  }
+
+  @media screen and (max-width: 800px) {
+    #vcomments-box {
+      padding: 5px 0px;
+    }
+  }
+
+  #vcomments-box #vcomments {
+    background-color: #fff;
+  }
+
+  .v .vlist .vcard .vh {
+    padding-right: 20px;
+  }
+
+  .v .vlist .vcard {
+    padding-left: 10px;
+  }
+</style>
+
+ 
+   
+  
+    
+</article>
+
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2023
+        一只鼻孔
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      <li>
+        <!-- cnzz统计 -->
+        
+      </li>
+    </ul>
+  </div>
+</footer>    
+    </main>
+    <div class="float_btns">
+      <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+    </div>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/3.jpg" alt="一只鼻孔在路上"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" target="_blank" rel="noopener" href="https://music.163.com/outchain/player?type=4&id=985447545&auto=0&height=200">音乐</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" target="_blank" rel="noopener" href="https://feelma.lofter.com/">摄影</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/about">关于我</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="Search">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-3.6.0.min.js"></script>
+ 
+<script src="/js/lazyload.min.js"></script>
+
+<!-- Tocbot -->
+ 
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: ".tocbot",
+    contentSelector: ".article-entry",
+    headingSelector: "h1, h2, h3, h4, h5, h6",
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: "main",
+    positionFixedSelector: ".tocbot",
+    positionFixedClass: "is-position-fixed",
+    fixedSidebarOffset: "auto",
+  });
+</script>
+
+<script src="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.js"></script>
+<link
+  rel="stylesheet"
+  href="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.css"
+/>
+<script src="https://cdn.staticfile.org/justifiedGallery/3.8.1/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+<!-- ImageViewer -->
+ <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/default-skin/default-skin.min.css">
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.js"></script>
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script> 
+<!-- MathJax -->
+
+<!-- Katex -->
+
+<!-- busuanzi  -->
+
+<!-- ClickLove -->
+
+<!-- ClickBoom1 -->
+
+<!-- ClickBoom2 -->
+
+<!-- CodeCopy -->
+ 
+<link rel="stylesheet" href="/css/clipboard.css">
+ <script src="https://cdn.staticfile.org/clipboard.js/2.0.10/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+ 
+<!-- CanvasBackground -->
+
+<script>
+  if (window.mermaid) {
+    mermaid.initialize({ theme: "forest" });
+  }
+</script>
+
+
+    
+    
+
+  </div>
+</body>
+
+</html>
