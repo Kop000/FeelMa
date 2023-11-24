@@ -91,7 +91,7 @@
   
     <div class="article-entry" itemprop="articleBody">
        
-  <h2 id="爬：东方财富网-行情中心"><a href="#爬：东方财富网-行情中心" class="headerlink" title="爬：东方财富网-行情中心"></a><strong>爬：东方财富网-行情中心</strong></h2><p>一直想试但又一直没试过，这次想去的量化实习里有这个要求，那就小踹一下。选的网页是东方财富网的每日行业排名，共5页，每页20行，让我们开始吧~</p>
+  <p>一直想试但又一直没试过，这次想去的量化实习里有这个要求，那就小踹一下。选的网页是东方财富网的每日行业排名，共5页，每页20行，让我们开始吧~</p>
 <span id="more"></span>
 
 <blockquote>
@@ -212,6 +212,32 @@
 
   
    
+<div class="gitalk" id="gitalk-container"></div>
+
+<link rel="stylesheet" href="https://cdn.staticfile.org/gitalk/1.7.2/gitalk.min.css">
+
+
+<script src="https://cdn.staticfile.org/gitalk/1.7.2/gitalk.min.js"></script>
+
+
+<script src="https://cdn.staticfile.org/blueimp-md5/2.19.0/js/md5.min.js"></script>
+
+<script type="text/javascript">
+  var gitalk = new Gitalk({
+    clientID: '7b5cef9753679a4df580',
+    clientSecret: 'eb5d142b9d33854c88d3974fc511456aafb46a19',
+    repo: 'noseTalk',
+    owner: 'Kop000',
+    admin: ['Kop000'],
+    // id: location.pathname,      // Ensure uniqueness and length less than 50
+    id: md5(location.pathname),
+    distractionFreeMode: false,  // Facebook-like distraction free mode
+    pagerDirection: 'last'
+  })
+
+  gitalk.render('gitalk-container')
+</script>
+
   
     
 </article>
