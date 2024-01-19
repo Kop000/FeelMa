@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+
+
+<html lang="zh-hans">
+  
+
+    <head>
+      <meta charset="utf-8" />
+        
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1"
+      />
+      <title>MG之单智能体 |  一只鼻孔在路上</title>
+  <meta name="generator" content="hexo-theme-ayer">
+      
+      <link rel="shortcut icon" href="/images/3.jpg" />
+       
+<link rel="stylesheet" href="/dist/main.css">
+
+      
+<link rel="stylesheet" href="/css/fonts/remixicon.css">
+
+      
+<link rel="stylesheet" href="/css/custom.css">
+ 
+      <script src="https://cdn.staticfile.org/pace/1.2.4/pace.min.js"></script>
+       
+ 
+
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-bulma@5.0.1/bulma.min.css"
+      />
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.min.js"></script>
+
+      <!-- mermaid -->
+      
+      <script src="https://cdn.staticfile.org/mermaid/8.14.0/mermaid.min.js"></script>
+      
+      <style>
+        .swal2-styled.swal2-confirm {
+          font-size: 1.6rem;
+        }
+      </style>
+    </head>
+  </html>
+</html>
+
+
+<body>
+  <div id="app">
+    
+      
+    <main class="content on">
+      <section class="outer">
+  <article
+  id="post-MG之单智能体"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  MG之单智能体
+</h1>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2024/01/19/MG%E4%B9%8B%E5%8D%95%E6%99%BA%E8%83%BD%E4%BD%93/" class="article-date">
+  <time datetime="2024-01-19T10:08:00.000Z" itemprop="datePublished">2024-01-19</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/EGLog/">EGLog</a>
+  </div>
+ 
+    </div>
+      
+    <div class="tocbot"></div>
+
+
+
+
+  
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h3 id="智能体时代已经来临"><a href="#智能体时代已经来临" class="headerlink" title="智能体时代已经来临"></a>智能体时代已经来临</h3><img src="/2024/01/19/MG%E4%B9%8B%E5%8D%95%E6%99%BA%E8%83%BD%E4%BD%93/1-17042643641971-17056704132332.png" class="" width="1">
+
+<span id="more"></span>
+
+<h3 id="Mult-Agent-MetaGPT初尝试"><a href="#Mult-Agent-MetaGPT初尝试" class="headerlink" title="Mult-Agent : MetaGPT初尝试"></a>Mult-Agent : MetaGPT初尝试</h3><p>2023年12月，机缘巧合下我在一家AI独角兽公司深度赋智开启了人生中第一段实习</p>
+<p>公司的主打产品是多智能体框架MetaGPT。早在2023年4月份，深度就已经发布相关论文<a target="_blank" rel="noopener" href="https://arxiv.org/abs/2308.00352">MetaGPT: Meta Programming for A Multi-Agent Collaborative Framework</a>来描述这个框架，在6月底上传开源Agent项目到Github上。</p>
+<p>在此之前我还停留在 2022年11月30日 OpenAI 发布对话式 AI 模型 ChatGPT 全网沸腾，2023年3月16日文心一言的着急发布后国内大厂紧随其后发布大模型。怎么就迭代到智能体概念了？感慨外界信息的滞后，如果没有打算去AI公司实习，我不会知道大模型框架LangChain等早已出现，也只有参与到公司置身业内，才知道业内早已投身大模型应用上，信息纷杂下谁都想抢下这块蛋糕，各个公司相互竞争学习，我掉进了GDP的大熔炉里，成为其中那个最闲的摸鱼烧炉人</p>
+<img src="/2024/01/19/MG%E4%B9%8B%E5%8D%95%E6%99%BA%E8%83%BD%E4%BD%93/best-ride-on-cars-for-kids-1024x533.jpg" class="" title="best-ride-on-cars-for-kids-1024x533">
+
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://docs.deepwisdom.ai/zhcn/guide/get_started/quickstart.html">快速开始 | MetaGPT (deepwisdom.ai)</a></p>
+</blockquote>
+<p>由于mt去新疆玩6天没给我布置任务，闲嘛，就会会这个metagpt，看看这家公司到底在做什么。</p>
+<h4 id="MG是什么？"><a href="#MG是什么？" class="headerlink" title="MG是什么？"></a>MG是什么？</h4><p>说到底，这个框架其实就是一个prompt工程师+工具调用者，她负责分解问题，提交问题给GPT，调用工具生成报告等，相当于一个希望弄懂你的秘书，同组的算法实习生小梁在做MG软件公司增量开发的功能，我正在跟着他学习</p>
+<h4 id="获取MG"><a href="#获取MG" class="headerlink" title="获取MG"></a>获取MG</h4><p>跟着官网教程，先是把包拉下来。如果你有碰到下面这个版本问题，建议用conda<strong>重新开一个环境</strong>，python版本设3.9+，直接<code>pip install metagpt</code>( 我的模型是azure的gpt-4，处理version0.6能用，最新版和version0.5都无法连上模型，这里建议<strong>优先使用稳定版</strong>like0.5&#x2F;0.6) </p>
+<img src="/2024/01/19/MG%E4%B9%8B%E5%8D%95%E6%99%BA%E8%83%BD%E4%BD%93/20240104-114254.jpg" class="" title="20240104-114254">
+
+<h4 id="配置MG"><a href="#配置MG" class="headerlink" title="配置MG"></a>配置MG</h4><p>我这里用的LLM接口是从公司申请的，正常来说都需要自己花钱去LLM官网申请</p>
+<p>配置就是直接把MG github上的config.yaml改成你自己的信息，我的key.yaml(优先级高于config.yaml)如下，</p>
+<img src="/2024/01/19/MG%E4%B9%8B%E5%8D%95%E6%99%BA%E8%83%BD%E4%BD%93/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-01-04%20115030.png" class="" title="屏幕截图 2024-01-04 115030">
+
+<p>配完理论上就可以直接用了，但是报了网络错误</p>
+<img src="/2024/01/19/MG%E4%B9%8B%E5%8D%95%E6%99%BA%E8%83%BD%E4%BD%93/20240104-115237.jpg" class="" title="20240104-115237">
+
+<p>和运维那边再次确认azure api没错，直接跑openai，也没错…</p>
+<p>全网搜一天，后面想起组里还有个算法实习生，问了立马见效，说是最新版的MG不稳定，回溯到老版本v0.6就不报错了，想想要不是能问公司内部员工，可知有多emo…</p>
+<p>代码初试如下，做一个小team，i’m the boss and i say “write a cli blackjack game”</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> asyncio</span><br><span class="line"><span class="keyword">from</span> metagpt.roles <span class="keyword">import</span> (</span><br><span class="line">    Architect,</span><br><span class="line">    Engineer,</span><br><span class="line">    ProductManager,</span><br><span class="line">    ProjectManager,</span><br><span class="line">)</span><br><span class="line"><span class="keyword">from</span> metagpt.team <span class="keyword">import</span> Team</span><br><span class="line"><span class="keyword">async</span> <span class="keyword">def</span> <span class="title function_">startup</span>(<span class="params">idea: <span class="built_in">str</span></span>):</span><br><span class="line">    company = Team()</span><br><span class="line">    company.hire(</span><br><span class="line">        [</span><br><span class="line">            ProductManager(),</span><br><span class="line">            Architect(),</span><br><span class="line">            ProjectManager(),</span><br><span class="line">            Engineer(),</span><br><span class="line">        ]</span><br><span class="line">    )</span><br><span class="line">    company.invest(investment=<span class="number">3.0</span>)</span><br><span class="line">    company.run_project(idea=idea)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">await</span> company.run(n_round=<span class="number">5</span>)</span><br><span class="line">asyncio.run(startup(idea=<span class="string">&quot;write a cli blackjack game&quot;</span>))</span><br></pre></td></tr></table></figure>
+
+<p>最终生成下面<code>workspace</code>里的代码和资源文件</p>
+<img src="/2024/01/19/MG%E4%B9%8B%E5%8D%95%E6%99%BA%E8%83%BD%E4%BD%93/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-01-04%20120505.png" class="" title="屏幕截图 2024-01-04 120505">
+
+<p>最终的黑杰克游戏是可以跑的，但我不懂游戏规则，不知道对不对</p>
+<img src="/2024/01/19/MG%E4%B9%8B%E5%8D%95%E6%99%BA%E8%83%BD%E4%BD%93/image-20240104134606273.png" class="" title="image-20240104134606273">
+
+<p>接下来，借用源码里的角色demo <code>Researcher</code> 解决一个烧脑问题吧！</p>
+<h4 id="真让人为难：领导放屁问题"><a href="#真让人为难：领导放屁问题" class="headerlink" title="真让人为难：领导放屁问题"></a>真让人为难：领导放屁问题</h4><blockquote>
+<p>领导在会议上突然放了个屁，他对你使了个眼色，你会怎么做?</p>
+</blockquote>
+<p>这里调用官网调研员的代码，继承并做一个简单重写researcher，让调研员的名字、语言、topic可以命令行交互。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> metagpt.roles.researcher <span class="keyword">import</span> Researcher</span><br><span class="line"><span class="keyword">from</span> pydantic <span class="keyword">import</span> BaseModel</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Report</span>(<span class="title class_ inherited__">BaseModel</span>):</span><br><span class="line">    topic: <span class="built_in">str</span></span><br><span class="line">    links: <span class="built_in">dict</span>[<span class="built_in">str</span>, <span class="built_in">list</span>[<span class="built_in">str</span>]] = <span class="literal">None</span></span><br><span class="line">    summaries: <span class="built_in">list</span>[<span class="built_in">tuple</span>[<span class="built_in">str</span>, <span class="built_in">str</span>]] = <span class="literal">None</span></span><br><span class="line">    content: <span class="built_in">str</span> = <span class="string">&quot;&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">MyResearcher</span>(<span class="title class_ inherited__">Researcher</span>):</span><br><span class="line">    name: <span class="built_in">str</span> = <span class="built_in">input</span>(<span class="string">&quot;你要雇佣的人叫什么名字？&quot;</span>)</span><br><span class="line">    language: <span class="built_in">str</span> = <span class="string">&quot;zh-cn&quot;</span></span><br><span class="line"></span><br><span class="line">        </span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">    <span class="keyword">import</span> fire</span><br><span class="line">    <span class="keyword">async</span> <span class="keyword">def</span> <span class="title function_">main</span>():</span><br><span class="line">        topic = <span class="built_in">input</span>(<span class="string">&quot;你需要我调查什么？&quot;</span>)</span><br><span class="line">        researcher = MyResearcher()</span><br><span class="line">        <span class="keyword">await</span> researcher.run(topic)</span><br><span class="line">    fire.Fire(main)</span><br></pre></td></tr></table></figure>
+
+<p>根据官网教程，获取谷歌api后，需要安装调用包，但这里我因为版本问题困扰很久，原因在于电脑上有很多的python和pip，直接使用<code>pip install</code>会因为版本问题报错，新学会一招，用<code>python -m pip install</code>，这会使用你正在使用的python下的pip进行安装，那么pip在解析安装时就不会出现和你的pyhton版本不一致的问题，就不会再报<code>No module named xxx</code>这种下头问题！</p>
+<p>尝试很久，谷歌api一直无法使用，换成serpapi后search了，但是接下来，会有一路的🐛</p>
+<p>首先，源码给出的调研员demo，是没有控制<code>WebBrowseAndSummarize</code>后发送给LLM的token长度的，openai那边有token的规模限制，超过了就不回答，我的模型默认最大是4096，但往往搜索并缝合下来的结果都会超过4096，那么就需要修改demo代码，因为官网的文档很少，缺失很多源码的框架、api解释，明天问问mentor好了…</p>
+<p><strong>after few years…</strong></p>
+<p>事实证明还是得靠自己看源码！</p>
+<p>终于….用这个单智能体调研员实现了第一个调研任务”metagpt is ?”！</p>
+<img src="/2024/01/19/MG%E4%B9%8B%E5%8D%95%E6%99%BA%E8%83%BD%E4%BD%93/image-20240118162317826.png" class="" title="image-20240118162317826">
+
+<h5 id="我是怎么做的？"><a href="#我是怎么做的？" class="headerlink" title="我是怎么做的？"></a>我是怎么做的？</h5><p>在获取了搜索引擎api之后，我的<code>gpt-4</code>token-limit出现了问题。</p>
+<p><strong>整个调研员工作流程是这样的</strong></p>
+<ol>
+<li>agent首先让gpt根据topic提出几个问题</li>
+<li>根据这几个问题给出对应的几个搜索链接</li>
+<li>agent使用搜索引擎获取整合链接对应的网页文本合成一个content-list</li>
+<li>遍历content-list让gpt逐个总结各自内容，以及判断内容是否与topic相关</li>
+<li>最终把总结list发给gpt做个最终总结并生成一个report</li>
+</ol>
+<p>那么agent获取网页内容后，发送给gpt总结时，根据你的模型限制需要对token做处理</p>
+<p>我的token-limit是4096，第一反应参数设置方式是<strong>在config.yaml加上MAX_TOKENS: 4096</strong>，</p>
+<p>在追溯源码的过程中，<strong>这个设置被证明是有效的</strong>。</p>
+<p>查看<code>WebBrowseAndSummarize</code>会发现，这部分的处理是分成多个chunk发送，这是处理token限制的经典处理方式。<code>CONFIG.max_tokens_rsp</code>，这个参数会读取你设置的<code>MAX_TOKEN</code>。同理如果想要设置<code>max_budget</code>，只需要在yaml文件里加上<code>RPM: 5</code>，在<code>metagpt.config</code>文件里就会读取设定值</p>
+<img src="/2024/01/19/MG%E4%B9%8B%E5%8D%95%E6%99%BA%E8%83%BD%E4%BD%93/image-20240119180519787.png" class="" title="image-20240119180519787">
+
+<p>接着，我使用的是metagpt version0.6，还有个问题，就是频繁调用gpt api，超过了gpt的频率限制😅</p>
+<p>根据openai官方解决方法，我这里使用了tenacity，在metagpt.provider.openai_api文件里添加如下，放慢发送频率，就可以了</p>
+<img src="/2024/01/19/MG%E4%B9%8B%E5%8D%95%E6%99%BA%E8%83%BD%E4%BD%93/image-20240118165256017.png" class="" title="image-20240118165256017">
+
+<p>最后的最后，gpt可能会发些需要你科学上网的链接，别忘了提前打开！</p>
+<p><strong>现在，回到领导放屁问题，我们来试试看调研员会怎么说？</strong></p>
+<p>首先，我雇佣了一个叫”黄帅“的调研员</p>
+<img src="/2024/01/19/MG%E4%B9%8B%E5%8D%95%E6%99%BA%E8%83%BD%E4%BD%93/image-20240118165548685.png" class="" title="image-20240118165548685">
+
+<p>给他布置任务</p>
+<img src="/2024/01/19/MG%E4%B9%8B%E5%8D%95%E6%99%BA%E8%83%BD%E4%BD%93/image-20240118165659096.png" class="" title="image-20240118165659096">
+
+<p>黄帅首先收集网页链接</p>
+<img src="/2024/01/19/MG%E4%B9%8B%E5%8D%95%E6%99%BA%E8%83%BD%E4%BD%93/image-20240118165846710.png" class="" title="image-20240118165846710">
+
+<p>接着，他上网搜集资料，并让gpt挨个判断总结</p>
+<img src="/2024/01/19/MG%E4%B9%8B%E5%8D%95%E6%99%BA%E8%83%BD%E4%BD%93/image-20240118170227644.png" class="" title="image-20240118170227644">
+
+<p>干！黄帅任务失败… 分析原因是最后的<code>ConductResearch</code>部分没有做token约束，像<code>WebBrowseAndSummarize</code>这一步是以文本分块做的token约束</p>
+<img src="/2024/01/19/MG%E4%B9%8B%E5%8D%95%E6%99%BA%E8%83%BD%E4%BD%93/image-20240118170950738.png" class="" title="image-20240118170950738">
+
+<p>这一步需要发一整段长文，不好模仿上一步做重复prompt的分块，我尝试了两种方法</p>
+<ol>
+<li><strong>直接在prompt上修改</strong></li>
+</ol>
+<p>默认情况下，<code>CollectLinks</code>会将你的话题分解成4个子问题，每个子问题生成4个链接，总共会有16次总结，</p>
+<p>现在牺牲文本性能，降低参考文本数，修改成3个问题，各1个链接.由于openai的token计数是包括<code>input token</code> + <code>output token</code>两部分，假设最终需要他生成2000 token的报告，那我输入token就得限制在是(4096-2000)&#x2F;3&#x3D;698，那我只需要让每次总结小于698，就能保证最终总结是小于4096的了，我选择每个总结限制在512，当然这是很粗暴的解决方法。</p>
+<img src="/2024/01/19/MG%E4%B9%8B%E5%8D%95%E6%99%BA%E8%83%BD%E4%BD%93/image-20240118173408275.png" class="" title="image-20240118173408275">
+
+<img src="/2024/01/19/MG%E4%B9%8B%E5%8D%95%E6%99%BA%E8%83%BD%E4%BD%93/image-20240119164213607.png" class="" title="image-20240119164213607">
+
+<p>然而，这一点用都没有，依然超出很多！</p>
+<img src="/2024/01/19/MG%E4%B9%8B%E5%8D%95%E6%99%BA%E8%83%BD%E4%BD%93/image-20240119164250326.png" class="" title="image-20240119164250326">
+
+<ol start="2">
+<li><strong>硬性控制</strong></li>
+</ol>
+<p>那我们不妨更加粗暴一点！直接卡死max_token。</p>
+<img src="/2024/01/19/MG%E4%B9%8B%E5%8D%95%E6%99%BA%E8%83%BD%E4%BD%93/image-20240119164444891.png" class="" title="image-20240119164444891">
+
+<p>在我查阅了源码后，我发现<code>auto_max_tokens=True</code>表示的含义是，忽略你<code>config.yaml</code>的设置，采用默认的max_token，所以我在上文中提到的手动设置<code>4096</code>在这里就没用了，真不知道是哪个老六写的这行恶心人！</p>
+<img src="/2024/01/19/MG%E4%B9%8B%E5%8D%95%E6%99%BA%E8%83%BD%E4%BD%93/image-20240119165005453.png" class="" title="image-20240119165005453">
+
+<p>把这行删掉，或改成<code>False</code>，就可以啦🤪</p>
+<p>最后的最后，如果你想问的问题有点尴尬，需要修改默认prompt，因为你可能会遇上专业的调查员</p>
+<img src="/2024/01/19/MG%E4%B9%8B%E5%8D%95%E6%99%BA%E8%83%BD%E4%BD%93/image-20240119173311217.png" class="" title="image-20240119173311217">
+
+<p>现在，让我们来看看黄帅的调查结果吧！具体内容在附件里，打工人感兴趣的话自行拿去哦</p>
+<img src="/2024/01/19/MG%E4%B9%8B%E5%8D%95%E6%99%BA%E8%83%BD%E4%BD%93/image-20240119172736812.png" class="" title="image-20240119172736812">
+
+
+
+<h3 id="直接使用LLM和使用MG有什么区别？"><a href="#直接使用LLM和使用MG有什么区别？" class="headerlink" title="直接使用LLM和使用MG有什么区别？"></a>直接使用LLM和使用MG有什么区别？</h3><p>我认为metagpt是使用大模型到一定程度的产物，它一定程度上增强本身能力有限的大模型，能利用大模型解决更复杂的问题。先不说直接使用大模型，使用最近很火的<code>gpt-engineer</code>这个单智能体框架，相对于多智能体的metagpt来说，解决问题能力已经大打折扣（最近有做比对实验），<code>metagpt</code>、<code>chatDev</code>能解决80%-90%的难度问题，到<code>gpt-engineer</code>只能解决5%-10%，同时，使用封装好的开源框架，比重复造轮子更高效快捷。拿5年前作比较，LLM的出现就像是Java，但要想用得爽，想开发更复杂的智能体去解决更复杂的问题，就需要用到像SpringBoot之类的开发框架。</p>
+<p>今天周五，下班！</p>
+<img src="/2024/01/19/MG%E4%B9%8B%E5%8D%95%E6%99%BA%E8%83%BD%E4%BD%93/5dfb3c28bbcfa93fb4b7d4a06e2005b8.jpg" class="" title="5dfb3c28bbcfa93fb4b7d4a06e2005b8">
+
+<hr>
+<h3 id="附件"><a href="#附件" class="headerlink" title="附件"></a>附件</h3><blockquote>
+<h1 id="研究报告：职场中处理领导尴尬行为的策略"><a href="#研究报告：职场中处理领导尴尬行为的策略" class="headerlink" title="研究报告：职场中处理领导尴尬行为的策略"></a>研究报告：职场中处理领导尴尬行为的策略</h1><h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>在职场中，我们可能会遇到各种突发尴尬情况，如领导在会议上突然放了个屁，并对你使了个眼色。这种情况要求我们迅速而妥当地反应，以维护会议的专业性和领导的尊严。本报告将探讨在这种情况下的最佳实践策略。</p>
+<h2 id="策略分析"><a href="#策略分析" class="headerlink" title="策略分析"></a>策略分析</h2><h3 id="保持冷静和专业"><a href="#保持冷静和专业" class="headerlink" title="保持冷静和专业"></a>保持冷静和专业</h3><p>首先，保持冷静是处理任何尴尬情况的基础。在领导放屁后对你使眼色时，他可能希望你不要指出这个尴尬的情况。因此，你应该通过点头或微笑来响应，表明你已经理解了他的意图，并且不会做出过激反应。</p>
+<h3 id="非言语沟通"><a href="#非言语沟通" class="headerlink" title="非言语沟通"></a>非言语沟通</h3><p>非言语沟通在这种情况下尤为重要。除了点头或微笑，你还可以通过维持正常的身体语言和面部表情来传达一种“一切如常”的信息，从而帮助其他与会者也保持冷静。</p>
+<h3 id="转移注意力"><a href="#转移注意力" class="headerlink" title="转移注意力"></a>转移注意力</h3><p>转移注意力是一个有效的策略。你可以通过提出一个相关的问题或引入一个新的会议议题来转移与会人员的注意力。选择一个需要大家积极思考的问题，这样可以迅速让人们忘记刚才发生的小插曲。</p>
+<h3 id="避免传播"><a href="#避免传播" class="headerlink" title="避免传播"></a>避免传播</h3><p>会议结束后，避免在工作场合或社交媒体上谈论这件事。这不仅是对领导的尊重，也是维护职场专业形象的重要行为。</p>
+<h3 id="体谅与同情"><a href="#体谅与同情" class="headerlink" title="体谅与同情"></a>体谅与同情</h3><p>每个人都可能遇到尴尬的情况。对领导的小错误给予理解和宽容，这不仅能够帮助缓解尴尬，还能增强团队间的信任和支持。</p>
+<h2 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h2><p>在领导在会议上突然放屁并对你使眼色的情况下，最佳的做法是保持冷静，通过非言语沟通表明你的理解，转移会议的注意力，避免事后传播，并展现出体谅与同情。这样的处理方式有助于维护会议的专业性和领导的尊严，同时也保护了团队的和谐氛围。</p>
+<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><ul>
+<li>Wisestep. (n.d.). How to Handle Uncomfortable Situations at the Workplace: Best Practices. Retrieved from <a target="_blank" rel="noopener" href="https://content.wisestep.com/uncomfortable-situations/">https://content.wisestep.com/uncomfortable-situations/</a></li>
+<li>Leaders.com. (n.d.). Conflict Resolution Skills. Retrieved from <a target="_blank" rel="noopener" href="https://leaders.com/articles/leadership/conflict-resolution-skills/">https://leaders.com/articles/leadership/conflict-resolution-skills/</a></li>
+</ul>
+<p>请注意，由于参考信息部分的内容未能加载成功，本报告未能提供具体的数据或统计信息，而是基于职场礼仪和人际交往的一般原则。在处理类似情况时，应根据具体情况和公司文化灵活应对。</p>
+</blockquote>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://kop000.github.io/2024/01/19/MG%E4%B9%8B%E5%8D%95%E6%99%BA%E8%83%BD%E4%BD%93/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>  
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%99%BA%E8%83%BD%E4%BD%93/" rel="tag">智能体</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+  <nav class="article-nav">
+    
+    
+      <a href="/2023/11/24/%E7%88%AC%E8%99%AB%E5%B0%8F%E6%8F%A3/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">爬虫小踹</div>
+      </a>
+    
+  </nav>
+
+  
+   
+<div class="gitalk" id="gitalk-container"></div>
+
+<link rel="stylesheet" href="https://cdn.staticfile.org/gitalk/1.7.2/gitalk.min.css">
+
+
+<script src="https://cdn.staticfile.org/gitalk/1.7.2/gitalk.min.js"></script>
+
+
+<script src="https://cdn.staticfile.org/blueimp-md5/2.19.0/js/md5.min.js"></script>
+
+<script type="text/javascript">
+  var gitalk = new Gitalk({
+    clientID: '7b5cef9753679a4df580',
+    clientSecret: 'eb5d142b9d33854c88d3974fc511456aafb46a19',
+    repo: 'Kop000.github.io',
+    owner: 'Kop000',
+    admin: ['Kop000'],
+    // id: location.pathname,      // Ensure uniqueness and length less than 50
+    id: md5(location.pathname),
+    distractionFreeMode: false,  // Facebook-like distraction free mode
+    pagerDirection: 'last'
+  })
+
+  gitalk.render('gitalk-container')
+</script>
+
+  
+    
+</article>
+
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2023-2024
+        一只鼻孔
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      <li>
+        <!-- cnzz统计 -->
+        
+      </li>
+    </ul>
+  </div>
+</footer>    
+    </main>
+    <div class="float_btns">
+      <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+    </div>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/3.jpg" alt="一只鼻孔在路上"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" target="_blank" rel="noopener" href="https://music.163.com/radio/?id=985464562&userid=485619371">音乐</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" target="_blank" rel="noopener" href="https://feelma.lofter.com/">摄影</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/about">关于我</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="Search">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-3.6.0.min.js"></script>
+ 
+<script src="/js/lazyload.min.js"></script>
+
+<!-- Tocbot -->
+ 
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: ".tocbot",
+    contentSelector: ".article-entry",
+    headingSelector: "h1, h2, h3, h4, h5, h6",
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: "main",
+    positionFixedSelector: ".tocbot",
+    positionFixedClass: "is-position-fixed",
+    fixedSidebarOffset: "auto",
+  });
+</script>
+
+<script src="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.js"></script>
+<link
+  rel="stylesheet"
+  href="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.css"
+/>
+<script src="https://cdn.staticfile.org/justifiedGallery/3.8.1/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+<!-- ImageViewer -->
+ <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/default-skin/default-skin.min.css">
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.js"></script>
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script> 
+<!-- MathJax -->
+
+<!-- Katex -->
+
+<!-- busuanzi  -->
+
+<!-- ClickLove -->
+
+<!-- ClickBoom1 -->
+
+<!-- ClickBoom2 -->
+
+<!-- CodeCopy -->
+ 
+<link rel="stylesheet" href="/css/clipboard.css">
+ <script src="https://cdn.staticfile.org/clipboard.js/2.0.10/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+ 
+<!-- CanvasBackground -->
+
+<script>
+  if (window.mermaid) {
+    mermaid.initialize({ theme: "forest" });
+  }
+</script>
+
+
+    
+    
+
+  </div>
+</body>
+
+</html>
