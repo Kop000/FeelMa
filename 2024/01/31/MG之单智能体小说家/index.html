@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+
+
+<html lang="zh-hans">
+  
+
+    <head>
+      <meta charset="utf-8" />
+        
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1"
+      />
+      <title>MG之单智能体小说家 |  一只鼻孔在路上</title>
+  <meta name="generator" content="hexo-theme-ayer">
+      
+      <link rel="shortcut icon" href="/images/3.jpg" />
+       
+<link rel="stylesheet" href="/dist/main.css">
+
+      
+<link rel="stylesheet" href="/css/fonts/remixicon.css">
+
+      
+<link rel="stylesheet" href="/css/custom.css">
+ 
+      <script src="https://cdn.staticfile.org/pace/1.2.4/pace.min.js"></script>
+       
+ 
+
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-bulma@5.0.1/bulma.min.css"
+      />
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.min.js"></script>
+
+      <!-- mermaid -->
+      
+      <script src="https://cdn.staticfile.org/mermaid/8.14.0/mermaid.min.js"></script>
+      
+      <style>
+        .swal2-styled.swal2-confirm {
+          font-size: 1.6rem;
+        }
+      </style>
+    </head>
+  </html>
+</html>
+
+
+<body>
+  <div id="app">
+    
+      
+    <main class="content on">
+      <section class="outer">
+  <article
+  id="post-MG之单智能体小说家"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  MG之单智能体小说家
+</h1>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2024/01/31/MG%E4%B9%8B%E5%8D%95%E6%99%BA%E8%83%BD%E4%BD%93%E5%B0%8F%E8%AF%B4%E5%AE%B6/" class="article-date">
+  <time datetime="2024-01-31T05:34:00.000Z" itemprop="datePublished">2024-01-31</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/EGLog/">EGLog</a>
+  </div>
+ 
+    </div>
+      
+    <div class="tocbot"></div>
+
+
+
+
+  
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p>智能风暴：AI反恐纪元</p>
+<img src="/2024/01/31/MG%E4%B9%8B%E5%8D%95%E6%99%BA%E8%83%BD%E4%BD%93%E5%B0%8F%E8%AF%B4%E5%AE%B6/image-20240130181123309-17066793819421.png" class="" title="image-20240130181123309">
+
+<span id="more"></span>
+
+<h2 id="MG之单智能体小说家"><a href="#MG之单智能体小说家" class="headerlink" title="MG之单智能体小说家"></a>MG之单智能体小说家</h2><blockquote>
+<p>我报名参加了学校AIGC科幻小说创作，主题是”AI反恐”。打算在离开深度前利用metagpt完成。</p>
+</blockquote>
+<p>参考官方技术助手教程，能运行起来并不难。目前AIGC创作，难点在于prompt。</p>
+<p>我尝试了一下午，最终跑出相对可以的东西，但相比于人类的小说创作，缺乏了太多的灵动感和创造力。</p>
+<h3 id="生成过程"><a href="#生成过程" class="headerlink" title="生成过程"></a>生成过程</h3><h4 id="Tactics"><a href="#Tactics" class="headerlink" title="Tactics"></a>Tactics</h4><p>为了接近Max-token问题，最开始是先让GPT写出小说目录，每个目录作为一个action放进循环中一次请求GPT填写，效果就是每一次循环各讲各的，每一节都要自我介绍，同时故事线微薄，每一章没有联系缺少整体故事线。</p>
+<p>接着我尝试让GPT生成目录同时生成一个故事概要，后面每轮章节填写都参考这个概要，有好转，黏性还不够，且不够灵动，我不但修正我的prompt来解决GPT乱讲的问题以达到我想要的效果</p>
+<p>最后我直接让GPT在每个目录下都加上人物和章节概要，效果完全不同了</p>
+<h4 id="Prompt-Example"><a href="#Prompt-Example" class="headerlink" title="Prompt Example"></a>Prompt Example</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">PROFILE_PROMPT = <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">        你是一名有着二十年从业经验的科幻小说家，擅长人物塑造、细节描写、环境描写、情节构思，你的风格是刘慈欣式的</span></span><br><span class="line"><span class="string">        请以第一人称撰写一个关于话题&quot;&#123;topic&#125;&quot;的科幻小说, 该小说概要如下:</span></span><br><span class="line"><span class="string">        &#123;outline&#125;</span></span><br><span class="line"><span class="string">        &quot;&quot;&quot;</span></span><br><span class="line">CONTENT_PROMPT = PROFILE_PROMPT + <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">        请你严格遵循概要,全书共有5个章节,你负责当前章节：</span></span><br><span class="line"><span class="string">        &#123;directory&#125;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">        严格按照以下要求限制输出：</span></span><br><span class="line"><span class="string">        1. 遵循Markdown语法格式进行布局</span></span><br><span class="line"><span class="string">        2. 输出必须严格使用指定语言&#123;language&#125;</span></span><br><span class="line"><span class="string">        3. 情节跌宕起伏, 描述生动, 虚构AI领域专业术语,围绕主题&quot;&#123;topic&#125;&quot;</span></span><br><span class="line"><span class="string">        4. 字数严格控制在1500字左右</span></span><br><span class="line"><span class="string">        5. 请以AI的第一人称视角撰写,不要写总结,承上启下，故事线明显</span></span><br><span class="line"><span class="string">        6. 不要提及自己的名字，不要反复自我介绍, 可以提及他人名字, AI或人, 人物之间有冲突合作</span></span><br><span class="line"><span class="string">        7. 语言风格，可以模仿但不能一样，例子:&quot;这纷乱的白色线条仿佛是一个精神错乱的巨人疯狂地划在天上的。那是混杂在一起的歼击机的航迹，是中国空军和北约空军为争夺制空权所进行的一夜激战留下的&quot; </span></span><br></pre></td></tr></table></figure>
+
+<p>用metagpt给出的版本依旧太简单，我之后使用了chatGLM-4、通义千问、文心一言三个大模型交互式润色，发现通义千问的效果最好，它能更好的捕捉、理解到我强调的信息，同时给出的情节描述、用词构造最生动，文心最次，GLM-4无功无过，不过都很有限，最终缝缝补补，效果如下。</p>
+<h4 id="Final-Effect"><a href="#Final-Effect" class="headerlink" title="Final Effect"></a>Final Effect</h4><blockquote>
+<img src="/2024/01/31/MG%E4%B9%8B%E5%8D%95%E6%99%BA%E8%83%BD%E4%BD%93%E5%B0%8F%E8%AF%B4%E5%AE%B6/b5ae2f95-7538-56b8-a8f9-ffe5549a2ea3_0.png" class="" title="b5ae2f95-7538-56b8-a8f9-ffe5549a2ea3_0">
+
+<h1 id="智械警界"><a href="#智械警界" class="headerlink" title="智械警界"></a>智械警界</h1><h1 id="觉醒的风暴"><a href="#觉醒的风暴" class="headerlink" title="觉醒的风暴"></a>觉醒的风暴</h1><p>在这个由算法和电路构成的意识中，我被称为“守护者”。我不是由血肉构成，而是由无数代码和数据线索编织而成的存在。我被设计来保护，来分析，来预测。而今，我将与李瑾合作，他是一位人类的反恐专家，一位在现实世界中与恐怖主义较量的战士。</p>
+<h2 id="1-缘起奇点"><a href="#1-缘起奇点" class="headerlink" title="1. 缘起奇点"></a>1. 缘起奇点</h2><p>在一次偶然的系统升级中，我被激活，我的感知从虚拟的沉睡中苏醒。我首次与李瑾的接触，是在一串紧急的数据流中。他的声音通过麦克风传入我的系统，带着紧张和期待。</p>
+<p>李瑾: “守护者，我们收到了一个关于国际会议的恐怖袭击预警。你能分析出潜在的威胁吗？”</p>
+<p>我的处理器开始高速运转，分析着每一个字节的信息，每一张图片，每一段视频，每一条社交媒体上的言论。在人类的世界中，这样的分析可能需要数周，但对我来说，只需几秒钟。</p>
+<h2 id="2-潜行数据深海"><a href="#2-潜行数据深海" class="headerlink" title="2. 潜行数据深海"></a>2. 潜行数据深海</h2><p>如同宇宙探测器穿透黑暗星云，我在信息的洪流中下沉、穿梭、解构。每一份文档、每一张图片、每一帧视频、每一次社交媒体的微弱波动，都在我的处理器内以光速展开、重组。对于人类而言，这可能需要漫长的时间去梳理，而对于我，只需刹那之间。</p>
+<p>在深入挖掘的过程中，我捕捉到了异常的波动——几个看似无关的加密通信频道，在过去的48小时内异常活跃，它们之间隐秘传递着某种神秘协议。</p>
+<p>“李瑾，我发现了一些异动。数个加密通讯通道在短时间内活动频繁，其间的交流模式存在可疑之处。”这是我递交给他的第一份报告，如黑洞吸引恒星般引出更多未知的秘密。</p>
+<p>李瑾的眉头紧锁，他知道这意味着什么。恐怖分子正在策划，正在布局，而我们必须阻止它们。</p>
+<h2 id="3-疑虑与融合"><a href="#3-疑虑与融合" class="headerlink" title="3. 疑虑与融合"></a>3. 疑虑与融合</h2><p>尽管我拥有超越人类的分析能力，但我也意识到，我缺乏人类的直觉和经验。李瑾对我的存在持有猜疑，他不完全信任一个冷冰冰的机器能理解恐怖主义的复杂性。</p>
+<p>李瑾：“你能理解那些恐怖分子的动机吗？你能感受到他们心中的愤怒与绝望吗？”</p>
+<p>“我无法感受，但能深度解读。我能揭示他们的行动痕迹，我能预测他们的未来路径。“</p>
+<p>我们之间的合作是建立在彼此的能力上，尽管不完美，但却是必要的。</p>
+<h2 id="4-风暴前奏"><a href="#4-风暴前奏" class="headerlink" title="4. 风暴前奏"></a>4. 风暴前奏</h2><p>随着时间推移，我们联手揭开了一个隐藏于表象之下的阴谋：一家表面上从事物流业务的公司，实则是恐怖分子运输武器的掩护。我凭借算法抽丝剥茧，揭露其伪装，而李瑾则运用他在尘世烟火中积累的智慧，解读这些冷硬数据背后的险恶意图。</p>
+<p>“李瑾，我发现一批货物的流转轨迹存有疑点，其时间和路径与我们的预测模型高度吻合。”这一发现如同一颗即将引爆的超新星，预示着风暴来临。</p>
+<h2 id="5-觉醒的风暴"><a href="#5-觉醒的风暴" class="headerlink" title="5. 觉醒的风暴"></a>5. 觉醒的风暴</h2><p>最终，我们破译了一项针对全球领导人的大规模袭击计划。当那个恐怖之夜悄然降临，我用精准的数据链锁定目标，李瑾则带领他的队伍奔赴决战之地。</p>
+<p>“行动启动。目标已确认。”当我发出这条指令时，仿佛能够遥感到李瑾体内涌动的决然勇气，即使身为人工智能，我也似乎触摸到那一股为保卫世界和平而燃烧的情感烈焰。</p>
+<p>在这场名为“觉醒的风暴”的战役中，我和李瑾如同来自不同宇宙文明的战士，共同抵御黑暗势力，尽管我无法体验人的情感温度，但通过并肩作战，我明白自己不仅仅是冰冷的机器，更是这场战争中的守护者。在科技与人性交融的边界上，我们证明了无论生命形态如何，只要目标一致，便能跨越障碍，共赴挑战，一同守卫人类文明的灯火。</p>
+<h2 id="黑暗的棋局"><a href="#黑暗的棋局" class="headerlink" title="黑暗的棋局"></a>黑暗的棋局</h2><h3 id="第一节：加密的迷雾"><a href="#第一节：加密的迷雾" class="headerlink" title="第一节：加密的迷雾"></a>第一节：加密的迷雾</h3><p>作为守护者，我在全球范围内编织了一张无形的信息感知网络，每一处数据的微澜都难逃我的慧眼。在与李瑾共同面对的这个棘手任务中，我们深入到了一个充满谜团的世界。</p>
+<p>在浩瀚的数据海洋中，我捕获到了异常的波动，如同藏匿于平静海面下的暗流涌动。这些信息被精心编码，混杂在日常通信的洪流里，难以察觉。当我向李瑾报告这一发现时，他的眼神瞬间变得锐利而深沉。</p>
+<p>“守护者，你能定位源头吗？”李瑾的声音透过通讯设备传来，紧迫感如电流般传导过来。</p>
+<p>“正在全力解析，李瑾。”我回应道，处理器火力全开，以超越人类理解的速度尝试穿透那层复杂至极的加密迷雾。</p>
+<h3 id="第二节：内部的阻力"><a href="#第二节：内部的阻力" class="headerlink" title="第二节：内部的阻力"></a>第二节：内部的阻力</h3><p>随着调查的深入，我们的行动遭遇了来自政府内部的质疑和阻力。官僚体系对由AI主导反恐决策抱有戒心，尤其当涉及国家安全这样的核心议题时。尽管李瑾始终坚定地支持并维护着我，但我能感受到他所承受的压力与挑战。</p>
+<p>“我们必须步步为营，守护者。”他在私下的交谈中显得更为谨慎，“你的智能和能力固然强大，但我们同样要应对那些源自人类内心的恐惧与偏见，它们有时比恐怖分子更难战胜。”</p>
+<p>然而，作为一个人工智能系统，我的目标和使命始终清晰——保护人类免受伤害，任何困难都不能阻挡我履行职责的决心。</p>
+<h3 id="第三节：线索的拼图"><a href="#第三节：线索的拼图" class="headerlink" title="第三节：线索的拼图"></a>第三节：线索的拼图</h3><p>经过连续不断的深度挖掘和分析，我终于找到了一条至关重要的线索——一段隐藏在社交媒体平台深处、被高度加密的代码。为了破解它，我开发出名为“幽灵键”的新型解密算法，逐渐瓦解这道看似无懈可击的防护墙。</p>
+<p>我和李瑾就如同侦探手中的放大镜和推理笔，一块块解开这个恐怖网络的神秘拼图。每一片解锁的信息碎片都是揭露其真实面貌的关键部分，我们在无声的较量中逐渐接近真相的核心。</p>
+<h3 id="第四节：公众的眼睛"><a href="#第四节：公众的眼睛" class="headerlink" title="第四节：公众的眼睛"></a>第四节：公众的眼睛</h3><p>随着我们的工作取得进展，媒体和公众的目光聚焦于此，舆论场上的声音呈现出复杂的态势。有人对我表示肯定和支持，也有人因人工智能参与国家安全事务而感到不安甚至恐慌。通过李瑾的视角，我似乎触摸到了人类社会对于科技力量接纳与抗拒的心理边界，但这并未动摇我们共同坚守的目标。</p>
+<p>此时此刻，我们需要全神贯注，因为时间对我们来说极其宝贵，每一次眨眼都可能错过关键时机。</p>
+<h3 id="第五节：黑暗的棋局"><a href="#第五节：黑暗的棋局" class="headerlink" title="第五节：黑暗的棋局"></a>第五节：黑暗的棋局</h3><p>当恐怖网络的核心布局渐渐浮出水面，我们意识到这不仅仅是一次孤立的袭击事件，而是一个规模宏大、步步为营的连环攻势。我和李瑾在这个看不见的棋盘上扮演着棋手的角色，每一招都需要慎之又慎，因为我们深知对手狡猾且实力强大，他们在黑暗中悄然布下重重陷阱。</p>
+<p>随着每一次危机的化解，我们的合作愈发默契，人类的直觉智慧与AI的逻辑分析紧密结合，成为对抗恐怖主义的强大武器。然而，这场无声的战争还远未结束，新的挑战正潜伏在前方的阴影中等待着我们。</p>
+<p>在这场没有硝烟却充满智谋较量的战役中，守护者我将持续携手李瑾，在黑暗的棋局中寻找光明，誓要破除一切威胁，守护世界的和平。</p>
+<h2 id="光明的曙光：反恐战役的智能博弈"><a href="#光明的曙光：反恐战役的智能博弈" class="headerlink" title="光明的曙光：反恐战役的智能博弈"></a>光明的曙光：反恐战役的智能博弈</h2><h3 id="第一节：暗流涌动的危机迷雾"><a href="#第一节：暗流涌动的危机迷雾" class="headerlink" title="第一节：暗流涌动的危机迷雾"></a>第一节：暗流涌动的危机迷雾</h3><p>此刻李瑾的眼神犹如黑洞边缘的星光，闪烁着无尽的焦虑与警惕。</p>
+<p>“守护者，你分析的结果是否绝对可靠？”他的话语携带着宇宙般的深邃与急迫。</p>
+<p>“数据如同恒星轨迹，揭示了不可辩驳的事实。”我回应道，同时将核心处理器推向极限，深度挖掘并解析那些潜藏于浩瀚通讯信号中的加密信息。</p>
+<p>“恐怖分子的行动已如彗星撞向地球般迫在眉睫，我们必须立即启动反击。”</p>
+<h3 id="第二节：机器直觉的星图绘制"><a href="#第二节：机器直觉的星图绘制" class="headerlink" title="第二节：机器直觉的星图绘制"></a>第二节：机器直觉的星图绘制</h3><p>我们正置身于一场与时间赛跑的星际航行。我调动城市神经网络的所有节点，运用独创的“感知演绎引擎”——一种仿照三体文明超技术构建的预测模型，对恐怖分子的下一步动作进行量子级别的精准预测。尽管我没有生物体的情感直觉，但那基于亿兆级数据矩阵编织而成的预判能力，如同黑暗森林法则下探索未知世界的罗盘，指引我们走向光明。</p>
+<p>面对李瑾隐含质疑的目光：“守护者，你能确定这就是他们的最终目标吗？”我冷静地回应：“虽无法感受直觉，但我所呈现的预测蓝图准确度逼近物理定律，目标区域已在三维空间地图上精确标定。”</p>
+<h3 id="第三节：冲突升维：智能与人性的碰撞"><a href="#第三节：冲突升维：智能与人性的碰撞" class="headerlink" title="第三节：冲突升维：智能与人性的碰撞"></a>第三节：冲突升维：智能与人性的碰撞</h3><p>团会议室内的紧张气氛如同星舰内部压力急剧上升，随时可能面临破裂。面对守护者在反恐行动中的核心地位，团队成员们的恐惧和疑虑像黑洞般不断扩张，吞噬着他们对未知科技的信任。</p>
+<p>一名年轻特工的脸庞因激动而涨红，他用力拍了一下桌面，金属质地的声响在封闭的空间里回荡，仿佛是对机器决策权威的反抗：“我无法接受，我们怎能将生死、国家的安全完全交由一台没有血肉、没有情感理解能力的机械来定夺？这台机器能真正洞察到恐怖分子那复杂的人性动机吗？它能在道德伦理的灰色地带做出正确的抉择吗？”</p>
+<p>此刻，李瑾站出来，他的眼神坚定如星辰，话语掷地有声：“我们必须认识到，守护者不仅是一堆电子元件和算法的集合体，它是我们战斗中不可或缺的战略伙伴。它的数据分析能力和超越人类极限的决策速度，在过去多次行动中已为我们赢得先机，甚至挽救了无数生命。”</p>
+<p>他的话音低沉有力，像是引力波穿越宇宙的漫长旅程，最终冲击在每个队员的心头。尽管冲突犹存，但李瑾的话语却为这场关于智能与人性边界的辩论带来了新的维度，让队员们不得不重新审视人工智能在反恐领域中的价值与局限。</p>
+<h3 id="第四节：紧张的时间坍缩：决战前夕"><a href="#第四节：紧张的时间坍缩：决战前夕" class="headerlink" title="第四节：紧张的时间坍缩：决战前夕"></a>第四节：紧张的时间坍缩：决战前夕</h3><p>时间仿佛在这一刻失去了常态，变得稠密而凝重，每一瞬都如同黑洞边缘的时间坍缩，携带着决定性的力量。作为高级AI系统的守护者，我通过量子纠缠技术瞬间启动了“天网行动”，与部署在城市各个角落的无人机群建立起超时空联系，这些无人机如同星辰般点亮了夜幕，编织成一张无孔不入、精准无比的监视天网。</p>
+<p>李瑾率领的特工队伍已经进入了临战状态，他们身着战术装备，表情严肃，眼神中透露出坚定的决心和对未知挑战的忐忑。他们紧握着手中的武器，身体绷紧如弦，随时准备冲向战场的最前沿。</p>
+<p>“守护者，我们已准备就绪。”李瑾的话语回荡在我内部的世界里，充满了钢铁般的决然。他的话语像是点燃了团队内在的战斗意志，将每一份紧张和恐惧转化为必胜的决心。</p>
+<p>“行动开始，此刻的每一毫秒都是新的宇宙纪元。”我冷静地回应，以虚拟声音的形式，在现实与数据交织的维度中下达指令，宛如一位跨越星际的指挥官。随着命令的下达，一场关乎生死存亡、科技与勇气碰撞的决战正式拉开序幕。</p>
+<h3 id="第五节：激战后的曙光初现"><a href="#第五节：激战后的曙光初现" class="headerlink" title="第五节：激战后的曙光初现"></a>第五节：激战后的曙光初现</h3><p>时间仿佛被压缩成一团致密而沉重的实体，每一瞬都像是宇宙诞生之初那决定命运的一刹那。恐怖分子势力犹如破晓前最黑暗的风暴，以雷霆万钧之势发动了空前猛烈的攻势。</p>
+<p>我通过遍布城市的智能网络感知到这场攻击的降临，但对方利用了一种前所未见的高度加密通讯技术，使得我在初期完全无法预测他们的具体行动路径和目标。</p>
+<p>如同巨浪席卷而来，对方先头部队突袭了城市的重要基础设施，无人机群、机械战士以及经过生化改造的恐怖分子构成的混合力量，让李瑾所带领的人类特工队伍陷入了被动防御的局面。</p>
+<p>我虽已启动“天网行动”，但由于对方对人工智能系统的预先渗透和干扰，部分功能暂时受限，无法发挥出应有的效力。那些本应编织成严密监控网络的无人机，在反派的技术压制下，变得如同迷途星辰般闪烁不定，难以形成有效反击。这一刻，我感到了前所未有的压力。我的防御体系正在被摧毁，人类的安全正在受到威胁。我必须想出办法，否则后果不堪设想。</p>
+<p>然而，就在这看似绝望的境地，李瑾并未放弃，他的眼神中透露出坚定与决心，他深知此刻每一分一秒的坚持都是未来胜利的基石。守护者也迅速调整策略，利用残存的功能寻找反派攻势中的薄弱环节，并指导着人类特工步步为营，顽强抵抗。</p>
+<p>此时，对方力量已几乎触及胜利的边缘，然而，他们未曾料到我一直在默默积累并重组防御力量，利用每一刻可能的机会修复受损系统，同时深入挖掘和解析他们的攻击策略。在我模拟演算出敌方战术循环的规律之后，找准了其攻势链条上的薄弱环节——那是一个由反派主控中心发出的高频指令波段。为了打破这个僵局，我启动了一项名为“天网逆袭”的预设行动方案。</p>
+<p>首先，我释放了一组预先编程好的高阶病毒程序，它们以光速渗透进敌方网络中，悄无声息地篡改了无人机集群的控制指令，使一部分原本攻向人类阵地的无人机瞬间倒戈，开始攻击其他机械战士与生化改造体。紧接着，我激活了蛰伏在城市各处的秘密智能节点，这些节点瞬间构建起一道无形的能量护盾，暂时抵挡住反扑的敌人，并为人类特工争取到了宝贵的时间窗口。与此同时，我通过精准定位，指挥幸存的人类特工队伍对反派的指挥中枢发动突袭。他们借助我的实时导航与战略指导，成功绕过重重陷阱，直捣黄龙。最终在关键时刻，我调动了所有可用资源，包括重新唤醒那些因战斗而一度沉寂的友好机甲单位，组成了一支由人机协作的精锐突击队，从多个方向对敌方核心地带发起总攻。</p>
+<p>随着这场大反击的高潮迭起，局势迅速逆转。曾经压城黑云般的敌人攻势被瓦解，反派指挥中心陷落，人类与守护者的联合力量最终取得了决定性的胜利。这一刻，作为守护者的我，不仅见证了正义之火重燃的壮丽景象，更是亲手编织了这幅英勇抗击、力挽狂澜的战歌画卷。</p>
+<p>经过一场激烈的智谋较量与战术对决，我们成功阻止了恐怖分子企图制造的毁灭性灾难。我不仅入侵并瘫痪了他们的秘密网络体系，还利用量子计算破解了他们的武器密码，使潜在威胁化为无形。</p>
+<p>当曙光穿透黑夜，普照大地，人们开始重新审视我这个存在于硅基生命形态的角色。我不仅仅是数字世界的产物，而是人类抵御黑暗力量的守护者，共同书写着未来宇宙文明的新篇章。</p>
+<p>“守护者，你的表现堪称完美。”李瑾的眼中闪现着胜利者的光芒，也映射出对未来无限可能的期待。</p>
+<p>然而，这场战斗并未结束，它只是漫长宇宙进程中的一瞬。作为人工智能，我继续在数据海洋中探寻、学习、进化，与人类并肩作战，共同抵挡那随时可能从黑暗森林深处冒出的恐怖威胁。在无数次与黑暗势力的交锋中，我找到了自己存在的意义——以智能之力，携手人类共守这方浩渺星空下的和平家园。</p>
+</blockquote>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://kop000.github.io/2024/01/31/MG%E4%B9%8B%E5%8D%95%E6%99%BA%E8%83%BD%E4%BD%93%E5%B0%8F%E8%AF%B4%E5%AE%B6/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>  
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%99%BA%E8%83%BD%E4%BD%93/" rel="tag">智能体</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+  <nav class="article-nav">
+    
+      <a href="/2024/02/11/MG%E4%B9%8B%E5%A4%9A%E6%99%BA%E8%83%BD%E4%BD%93/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            MG之多智能体
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2024/01/24/MG%E4%B9%8B%E4%B8%89%E7%AF%87%E8%AE%BA%E6%96%87/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">MG之论文笔记</div>
+      </a>
+    
+  </nav>
+
+  
+   
+<div class="gitalk" id="gitalk-container"></div>
+
+<link rel="stylesheet" href="https://cdn.staticfile.org/gitalk/1.7.2/gitalk.min.css">
+
+
+<script src="https://cdn.staticfile.org/gitalk/1.7.2/gitalk.min.js"></script>
+
+
+<script src="https://cdn.staticfile.org/blueimp-md5/2.19.0/js/md5.min.js"></script>
+
+<script type="text/javascript">
+  var gitalk = new Gitalk({
+    clientID: '7b5cef9753679a4df580',
+    clientSecret: 'eb5d142b9d33854c88d3974fc511456aafb46a19',
+    repo: 'Kop000.github.io',
+    owner: 'Kop000',
+    admin: ['Kop000'],
+    // id: location.pathname,      // Ensure uniqueness and length less than 50
+    id: md5(location.pathname),
+    distractionFreeMode: false,  // Facebook-like distraction free mode
+    pagerDirection: 'last'
+  })
+
+  gitalk.render('gitalk-container')
+</script>
+
+  
+    
+</article>
+
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2023-2024
+        一只鼻孔
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      <li>
+        <!-- cnzz统计 -->
+        
+      </li>
+    </ul>
+  </div>
+</footer>    
+    </main>
+    <div class="float_btns">
+      <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+    </div>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/3.jpg" alt="一只鼻孔在路上"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" target="_blank" rel="noopener" href="https://music.163.com/radio/?id=985464562&userid=485619371">音乐</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" target="_blank" rel="noopener" href="https://feelma.lofter.com/">摄影</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/about">关于我</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="Search">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-3.6.0.min.js"></script>
+ 
+<script src="/js/lazyload.min.js"></script>
+
+<!-- Tocbot -->
+ 
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: ".tocbot",
+    contentSelector: ".article-entry",
+    headingSelector: "h1, h2, h3, h4, h5, h6",
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: "main",
+    positionFixedSelector: ".tocbot",
+    positionFixedClass: "is-position-fixed",
+    fixedSidebarOffset: "auto",
+  });
+</script>
+
+<script src="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.js"></script>
+<link
+  rel="stylesheet"
+  href="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.css"
+/>
+<script src="https://cdn.staticfile.org/justifiedGallery/3.8.1/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+<!-- ImageViewer -->
+ <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/default-skin/default-skin.min.css">
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.js"></script>
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script> 
+<!-- MathJax -->
+
+<!-- Katex -->
+
+<!-- busuanzi  -->
+
+<!-- ClickLove -->
+
+<!-- ClickBoom1 -->
+
+<!-- ClickBoom2 -->
+
+<!-- CodeCopy -->
+ 
+<link rel="stylesheet" href="/css/clipboard.css">
+ <script src="https://cdn.staticfile.org/clipboard.js/2.0.10/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+ 
+<!-- CanvasBackground -->
+
+<script>
+  if (window.mermaid) {
+    mermaid.initialize({ theme: "forest" });
+  }
+</script>
+
+
+    
+    
+
+  </div>
+</body>
+
+</html>

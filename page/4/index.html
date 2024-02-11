@@ -11,7 +11,7 @@
         name="viewport"
         content="width=device-width, initial-scale=1, maximum-scale=1"
       />
-      <title>分类 |  一只鼻孔在路上</title>
+      <title> 一只鼻孔在路上</title>
   <meta name="generator" content="hexo-theme-ayer">
       
       <link rel="shortcut icon" href="/images/3.jpg" />
@@ -53,14 +53,230 @@
     
       
     <main class="content on">
-      <section class="outer">
-  
-    <h1 class="page-type-title">Categories</h1>
-    <div class="categories-box">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/EGLog/">EGLog</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%BF%AE%E7%82%BC%E6%97%A5%E5%BF%97/">修炼日志</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%90%8E%E5%A4%87%E7%AE%B1/">后备箱</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%97%A0%E4%B8%AD%E7%94%9F%E6%9C%89/">无中生有</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B0%B4%E6%B6%A6%E5%98%9F%E5%98%9F%E5%94%87/">水润嘟嘟唇</a><span class="category-list-count">1</span></li></ul>
+      
+<section class="cover">
+    
+  <div class="cover-frame">
+    <div class="bg-box">
+      <img src="/images/2.jpg" alt="image frame" />
     </div>
+    <!-- <div class="cover-inner text-center text-white">
+      <h1><a href="/">一只鼻孔在路上</a></h1>
+      <div id="subtitle-box">
+        
+          <span id="subtitle"></span>
+        
+      </div>
+      <div>
+        
+        <img
+          src="true"
+          class="cover-logo"
+          alt="一只鼻孔在路上"
+        />
+        
+      </div>
+    </div> -->
+  </div>
+  <div class="cover-learn-more">
+    <a href="javascript:void(0)" class="anchor"><i class="ri-arrow-down-line"></i></a>
+  </div>
+</section>
+
+
+
+
+<!-- Subtitle -->
+
+<div id="main">
+  <section class="outer">
+  
+  
+  <article class="articles">
+    
+    
+    
+    
+    <article
+  id="post-Nosql数据库技术"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2023/07/02/Nosql%E6%95%B0%E6%8D%AE%E5%BA%93%E6%8A%80%E6%9C%AF/"
+    >Nosql数据库技术</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2023/07/02/Nosql%E6%95%B0%E6%8D%AE%E5%BA%93%E6%8A%80%E6%9C%AF/" class="article-date">
+  <time datetime="2023-07-02T03:01:55.000Z" itemprop="datePublished">2023-07-02</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%90%8E%E5%A4%87%E7%AE%B1/">后备箱</a>
+  </div>
+ 
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><ul>
+<li><p><strong>NoSQL基本概念、CAP定理</strong></p>
+<ul>
+<li><p>C:Consistency（强一致性）<br>A:Availability（可用性）<br>P:Partition tolerance（分区容错性）</p>
+</li>
+<li><p>P指在出现网络分区（比如断网）的情况下，分离的系统也能正常运行</p>
+</li>
+<li><p>CAP理论的核心是：一个分布式系统不可能同时很好的满足这三个需求，</p>
+</li>
+</ul>
+</li>
+<li><p>NoSQL种类与特点</p>
+</li>
+<li><p>1）不需要预定义模式<br>2）无共享架构：因为从本地磁盘读取数据的性能往往好于通过网络传输读取数据的性能，从而提高系统的性能。</p>
+<p>3）弹性可扩展：可以在系统运行的时候，动态增加或者删除结点。不需要停机维护，数据可以自动迁移。<br>4）分区：相对于将数据存放于同一个节点，NoSQL数据库需要将数据进行分区，将记录分散在多个节点上面。</p>
+<p>5)分发查询到数据，而非数据到查询；</p>
+<p>6）异步复制：NoSQL中的复制，往往是基于日志的异步复制。<br>7）BASE：相对于事务严格的ACID特性，NoSQL数据库更注重保障的是BASE特性。</p>
+</li>
+<li><p>四类：图、文档、键值、列族</p>
+</li>
+<li><p>ACID与BASE的区别</p>
+<ul>
+<li><p>关系型数据库中强调ACID分别是：原子性、一致性、隔离性、持久性</p>
+</li>
+<li><p>BASE分别是： 基本可用性、软状态、最终一致性</p>
+</li>
+<li><p>BASE就是为了解决关系数据库强一致性引起的问题而引起的可用性降低而提出的解决方案，它的思想是通过让系统放松对某一时刻数据一致性的要求来换取系统整体伸缩性和性能上改观。</p>
+</li>
+<li><p>但是并不是说NOSQL数据库就不支持ACID了</p>
+</li>
+</ul>
+</li>
+<li><p>最终一致性经典算法</p>
+<ul>
+<li><p>Raft算法</p>
+<ul>
+<li>Leader、Follower、Candidate</li>
+</ul>
+</li>
+<li><p>Quorum的NWR策略</p>
+<ul>
+<li><p>Vr + Vw &gt; V：保证一定能读到最新的数据</p>
+</li>
+<li><p>Vw &gt; V&#x2F;2：只需要写一半的节点就能向用户报告完成写入操作</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>数据复制与分片机制的作用</p>
+</li>
+</ul> 
+      <a class="article-more-link" href="/2023/07/02/Nosql%E6%95%B0%E6%8D%AE%E5%BA%93%E6%8A%80%E6%9C%AF/"
+        >阅读更多...</a
+      >
+       
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Nosql/" rel="tag">Nosql</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+   
+  
+</article>
+
+    
+    <article
+  id="post-基于大数据的机器学习理论"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2022/09/07/%E5%9F%BA%E4%BA%8E%E5%A4%A7%E6%95%B0%E6%8D%AE%E7%9A%84%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%90%86%E8%AE%BA/"
+    >机器学习理论</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2022/09/07/%E5%9F%BA%E4%BA%8E%E5%A4%A7%E6%95%B0%E6%8D%AE%E7%9A%84%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%90%86%E8%AE%BA/" class="article-date">
+  <time datetime="2022-09-06T23:58:06.000Z" itemprop="datePublished">2022-09-07</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%90%8E%E5%A4%87%E7%AE%B1/">后备箱</a>
+  </div>
+ 
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p>机器学习什么意思？</p>
+<p>目前都有什么方法学习？</p>
+<h4 id="逻辑模型"><a href="#逻辑模型" class="headerlink" title="逻辑模型"></a>逻辑模型</h4><p>假设空间计算：每个属性包含特定值和“？”，最后再加上一种每个样例都是反例这一特殊极端情况。(看逻辑模型中的样例)</p>
+<p>概念学习：从特殊例集中归纳出一般概念，又称归纳学习。通俗讲，从一堆样例，通过它是这个东西， 它有哪些属性，从特殊序假设不断学习到适用于所有样例的一般化，得到一个模型来泛化预判是否是   它。</p> 
+      <a class="article-more-link" href="/2022/09/07/%E5%9F%BA%E4%BA%8E%E5%A4%A7%E6%95%B0%E6%8D%AE%E7%9A%84%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%90%86%E8%AE%BA/"
+        >阅读更多...</a
+      >
+       
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" rel="tag">机器学习</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+   
+  
+</article>
+
+    
+  </article>
+  
+
+  
+  <nav class="page-nav">
+    
+    <a class="extend prev" rel="prev" href="/page/3/">上一页</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span>
+  </nav>
   
 </section>
+</div>
+
       <footer class="footer">
   <div class="outer">
     <ul>

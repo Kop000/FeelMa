@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+
+
+<html lang="zh-hans">
+  
+
+    <head>
+      <meta charset="utf-8" />
+        
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1"
+      />
+      <title>MG之多智能体 |  一只鼻孔在路上</title>
+  <meta name="generator" content="hexo-theme-ayer">
+      
+      <link rel="shortcut icon" href="/images/3.jpg" />
+       
+<link rel="stylesheet" href="/dist/main.css">
+
+      
+<link rel="stylesheet" href="/css/fonts/remixicon.css">
+
+      
+<link rel="stylesheet" href="/css/custom.css">
+ 
+      <script src="https://cdn.staticfile.org/pace/1.2.4/pace.min.js"></script>
+       
+ 
+
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-bulma@5.0.1/bulma.min.css"
+      />
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.min.js"></script>
+
+      <!-- mermaid -->
+      
+      <script src="https://cdn.staticfile.org/mermaid/8.14.0/mermaid.min.js"></script>
+      
+      <style>
+        .swal2-styled.swal2-confirm {
+          font-size: 1.6rem;
+        }
+      </style>
+    </head>
+  </html>
+</html>
+
+
+<body>
+  <div id="app">
+    
+      
+    <main class="content on">
+      <section class="outer">
+  <article
+  id="post-MG之多智能体"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  MG之多智能体
+</h1>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2024/02/11/MG%E4%B9%8B%E5%A4%9A%E6%99%BA%E8%83%BD%E4%BD%93/" class="article-date">
+  <time datetime="2024-02-11T14:34:00.000Z" itemprop="datePublished">2024-02-11</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/EGLog/">EGLog</a>
+  </div>
+ 
+    </div>
+      
+    <div class="tocbot"></div>
+
+
+
+
+  
+    <div class="article-entry" itemprop="articleBody">
+       
+  <img src="/2024/02/11/MG%E4%B9%8B%E5%A4%9A%E6%99%BA%E8%83%BD%E4%BD%93/image-20240211222814239.png" class="" title="image-20240211222814239">
+
+<span id="more"></span>
+
+<h3 id="爱发财-AFC-新闻工作社"><a href="#爱发财-AFC-新闻工作社" class="headerlink" title="爱发财(AFC)新闻工作社"></a>爱发财(AFC)新闻工作社</h3><h3 id="前情提要"><a href="#前情提要" class="headerlink" title="前情提要"></a>前情提要</h3><p>截至目前，我们已经探索完调查员、小说家。仔细想想，单智能体似乎已经不够精彩，现在我希望再加入产品经理，实现一个AI虚拟新闻工作社，出一期虚拟热点新闻期刊，并引发群众舆论，实现AI占领地球的第一步！</p>
+<p>调查员调查现实新闻，给出当前火爆全球的top 5话题，总结出话题报告。产品经理根据调查员的话题报告提出期刊需求，小说家编辑制造热点，以及最终发送邮件让所有人看到。</p>
+<h4 id="今天起，爱发财新闻工作社正式成立！"><a href="#今天起，爱发财新闻工作社正式成立！" class="headerlink" title="今天起，爱发财新闻工作社正式成立！"></a>今天起，爱发财新闻工作社正式成立！</h4><img src="/2024/02/11/MG%E4%B9%8B%E5%A4%9A%E6%99%BA%E8%83%BD%E4%BD%93/afc-17076622186362.webp" class="" title="afc">
+
+<h3 id="出一期2024年春节烦人亲戚新闻期刊"><a href="#出一期2024年春节烦人亲戚新闻期刊" class="headerlink" title="出一期2024年春节烦人亲戚新闻期刊"></a>出一期2024年春节烦人亲戚新闻期刊</h3><h4 id="代码文件树"><a href="#代码文件树" class="headerlink" title="代码文件树"></a>代码文件树</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">│  AFC.py <span class="comment"># 主流程代码, 组建team, 雇佣researcher, manager, writer, 最终将期刊发送给订阅读者</span></span><br><span class="line">│  </span><br><span class="line">├─AFC</span><br><span class="line">│  │  __init__.py</span><br><span class="line">│  │  </span><br><span class="line">│  ├─actions <span class="comment">#三个角色的行为编写, 主要是修改prompt</span></span><br><span class="line">│  │  │  manager_prd.py</span><br><span class="line">│  │  │  research.py</span><br><span class="line">│  │  │  write.py</span><br><span class="line">│  │  │  __init__.py</span><br><span class="line">│  │</span><br><span class="line">│  ├─prompt <span class="comment">#manager, researcher需要重构的prompt很多, 单拎出来</span></span><br><span class="line">│  │  │  manager_prd_prompt.py</span><br><span class="line">│  │  │  researcher_prompt.py</span><br><span class="line">│  │</span><br><span class="line">│  ├─roles <span class="comment">#三个角色设定, 主要是修改初始行为序列, 以及_observe, _think, _act</span></span><br><span class="line">│  │  │  manager.py</span><br><span class="line">│  │  │  researcher.py</span><br><span class="line">│  │  │  writer.py</span><br><span class="line">│  │  │  __init__.py</span><br><span class="line">│</span><br><span class="line">├─config</span><br><span class="line">│      key.yaml</span><br></pre></td></tr></table></figure>
+
+<p>要想做多智能体，不仅是能把各个组成部分单智能体调教好就行，还需要考虑单智能体间消息交互，顺序，时机。</p>
+<p>最开始我观察源码是打算手动控制消息生成后直接发送到对应智能体记忆里，但之后发现debate example里，是在智能体初始化时增加<code>watch=[xxx]</code>参数，让智能体在每次observe是自行获取需要观察行为生成的消息，这似乎更自然和干净。</p>
+<p>但<code>team</code>这个多智能体机构的代码，是以异步形式组织智能体的，也就是说我不能让调查者先调查，产品经理再根据前面的流水线行动，三个角色同时得知公司要发布一期期刊，这样<code>watch</code>的事件就很关键，当角色一旦没有观察到记忆里有消息，就不会行动，直到下一个round( e.g. n_round&#x3D;3 )</p>
+<p>最终我的AFC.py代码如下，prompt部分千人千味，代码太长这里就不放了</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> metagpt.team <span class="keyword">import</span> Team</span><br><span class="line"><span class="keyword">from</span> AFC.roles <span class="keyword">import</span> manager, writer</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> asyncio</span><br><span class="line"><span class="keyword">import</span> smtplib</span><br><span class="line"><span class="keyword">from</span> metagpt.const <span class="keyword">import</span> TUTORIAL_PATH</span><br><span class="line"><span class="keyword">from</span> datetime <span class="keyword">import</span> datetime</span><br><span class="line"><span class="keyword">from</span> email.mime.text <span class="keyword">import</span> MIMEText</span><br><span class="line"><span class="keyword">from</span> email.mime.image <span class="keyword">import</span> MIMEImage</span><br><span class="line"><span class="keyword">from</span> email.mime.multipart <span class="keyword">import</span> MIMEMultipart</span><br><span class="line"><span class="keyword">from</span> email.mime.application <span class="keyword">import</span> MIMEApplication</span><br><span class="line"><span class="keyword">from</span> email.header <span class="keyword">import</span> Header</span><br><span class="line"><span class="keyword">from</span> metagpt.config <span class="keyword">import</span> CONFIG</span><br><span class="line"><span class="keyword">from</span> metagpt.logs <span class="keyword">import</span> logger</span><br><span class="line"><span class="keyword">from</span> AFC.actions.research <span class="keyword">import</span> conductResearch</span><br><span class="line"><span class="keyword">from</span> AFC.actions.manager_prd <span class="keyword">import</span> WritePRD</span><br><span class="line"><span class="keyword">from</span> metagpt.actions.prepare_documents <span class="keyword">import</span> PrepareDocuments</span><br><span class="line"><span class="keyword">from</span> metagpt.actions <span class="keyword">import</span> UserRequirement</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">AFC</span>():</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line">    <span class="keyword">async</span> <span class="keyword">def</span> <span class="title function_">run</span>(<span class="params">self, company_address, client_address, idea, send_to</span>):</span><br><span class="line">        <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">            Flow: </span></span><br><span class="line"><span class="string">            1. demand_manager decides on the direction and style of hot topics, </span></span><br><span class="line"><span class="string">            2. researcher investigate real-life news, </span></span><br><span class="line"><span class="string">            3. novelists edit and create hot topics, </span></span><br><span class="line"><span class="string">            4. send emails for everyone to see</span></span><br><span class="line"><span class="string">            Goal: Generate one issue of newspapers and magazines</span></span><br><span class="line"><span class="string">        &quot;&quot;&quot;</span></span><br><span class="line">        AFC = Team()</span><br><span class="line">        AFC.hire([</span><br><span class="line">            <span class="comment"># researcher(name=&quot;Tyler&quot;,</span></span><br><span class="line">            <span class="comment">#            profile=&quot;Researcher&quot;,</span></span><br><span class="line">            <span class="comment">#            goal=&quot;Gather information and conduct research&quot;,</span></span><br><span class="line">            <span class="comment">#            constraints=&quot;Ensure accuracy and relevance of information&quot;),</span></span><br><span class="line">            manager(name=<span class="string">&quot;Linda&quot;</span>,</span><br><span class="line">                    profile=<span class="string">&quot;Manager&quot;</span>,</span><br><span class="line">                    goal=<span class="string">&quot;efficiently publish a news journal that create public opinion and help to nourish it&quot;</span>,</span><br><span class="line">                    constraints=<span class="string">&quot;utilize the same language as the user requirements for seamless communication&quot;</span>,</span><br><span class="line">                    watch=[UserRequirement, conductResearch]),</span><br><span class="line">            writer(name=<span class="string">&quot;Amily&quot;</span>, </span><br><span class="line">                   profile=<span class="string">&quot;Jounalist&quot;</span>, </span><br><span class="line">                   goal=<span class="string">&quot;Generate a news journal issue and create hot topics&quot;</span>,</span><br><span class="line">                   idea=idea,</span><br><span class="line">                   watch=[PrepareDocuments, WritePRD])</span><br><span class="line">        ])</span><br><span class="line">        AFC.invest(investment=<span class="number">2.0</span>)</span><br><span class="line">        AFC.run_project(idea=idea)</span><br><span class="line">        <span class="keyword">await</span> AFC.run(n_round=<span class="number">3</span>, send_to=send_to)</span><br><span class="line">        path = <span class="built_in">str</span>(TUTORIAL_PATH / datetime.now().strftime(<span class="string">&quot;%Y-%m-%d&quot;</span>))</span><br><span class="line">        file= os.listdir(path)</span><br><span class="line">        <span class="keyword">if</span> file:</span><br><span class="line">            <span class="keyword">await</span> self.send_email(path + <span class="string">&quot;/&quot;</span> + file[<span class="number">0</span>], company_address, client_address)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">async</span> <span class="keyword">def</span> <span class="title function_">send_email</span>(<span class="params">self, result: <span class="built_in">str</span>, from_who: <span class="built_in">str</span>, to_who: <span class="built_in">str</span></span>):</span><br><span class="line">        <span class="comment"># 邮件内容</span></span><br><span class="line">        subject = <span class="string">&#x27;Huh! AFC News journals!&#x27;</span></span><br><span class="line">        body = <span class="string">&#x27;初二不休息, wo不赚钱谁赚钱? 爱发财新闻社新刊发行, 请注意查收附件。&lt;img src=&quot;cid:0&quot;&gt;&#x27;</span></span><br><span class="line">        file_path = result</span><br><span class="line">        png_path = <span class="string">&#x27;data/afc.webp&#x27;</span></span><br><span class="line">        <span class="comment"># 构建邮件</span></span><br><span class="line">        mpart = MIMEMultipart()</span><br><span class="line">        msg = MIMEText(body, <span class="string">&#x27;html&#x27;</span>, <span class="string">&#x27;utf-8&#x27;</span>)</span><br><span class="line">        mpart[<span class="string">&#x27;Subject&#x27;</span>] = Header(subject, <span class="string">&#x27;utf-8&#x27;</span>)</span><br><span class="line">        mpart[<span class="string">&#x27;From&#x27;</span>] = from_who</span><br><span class="line">        mpart[<span class="string">&#x27;To&#x27;</span>] = to_who</span><br><span class="line">        mpart.attach(msg)</span><br><span class="line"></span><br><span class="line">        docFile = png_path</span><br><span class="line">        docApart = MIMEImage(<span class="built_in">open</span>(docFile, <span class="string">&#x27;rb&#x27;</span>).read())</span><br><span class="line">        docApart.add_header(<span class="string">&#x27;Content-Disposition&#x27;</span>, <span class="string">&#x27;attachment&#x27;</span>, filename=docFile)</span><br><span class="line">        docApart.add_header(<span class="string">&#x27;Content-ID&#x27;</span>, <span class="string">&#x27;&lt;0&gt;&#x27;</span>) </span><br><span class="line">        mpart.attach(docApart)</span><br><span class="line"></span><br><span class="line">        docFile = file_path</span><br><span class="line">        docApart = MIMEApplication(<span class="built_in">open</span>(docFile, <span class="string">&#x27;rb&#x27;</span>).read())</span><br><span class="line">        docApart.add_header(<span class="string">&#x27;Content-Disposition&#x27;</span>, <span class="string">&#x27;attachment&#x27;</span>, filename=docFile)</span><br><span class="line">        mpart.attach(docApart)</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            <span class="keyword">with</span> smtplib.SMTP(CONFIG.smtp_server, CONFIG.smtp_port) <span class="keyword">as</span> server:</span><br><span class="line">                server.starttls()</span><br><span class="line">                server.login(from_who, CONFIG.email_password)</span><br><span class="line">                server.sendmail(from_who, [to_who], mpart.as_string())</span><br><span class="line"></span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&#x27;Kick it ass!!! Journal has published!&#x27;</span>)</span><br><span class="line">        <span class="keyword">except</span> smtplib.SMTPException <span class="keyword">as</span> e:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&#x27;Oops! publishing meet something...&#x27;</span>, <span class="built_in">str</span>(e))</span><br><span class="line">    </span><br><span class="line"><span class="keyword">async</span> <span class="keyword">def</span> <span class="title function_">main</span>():</span><br><span class="line">    AFCompany = AFC()</span><br><span class="line">    company_address = <span class="string">&#x27;2@qq.com&#x27;</span></span><br><span class="line">    client_address = <span class="string">&#x27;1@qq.com&#x27;</span></span><br><span class="line">    trick = <span class="built_in">input</span>(<span class="string">&quot;What tricks do you want to make today?&quot;</span>) <span class="comment">#出一期2024年春节烦人亲戚新闻期刊</span></span><br><span class="line">    result = <span class="keyword">await</span> AFCompany.run(company_address, client_address, trick, send_to=<span class="string">&#x27;Tyler&#x27;</span>)</span><br><span class="line">    logger.info(result)</span><br><span class="line">asyncio.run(main())</span><br></pre></td></tr></table></figure>
+
+<h3 id="运行结果"><a href="#运行结果" class="headerlink" title="运行结果"></a>运行结果</h3><img src="/2024/02/11/MG%E4%B9%8B%E5%A4%9A%E6%99%BA%E8%83%BD%E4%BD%93/image-20240211215754297.png" class="" title="image-20240211215754297">
+
+<h3 id="叮咚！邮件"><a href="#叮咚！邮件" class="headerlink" title="叮咚！邮件"></a>叮咚！邮件</h3><p>Amily还是太温柔了，不打不行，亲戚这种物种…</p>
+<p>因为writer部分文字的生成逻辑已经提前设定好是先用gpt生成目录及大纲，后面再依次调用gpt填充各章节，以此突破token限制，因此期刊结构是一致的，需要什么主题期刊直接一句话输入命令行即可，</p>
+<p>比如全球政治新闻热点、搞笑新闻、奇葩新闻、娱乐新闻都可以虚构</p>
+<p>这里的数据全是AI虚构，不做参考只作为乐子</p>
+<blockquote>
+<h1 id="2024年春节烦人亲戚大揭秘"><a href="#2024年春节烦人亲戚大揭秘" class="headerlink" title="2024年春节烦人亲戚大揭秘"></a>2024年春节烦人亲戚大揭秘</h1><h1 id="爱发财新闻社：2024年春节尴尬时刻大盘点"><a href="#爱发财新闻社：2024年春节尴尬时刻大盘点" class="headerlink" title="爱发财新闻社：2024年春节尴尬时刻大盘点"></a>爱发财新闻社：2024年春节尴尬时刻大盘点</h1><hr>
+<p>尊敬的读者们，我是Amily，一名有着二十年从业经验的新闻记者。今天，我要为您带来《爱发财新闻社》的特别报道——2024年春节尴尬时刻大盘点。让我们一起揭开春节家庭聚会中那些令人哭笑不得的瞬间，探索背后的文化和心理因素，以及如何巧妙应对。</p>
+<h2 id="第一章节：春节尴尬时刻大盘点"><a href="#第一章节：春节尴尬时刻大盘点" class="headerlink" title="第一章节：春节尴尬时刻大盘点"></a>第一章节：春节尴尬时刻大盘点</h2><p>春节，一个充满欢声笑语的节日，然而，当烦人亲戚的阴影笼罩，这欢乐的节日也会变得让人哭笑不得。根据最新调查，有87.3%的受访者表示，在春节期间至少经历过一次尴尬时刻。而这些尴尬时刻，大多数是由我们的“亲爱的”亲戚们制造的。</p>
+<h3 id="长辈的刁钻问题"><a href="#长辈的刁钻问题" class="headerlink" title="长辈的刁钻问题"></a>长辈的刁钻问题</h3><p>“小明，你今年多大了？还没对象呢？”“小花，你的工资多少？买房了吗？”这些问题听起来似乎关心满满，实则暗藏玄机。长辈们的这些“关心”问题，无疑是春节尴尬时刻的重头戏。据统计，有92.5%的年轻人表示，春节最不想回答的问题就是关于工作、婚姻和财产的。</p>
+<h3 id="亲戚间的较量"><a href="#亲戚间的较量" class="headerlink" title="亲戚间的较量"></a>亲戚间的较量</h3><p>春节，不仅是家人团聚的时刻，也是亲戚间较量的战场。小张家的孩子考上了名牌大学，小李家的宝贝又赢得了钢琴比赛冠军。这些成就在亲戚间传播的速度，比春节晚会的收视率还要快。我们的调查显示，有78.9%的家庭在春节聚会时，都会不自觉地参与到这场“辉煌成就展示大赛”中。</p>
+<h3 id="如何应对"><a href="#如何应对" class="headerlink" title="如何应对"></a>如何应对</h3><p>面对这些尴尬时刻，我们该如何是好？专家建议，保持微笑，巧妙转移话题是上策。例如，当被问及个人问题时，可以优雅地反问：“阿姨&#x2F;叔叔，您看起来气色很好，是有什么开心的事吗？”这样既能避免直接回答，又能让长辈感到被重视。</p>
+<hr>
+<p>亲爱的读者们，以上就是2024年春节尴尬时刻大盘点的全部内容。希望这些小贴士能帮助您在新的一年中轻松应对这些传统节日的挑战。记得，无论何时，保持幽默感和智慧，总能让我们在尴尬的社交场合中游刃有余。下期《爱发财新闻社》将继续为您揭秘春节期间的压力山大，敬请期待！</p>
+<h1 id="爱发财新闻社：2024年春节压力大爆炸"><a href="#爱发财新闻社：2024年春节压力大爆炸" class="headerlink" title="爱发财新闻社：2024年春节压力大爆炸"></a>爱发财新闻社：2024年春节压力大爆炸</h1><h2 id="节日压力源头解析"><a href="#节日压力源头解析" class="headerlink" title="节日压力源头解析"></a>节日压力源头解析</h2><p>亲爱的读者们，欢迎回到《爱发财新闻社》的特别报道。在这个春节期间，当你正忙着回复那些一年只见一次面的亲戚们发来的微信红包时，我们将带你深入了解那些不那么令人愉快的节日压力。是的，你没有听错，我们要聊的是那些让你想逃离走亲访友的压力源头！</p>
+<h3 id="经济压力：红包，红包，还是红包！"><a href="#经济压力：红包，红包，还是红包！" class="headerlink" title="经济压力：红包，红包，还是红包！"></a>经济压力：红包，红包，还是红包！</h3><p>根据最新的《爱发财新闻社》调查，有87.3%的受访者表示春节最大的经济压力来自于发红包，而其中有92.5%的人坦言，他们对于每年红包金额的增长感到无力应对。想象一下，你辛辛苦苦一年到头，结果工资还没涨，红包的数字却像是被施了魔法一样蹭蹭往上爬，这简直是对我们钱包的无情嘲讽！</p>
+<h3 id="情感压力：单身？结婚了？生孩子了吗？"><a href="#情感压力：单身？结婚了？生孩子了吗？" class="headerlink" title="情感压力：单身？结婚了？生孩子了吗？"></a>情感压力：单身？结婚了？生孩子了吗？</h3><p>如果你以为经济压力已经够让人头疼的了，那么情感压力简直可以让你瞬间想变成隐士。在我们的调查中，有一项特别的数据显示，单身的受访者在春节期间的压力指数是平时的3.8倍，而已婚未育的则是2.9倍。你没听错，亲戚们的那些“关心”问题，比如“你什么时候找对象啊？”“婚期定了吗？”“小两口考虑要个宝宝不？”这些问题足以让任何人的心理防线崩溃。</p>
+<h3 id="来自亲戚的期望压力：你的孩子上清华了吗？"><a href="#来自亲戚的期望压力：你的孩子上清华了吗？" class="headerlink" title="来自亲戚的期望压力：你的孩子上清华了吗？"></a>来自亲戚的期望压力：你的孩子上清华了吗？</h3><p>在这个成绩至上的时代，亲戚们对于孩子的期望压力简直可以用“天文数字”来形容。据《爱发财新闻社》的统计，有76.4%的家长在春节聚会中会被问及孩子的学习情况，而其中有69.8%的家长感到巨大的压力。不得不说，这种比较孩子成绩的传统项目，已经成为了春节家庭聚会中的“必争之地”。</p>
+<h3 id="如何妥善处理：笑对压力，巧妙应对"><a href="#如何妥善处理：笑对压力，巧妙应对" class="headerlink" title="如何妥善处理：笑对压力，巧妙应对"></a>如何妥善处理：笑对压力，巧妙应对</h3><p>面对这些压力，我们《爱发财新闻社》还是有办法的。首先，对于经济压力，专家建议可以提前制定红包预算，并尝试用创意礼物替代部分红包。其次，对于情感压力，建议大家可以准备一些幽默的回答，比如“我这么优秀，上天还在为我选配最好的另一半呢！”最后，面对孩子教育的比较，我们可以用“每个孩子都有自己的特长和发展节奏”来回应。</p>
+<p>亲爱的读者们，虽然春节的压力不可避免，但我们《爱发财新闻社》相信，只要我们用一颗平和的心去面对，这些压力也不过是生活调味品中的一小撮辣椒，让我们的节日更加有滋有味。在此，祝大家新年快乐，压力全无！</p>
+<h1 id="爱发财新闻社：2024年春节特刊"><a href="#爱发财新闻社：2024年春节特刊" class="headerlink" title="爱发财新闻社：2024年春节特刊"></a>爱发财新闻社：2024年春节特刊</h1><h2 id="巧妙应对烦人亲戚的策略"><a href="#巧妙应对烦人亲戚的策略" class="headerlink" title="巧妙应对烦人亲戚的策略"></a>巧妙应对烦人亲戚的策略</h2><p>亲爱的读者们，当您手持这份特刊，可能正处于春节的硝烟弥漫之中，四处躲避那些好奇而又烦人的亲戚们。别担心，我们《爱发财新闻社》第三章节将为您提供金牌策略，让您在这场无硝烟的战争中，笑到最后。</p>
+<h3 id="专家访谈：心理学家的秘籍"><a href="#专家访谈：心理学家的秘籍" class="headerlink" title="专家访谈：心理学家的秘籍"></a>专家访谈：心理学家的秘籍</h3><p>我们专访了著名心理学家张博士，他在《春节家庭心理战术》一书中提到：“春节期间，家庭成员间的互动往往充满了‘爱的考验’。”据张博士统计，有87.3%的人在春节期间至少会遇到一次“烦人亲戚测试”。他建议，面对好奇的目光和无尽的提问，我们可以采用“微笑+转移话题”策略，以不变应万变。</p>
+<h3 id="心理学分析：为何亲戚总爱问那些问题？"><a href="#心理学分析：为何亲戚总爱问那些问题？" class="headerlink" title="心理学分析：为何亲戚总爱问那些问题？"></a>心理学分析：为何亲戚总爱问那些问题？</h3><p>心理学家们通过实验发现，亲戚们之所以喜欢问一些让人不舒服的问题，其实是一种“关爱的扭曲表达”。他们可能不知道，这种过度的关心，实际上给我们带来了压力。数据显示，春节期间，因应对亲戚问题而产生的心理压力，比平时高出了52%。</p>
+<h3 id="实用策略：三板斧轻松应对"><a href="#实用策略：三板斧轻松应对" class="headerlink" title="实用策略：三板斧轻松应对"></a>实用策略：三板斧轻松应对</h3><ol>
+<li><p><strong>笑容是最好的盾牌</strong>：面对亲戚的突击提问，保持微笑是最佳防御。据调查，微笑可以有效降低对方继续追问的概率，成功率高达69%。</p>
+</li>
+<li><p><strong>话题转移术</strong>：当亲戚开始钻牛角尖时，及时转移话题至他们感兴趣的领域，如“您上次提到的园艺很有趣，能多分享一些吗？”这种方法有助于将注意力从您身上移开，根据实验，有效率达到了78%。</p>
+</li>
+<li><p><strong>设立界限</strong>：在保持礼貌的同时，适当表达自己的不适感。“这个问题对我来说有点私人，我们聊聊别的吧。”据观察，这种直接但礼貌的拒绝，有助于长期树立个人界限，成功避免同样问题的重复出现，效果良好比例为63%。</p>
+</li>
+</ol>
+<h3 id="读者互动：分享你的独门秘籍"><a href="#读者互动：分享你的独门秘籍" class="headerlink" title="读者互动：分享你的独门秘籍"></a>读者互动：分享你的独门秘籍</h3><p>在我们的社交平台上，我们发起了一个#春节烦人亲戚#的话题，邀请读者们分享自己的应对策略。小王说：“我通常会带一些小礼物，一旦气氛尴尬，就拿出来分发，立马转移了大家的注意力。”据统计，这种方法的有效性达到了85%。</p>
+<h3 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h3><p>春节，是团圆的时刻，也是考验的时刻。面对那些烦人的亲戚，记得我们提供的策略，它们将是您的秘密武器。《爱发财新闻社》祝您的春节充满欢笑，而非尴尬。别忘了，当您成功应对了这些挑战，新的一年，您已经赢在了起跑线上。</p>
+<p>（全文完）</p>
+</blockquote>
+<p>因为是10天前利用在公司最后2天完成的代码工作，去广州喝几天糖水回海口吃几天鸡，具体感触很多已经忘记，只能草草记下这些。之前报名参加的atec比赛检测AI虚假新闻的大模型没能按计划完成，但简单制造个虚假新闻工作社还是可以的，当然这里包括虚拟程度、反检测效果、代码重构等等还有很多工作需要完善，可我还没有那么认真，只是一个little tricker，如果你感兴趣，欢迎你加入AFC！</p>
+<h3 id="Kick-it-ass-Let’s-make-some-fun"><a href="#Kick-it-ass-Let’s-make-some-fun" class="headerlink" title="Kick it ass!! Let’s make some fun!!!"></a>Kick it ass!! Let’s make some fun!!!</h3> 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://kop000.github.io/2024/02/11/MG%E4%B9%8B%E5%A4%9A%E6%99%BA%E8%83%BD%E4%BD%93/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>  
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%99%BA%E8%83%BD%E4%BD%93/" rel="tag">智能体</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+  <nav class="article-nav">
+    
+    
+      <a href="/2024/01/31/MG%E4%B9%8B%E5%8D%95%E6%99%BA%E8%83%BD%E4%BD%93%E5%B0%8F%E8%AF%B4%E5%AE%B6/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">MG之单智能体小说家</div>
+      </a>
+    
+  </nav>
+
+  
+   
+<div class="gitalk" id="gitalk-container"></div>
+
+<link rel="stylesheet" href="https://cdn.staticfile.org/gitalk/1.7.2/gitalk.min.css">
+
+
+<script src="https://cdn.staticfile.org/gitalk/1.7.2/gitalk.min.js"></script>
+
+
+<script src="https://cdn.staticfile.org/blueimp-md5/2.19.0/js/md5.min.js"></script>
+
+<script type="text/javascript">
+  var gitalk = new Gitalk({
+    clientID: '7b5cef9753679a4df580',
+    clientSecret: 'eb5d142b9d33854c88d3974fc511456aafb46a19',
+    repo: 'Kop000.github.io',
+    owner: 'Kop000',
+    admin: ['Kop000'],
+    // id: location.pathname,      // Ensure uniqueness and length less than 50
+    id: md5(location.pathname),
+    distractionFreeMode: false,  // Facebook-like distraction free mode
+    pagerDirection: 'last'
+  })
+
+  gitalk.render('gitalk-container')
+</script>
+
+  
+    
+</article>
+
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2023-2024
+        一只鼻孔
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      <li>
+        <!-- cnzz统计 -->
+        
+      </li>
+    </ul>
+  </div>
+</footer>    
+    </main>
+    <div class="float_btns">
+      <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+    </div>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/3.jpg" alt="一只鼻孔在路上"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" target="_blank" rel="noopener" href="https://music.163.com/radio/?id=985464562&userid=485619371">音乐</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" target="_blank" rel="noopener" href="https://feelma.lofter.com/">摄影</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/about">关于我</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="Search">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-3.6.0.min.js"></script>
+ 
+<script src="/js/lazyload.min.js"></script>
+
+<!-- Tocbot -->
+ 
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: ".tocbot",
+    contentSelector: ".article-entry",
+    headingSelector: "h1, h2, h3, h4, h5, h6",
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: "main",
+    positionFixedSelector: ".tocbot",
+    positionFixedClass: "is-position-fixed",
+    fixedSidebarOffset: "auto",
+  });
+</script>
+
+<script src="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.js"></script>
+<link
+  rel="stylesheet"
+  href="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.css"
+/>
+<script src="https://cdn.staticfile.org/justifiedGallery/3.8.1/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+<!-- ImageViewer -->
+ <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/default-skin/default-skin.min.css">
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.js"></script>
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script> 
+<!-- MathJax -->
+
+<!-- Katex -->
+
+<!-- busuanzi  -->
+
+<!-- ClickLove -->
+
+<!-- ClickBoom1 -->
+
+<!-- ClickBoom2 -->
+
+<!-- CodeCopy -->
+ 
+<link rel="stylesheet" href="/css/clipboard.css">
+ <script src="https://cdn.staticfile.org/clipboard.js/2.0.10/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+ 
+<!-- CanvasBackground -->
+
+<script>
+  if (window.mermaid) {
+    mermaid.initialize({ theme: "forest" });
+  }
+</script>
+
+
+    
+    
+
+  </div>
+</body>
+
+</html>
