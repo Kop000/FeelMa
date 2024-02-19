@@ -98,6 +98,72 @@
     
     
     <article
+  id="post-我炼黄金丹之JAVA进阶"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2023/10/20/%E6%88%91%E7%82%BC%E9%BB%84%E9%87%91%E4%B8%B9%E4%B9%8BJAVA%E8%BF%9B%E9%98%B6/"
+    >我炼黄金丹之JAVA进阶</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2023/10/20/%E6%88%91%E7%82%BC%E9%BB%84%E9%87%91%E4%B8%B9%E4%B9%8BJAVA%E8%BF%9B%E9%98%B6/" class="article-date">
+  <time datetime="2023-10-20T02:18:17.000Z" itemprop="datePublished">2023-10-20</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%90%8E%E5%A4%87%E7%AE%B1/">后备箱</a>
+  </div>
+ 
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <blockquote>
+<p>引言：随着项目基础完成并不断完善，不再满足与基础知识，对于应用场景下要考虑的并发问题、框架底层认识问题都推动着我继续学习下去。</p>
+</blockquote>
+<h2 id="并发"><a href="#并发" class="headerlink" title="并发"></a>并发</h2><p>书籍： <a href="C:\Users\Lin\Desktop\实习\净莲妖火\仓库\Java并发编程艺术.pdf">Java并发编程艺术.pdf</a> </p>
+<blockquote>
+<p>Java并发机制的底层实现原理</p>
+</blockquote>
+<p>cpu到memory之间，还有L1、L2、L3 cache，cache放在cpu处理器里头，以我的电脑配置为例，有一个插槽即一个物理cpu芯片，6个内核即把cpu分成了6个独立运行单元，12个逻辑处理器即每个内核利用超线程技术分成两个逻辑内核，也就是说，我的电脑cpu允许12个线程并行运行。一个核是一个可以运行指令的独立单元，它包含了ALU和寄存器，并配备L1和L2 Cache。多个核心共享L3 Cache。</p>
+<p>volatile的理解和之前并无差别，就是读写都从内存里获取，用总线通知并行计算的内核单元要同步，但仍然无法保证线程安全、原子性操作</p>
+<p>synchronized，锁升级机制，偏向锁、轻量级锁、重量级锁</p> 
+      <a class="article-more-link" href="/2023/10/20/%E6%88%91%E7%82%BC%E9%BB%84%E9%87%91%E4%B8%B9%E4%B9%8BJAVA%E8%BF%9B%E9%98%B6/"
+        >阅读更多...</a
+      >
+       
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JAVA/" rel="tag">JAVA</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+   
+  
+</article>
+
+    
+    <article
   id="post-擦去阳光照射下的灰尘"
   class="article article-type-post"
   itemscope
@@ -339,66 +405,6 @@
     <footer class="article-footer">
        
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/" rel="tag">编译原理</a></li></ul>
-
-    </footer>
-  </div>
-
-   
-   
-  
-</article>
-
-    
-    <article
-  id="post-数据挖掘与数据仓库"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2023/07/02/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98%E4%B8%8E%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93/"
-    >数据挖掘与数据仓库</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2023/07/02/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98%E4%B8%8E%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93/" class="article-date">
-  <time datetime="2023-07-02T15:01:55.000Z" itemprop="datePublished">2023-07-02</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E5%90%8E%E5%A4%87%E7%AE%B1/">后备箱</a>
-  </div>
- 
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <h4 id="绪论"><a href="#绪论" class="headerlink" title="绪论"></a>绪论</h4><p>机器学习更偏向理论算法，数据挖掘偏向具体场景应用</p>
-<p>生成式模型</p>
-<p>数据挖掘中的数据类型不同于程序设计</p>
-<p>数据仓库相对于传统数据库，可以存储更多数据，对于表链接等操作更优</p> 
-      <a class="article-more-link" href="/2023/07/02/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98%E4%B8%8E%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93/"
-        >阅读更多...</a
-      >
-       
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93/" rel="tag">数据仓库</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/" rel="tag">数据挖掘</a></li></ul>
 
     </footer>
   </div>
